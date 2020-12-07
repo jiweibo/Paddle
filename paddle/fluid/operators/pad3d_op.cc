@@ -908,5 +908,5 @@ REGISTER_OPERATOR(pad3d_grad, ops::Pad3dOpGrad,
 REGISTER_OP_CPU_KERNEL(pad3d, ops::Pad3dCPUKernel<float>,
                        ops::Pad3dCPUKernel<double>, ops::Pad3dCPUKernel<int>,
                        ops::Pad3dCPUKernel<int64_t>);
-REGISTER_OP_CPU_KERNEL(pad3d_grad, ops::Pad3dGradCPUKernel<float>,
-                       ops::Pad3dGradCPUKernel<double>);
+REGISTER_OP_CPU_GRAD_KERNEL(pad3d_grad, ops::Pad3dGradCPUKernel<float>,
+                            ops::Pad3dGradCPUKernel<double>);

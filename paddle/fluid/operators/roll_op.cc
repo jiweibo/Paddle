@@ -136,7 +136,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::RollKernel<paddle::platform::CPUDeviceContext, double>,
     ops::RollKernel<paddle::platform::CPUDeviceContext, int>,
     ops::RollKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     roll_grad, ops::RollGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::RollGradKernel<paddle::platform::CPUDeviceContext, double>,
     ops::RollGradKernel<paddle::platform::CPUDeviceContext, int>,

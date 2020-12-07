@@ -149,8 +149,8 @@ REGISTER_OP_CPU_KERNEL(unstack,
                        ops::UnStackKernel<plat::CPUDeviceContext, int>,
                        ops::UnStackKernel<plat::CPUDeviceContext, int64_t>);
 
-REGISTER_OP_CPU_KERNEL(unstack_grad,
-                       ops::UnStackGradKernel<plat::CPUDeviceContext, float>,
-                       ops::UnStackGradKernel<plat::CPUDeviceContext, double>,
-                       ops::UnStackGradKernel<plat::CPUDeviceContext, int>,
-                       ops::UnStackGradKernel<plat::CPUDeviceContext, int64_t>);
+REGISTER_OP_CPU_GRAD_KERNEL(
+    unstack_grad, ops::UnStackGradKernel<plat::CPUDeviceContext, float>,
+    ops::UnStackGradKernel<plat::CPUDeviceContext, double>,
+    ops::UnStackGradKernel<plat::CPUDeviceContext, int>,
+    ops::UnStackGradKernel<plat::CPUDeviceContext, int64_t>);

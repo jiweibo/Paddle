@@ -71,7 +71,7 @@ REGISTER_OPERATOR(
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     lookup_sparse_table_grad_split,
     ops::LookupSparseTableGradSplitKernel<paddle::platform::CPUDeviceContext,
                                           float>,

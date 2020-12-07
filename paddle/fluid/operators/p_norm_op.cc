@@ -169,5 +169,5 @@ REGISTER_OPERATOR(p_norm, ops::PnormOp, ops::PnormOpMaker,
 REGISTER_OPERATOR(p_norm_grad, ops::PnormOpGrad);
 REGISTER_OP_CPU_KERNEL(p_norm, ops::PnormKernel<CPU, float>,
                        ops::PnormKernel<CPU, double>);
-REGISTER_OP_CPU_KERNEL(p_norm_grad, ops::PnormGradKernel<CPU, float>,
-                       ops::PnormGradKernel<CPU, double>);
+REGISTER_OP_CPU_GRAD_KERNEL(p_norm_grad, ops::PnormGradKernel<CPU, float>,
+                            ops::PnormGradKernel<CPU, double>);

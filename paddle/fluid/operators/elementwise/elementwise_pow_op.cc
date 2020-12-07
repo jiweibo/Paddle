@@ -77,7 +77,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::ElementwisePowKernel<paddle::platform::CPUDeviceContext, double>,
     ops::ElementwisePowKernel<paddle::platform::CPUDeviceContext, int>,
     ops::ElementwisePowKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     elementwise_pow_grad,
     ops::ElementwisePowGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::ElementwisePowGradKernel<paddle::platform::CPUDeviceContext, double>,

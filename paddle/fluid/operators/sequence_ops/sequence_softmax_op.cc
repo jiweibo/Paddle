@@ -167,7 +167,7 @@ REGISTER_OP_CPU_KERNEL(
     sequence_softmax,
     ops::SequenceSoftmaxKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SequenceSoftmaxKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     sequence_softmax_grad,
     ops::SequenceSoftmaxGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SequenceSoftmaxGradKernel<paddle::platform::CPUDeviceContext, double>);

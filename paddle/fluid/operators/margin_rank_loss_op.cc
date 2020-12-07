@@ -166,6 +166,6 @@ REGISTER_OPERATOR(margin_rank_loss_grad, ops::MarginRankLossGradOp);
 REGISTER_OP_CPU_KERNEL(
     margin_rank_loss,
     ops::MarginRankLossKernel<paddle::platform::CPUDeviceContext, float>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     margin_rank_loss_grad,
     ops::MarginRankLossGradKernel<paddle::platform::CPUDeviceContext, float>);

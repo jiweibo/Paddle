@@ -262,7 +262,7 @@ REGISTER_OPERATOR(nll_loss_grad, ops::NLLLossGradOp);
 REGISTER_OP_CPU_KERNEL(
     nll_loss, ops::NLLLossOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::NLLLossOpKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     nll_loss_grad,
     ops::NLLLossGradOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::NLLLossGradOpKernel<paddle::platform::CPUDeviceContext, double>);

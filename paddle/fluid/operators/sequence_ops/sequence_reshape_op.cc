@@ -142,7 +142,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::SequenceReshapeKernel<paddle::platform::CPUDeviceContext, double>,
     ops::SequenceReshapeKernel<paddle::platform::CPUDeviceContext, int>,
     ops::SequenceReshapeKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     sequence_reshape_grad,
     ops::SequenceReshapeGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SequenceReshapeGradKernel<paddle::platform::CPUDeviceContext, double>,

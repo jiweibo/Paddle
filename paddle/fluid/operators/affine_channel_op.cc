@@ -344,6 +344,6 @@ REGISTER_OPERATOR(affine_channel_grad, ops::AffineChannelOpGrad,
 
 REGISTER_OP_CPU_KERNEL(affine_channel, ops::AffineChannelKernel<CPU, float>,
                        ops::AffineChannelKernel<CPU, double>);
-REGISTER_OP_CPU_KERNEL(affine_channel_grad,
-                       ops::AffineChannelGradKernel<CPU, float>,
-                       ops::AffineChannelGradKernel<CPU, double>);
+REGISTER_OP_CPU_GRAD_KERNEL(affine_channel_grad,
+                            ops::AffineChannelGradKernel<CPU, float>,
+                            ops::AffineChannelGradKernel<CPU, double>);

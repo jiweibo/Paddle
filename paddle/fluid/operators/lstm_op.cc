@@ -327,6 +327,6 @@ REGISTER_OPERATOR(lstm_grad, ops::LSTMGradOp);
 REGISTER_OP_CPU_KERNEL(
     lstm, ops::LSTMKernel<paddle::platform::CPUDeviceContext, float>,
     ops::LSTMKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     lstm_grad, ops::LSTMGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::LSTMGradKernel<paddle::platform::CPUDeviceContext, double>);

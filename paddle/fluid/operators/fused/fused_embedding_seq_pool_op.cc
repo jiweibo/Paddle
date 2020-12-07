@@ -197,6 +197,6 @@ REGISTER_OPERATOR(fused_embedding_seq_pool_grad,
 REGISTER_OP_CPU_KERNEL(fused_embedding_seq_pool,
                        ops::FusedEmbeddingSeqPoolKernel<float>,
                        ops::FusedEmbeddingSeqPoolKernel<double>);
-REGISTER_OP_CPU_KERNEL(fused_embedding_seq_pool_grad,
-                       ops::FusedEmbeddingSeqPoolGradKernel<float>,
-                       ops::FusedEmbeddingSeqPoolGradKernel<double>);
+REGISTER_OP_CPU_GRAD_KERNEL(fused_embedding_seq_pool_grad,
+                            ops::FusedEmbeddingSeqPoolGradKernel<float>,
+                            ops::FusedEmbeddingSeqPoolGradKernel<double>);

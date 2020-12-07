@@ -187,7 +187,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::MatMulV2Kernel<paddle::platform::CPUDeviceContext,
                         paddle::platform::complex128>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     matmul_v2_grad,
     ops::MatMulV2GradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::MatMulV2GradKernel<paddle::platform::CPUDeviceContext, double>,

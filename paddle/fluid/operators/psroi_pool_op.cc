@@ -202,7 +202,7 @@ REGISTER_OP_CPU_KERNEL(
     psroi_pool,
     ops::CPUPSROIPoolOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::CPUPSROIPoolOpKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     psroi_pool_grad,
     ops::CPUPSROIPoolGradOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::CPUPSROIPoolGradOpKernel<paddle::platform::CPUDeviceContext, double>);

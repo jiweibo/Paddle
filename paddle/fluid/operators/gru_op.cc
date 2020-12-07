@@ -470,6 +470,6 @@ REGISTER_OPERATOR(gru_grad, ops::GRUGradOp,
                   ops::GRUGradOpNoNeedBufferVarInferer);
 REGISTER_OP_CPU_KERNEL(gru, ops::GRUCPUKernel<float>,
                        ops::GRUCPUKernel<double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     gru_grad, ops::GRUGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::GRUGradKernel<paddle::platform::CPUDeviceContext, double>);

@@ -399,6 +399,6 @@ REGISTER_OP_CPU_KERNEL(match_matrix_tensor,
                        ops::CPUMatchMatrixTensorOPKernel<
                            paddle::platform::CPUDeviceContext, float>);
 
-REGISTER_OP_CPU_KERNEL(match_matrix_tensor_grad,
-                       ops::CPUMatchMatrixTensorOPGradKernel<
-                           paddle::platform::CPUDeviceContext, float>);
+REGISTER_OP_CPU_GRAD_KERNEL(match_matrix_tensor_grad,
+                            ops::CPUMatchMatrixTensorOPGradKernel<
+                                paddle::platform::CPUDeviceContext, float>);

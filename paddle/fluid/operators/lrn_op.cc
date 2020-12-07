@@ -400,5 +400,5 @@ REGISTER_OPERATOR(lrn, ops::LRNOp, ops::LRNOpMaker<float>,
 REGISTER_OPERATOR(lrn_grad, ops::LRNOpGrad);
 REGISTER_OP_CPU_KERNEL(
     lrn, ops::LRNKernel<paddle::platform::CPUDeviceContext, float>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     lrn_grad, ops::LRNGradKernel<paddle::platform::CPUDeviceContext, float>);

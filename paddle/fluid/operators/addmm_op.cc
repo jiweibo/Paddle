@@ -231,6 +231,6 @@ REGISTER_OP_CPU_KERNEL(
     addmm, ops::AddMMKernel<paddle::platform::CPUDeviceContext, float>,
     ops::AddMMKernel<paddle::platform::CPUDeviceContext, double>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     addmm_grad, ops::AddMMGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::AddMMGradKernel<paddle::platform::CPUDeviceContext, double>);

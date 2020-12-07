@@ -74,5 +74,6 @@ using CPUFrobeniusNormGradKernel =
     ops::FrobeniusNormGradKernel<paddle::platform::CPUDeviceContext, T,
                                  ops::FrobeniusNormGradFunctor>;
 
-REGISTER_OP_CPU_KERNEL(frobenius_norm_grad, CPUFrobeniusNormGradKernel<float>,
-                       CPUFrobeniusNormGradKernel<double>);
+REGISTER_OP_CPU_GRAD_KERNEL(frobenius_norm_grad,
+                            CPUFrobeniusNormGradKernel<float>,
+                            CPUFrobeniusNormGradKernel<double>);

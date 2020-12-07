@@ -181,7 +181,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::PixelShuffleOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::PixelShuffleOpKernel<paddle::platform::CPUDeviceContext, double>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     pixel_shuffle_grad,
     ops::PixelShuffleGradOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::PixelShuffleGradOpKernel<paddle::platform::CPUDeviceContext, double>);

@@ -151,7 +151,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::WhereKernel<paddle::platform::CPUDeviceContext, double>,
     ops::WhereKernel<paddle::platform::CPUDeviceContext, int>,
     ops::WhereKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     where_grad, ops::WhereGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::WhereGradKernel<paddle::platform::CPUDeviceContext, double>,
     ops::WhereGradKernel<paddle::platform::CPUDeviceContext, int>,

@@ -256,6 +256,6 @@ REGISTER_OP_CPU_KERNEL(
     rnn, ops::RNNCPUKernel<paddle::platform::CPUDeviceContext, float>,
     ops::RNNCPUKernel<paddle::platform::CPUDeviceContext, double>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     rnn_grad, ops::RNNCPUGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::RNNCPUGradKernel<paddle::platform::CPUDeviceContext, double>);

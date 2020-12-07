@@ -217,6 +217,6 @@ REGISTER_OPERATOR(crop_grad, ops::CropOpGrad);
 REGISTER_OP_CPU_KERNEL(
     crop, ops::CropKernel<paddle::platform::CPUDeviceContext, float>,
     ops::CropKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     crop_grad, ops::CropGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::CropGradKernel<paddle::platform::CPUDeviceContext, double>);

@@ -245,7 +245,7 @@ REGISTER_OPERATOR(group_norm_grad, ops::GroupNormGradOp,
 REGISTER_OP_CPU_KERNEL(
     group_norm, ops::GroupNormKernel<paddle::platform::CPUDeviceContext, float>,
     ops::GroupNormKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     group_norm_grad,
     ops::GroupNormGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::GroupNormGradKernel<paddle::platform::CPUDeviceContext, double>);

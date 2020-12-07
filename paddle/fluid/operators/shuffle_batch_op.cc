@@ -138,7 +138,8 @@ REGISTER_OP_CPU_KERNEL(shuffle_batch, ops::ShuffleBatchKernel<float>,
                        ops::ShuffleBatchKernel<int32_t>,
                        ops::ShuffleBatchKernel<int64_t>);
 
-REGISTER_OP_CPU_KERNEL(shuffle_batch_grad, ops::ShuffleBatchGradKernel<float>,
-                       ops::ShuffleBatchGradKernel<double>,
-                       ops::ShuffleBatchGradKernel<int32_t>,
-                       ops::ShuffleBatchGradKernel<int64_t>);
+REGISTER_OP_CPU_GRAD_KERNEL(shuffle_batch_grad,
+                            ops::ShuffleBatchGradKernel<float>,
+                            ops::ShuffleBatchGradKernel<double>,
+                            ops::ShuffleBatchGradKernel<int32_t>,
+                            ops::ShuffleBatchGradKernel<int64_t>);

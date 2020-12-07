@@ -115,7 +115,7 @@ REGISTER_OPERATOR(cholesky_grad, ops::CholeskyGradOp);
 REGISTER_OP_CPU_KERNEL(cholesky, ops::CholeskyCPUKernel<float>,
                        ops::CholeskyCPUKernel<double>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     cholesky_grad,
     ops::CholeskyGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::CholeskyGradKernel<paddle::platform::CPUDeviceContext, double>);

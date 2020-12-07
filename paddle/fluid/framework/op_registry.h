@@ -264,6 +264,13 @@ struct OpKernelRegistrarFunctorEx<PlaceType, false, I,
     return 0;                                                            \
   }
 
+#ifndef PADDLE_ON_INFERENCE
+#define REGISTER_GRAD_OPERATOR(op_type, op_class, ...) \
+  REGISTER_OPERATOR(op_type, op_class, __VA_ARGS__)
+#else
+#define REGISTER_GRAD_OPERATOR(op_type, op_class, ...)
+#endif
+
 #define REGISTER_OP_WITHOUT_GRADIENT(op_type, op_class, op_maker_class) \
   REGISTER_OPERATOR(op_type, op_class, op_maker_class, \
         paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,   \
@@ -303,6 +310,19 @@ struct OpKernelRegistrarFunctorEx<PlaceType, false, I,
 
 #define REGISTER_OP_XPU_KERNEL(op_type, ...) \
   REGISTER_OP_KERNEL(op_type, XPU, ::paddle::platform::XPUPlace, __VA_ARGS__)
+
+#ifndef PADDLE_ON_INFERENCE
+#define REGISTER_OP_CUDA_GRAD_KERNEL(op_type, ...) \
+  REGISTER_OP_KERNEL(op_type, CUDA, ::paddle::platform::CUDAPlace, __VA_ARGS__)
+#define REGISTER_OP_CPU_GRAD_KERNEL(op_type, ...) \
+  REGISTER_OP_KERNEL(op_type, CPU, ::paddle::platform::CPUPlace, __VA_ARGS__)
+#define REGISTER_OP_XPU_GRAD_KERNEL(op_type, ...) \
+  REGISTER_OP_KERNEL(op_type, XPU, ::paddle::platform::XPUPlace, __VA_ARGS__)
+#else
+#define REGISTER_OP_CUDA_GRAD_KERNEL(op_type, ...)
+#define REGISTER_OP_CPU_GRAD_KERNEL(op_type, ...)
+#define REGISTER_OP_XPU_GRAD_KERNEL(op_type, ...)
+#endif
 
 #define REGISTER_OP_KERNEL_EX(op_type, library_type, place_class,  \
                               customized_name,                     \

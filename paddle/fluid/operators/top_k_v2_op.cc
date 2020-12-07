@@ -180,7 +180,7 @@ REGISTER_OP_CPU_KERNEL(top_k_v2,
                        ops::TopkV2Kernel<paddle::platform::CPUPlace, int32_t>,
                        ops::TopkV2Kernel<paddle::platform::CPUPlace, int64_t>)
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     top_k_v2_grad, ops::TopkV2GradKernel<paddle::platform::CPUPlace, float>,
     ops::TopkV2GradKernel<paddle::platform::CPUPlace, double>,
     ops::TopkV2GradKernel<paddle::platform::CPUPlace, int32_t>,

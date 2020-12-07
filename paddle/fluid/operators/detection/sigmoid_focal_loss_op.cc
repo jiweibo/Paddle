@@ -247,7 +247,7 @@ REGISTER_OP_CPU_KERNEL(
     sigmoid_focal_loss,
     ops::SigmoidFocalLossKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SigmoidFocalLossKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     sigmoid_focal_loss_grad,
     ops::SigmoidFocalLossGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SigmoidFocalLossGradKernel<paddle::platform::CPUDeviceContext,

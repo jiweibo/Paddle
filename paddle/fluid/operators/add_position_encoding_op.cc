@@ -123,7 +123,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::AddPositionEncodingKernel<plt::CPUDeviceContext, float>,
     ops::AddPositionEncodingKernel<plt::CPUDeviceContext, double>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     add_position_encoding_grad,
     ops::AddPositionEncodingGradKernel<plt::CPUDeviceContext, float>,
     ops::AddPositionEncodingGradKernel<plt::CPUDeviceContext, double>);

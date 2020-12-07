@@ -162,5 +162,5 @@ REGISTER_OPERATOR(cvm_grad, ops::CVMGradientOp,
 
 REGISTER_OP_CPU_KERNEL(cvm, ops::CVMOpKernel<float>, ops::CVMOpKernel<double>);
 
-REGISTER_OP_CPU_KERNEL(cvm_grad, ops::CVMGradOpKernel<float>,
-                       ops::CVMGradOpKernel<double>);
+REGISTER_OP_CPU_GRAD_KERNEL(cvm_grad, ops::CVMGradOpKernel<float>,
+                            ops::CVMGradOpKernel<double>);

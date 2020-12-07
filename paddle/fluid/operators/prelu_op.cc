@@ -188,6 +188,6 @@ REGISTER_OPERATOR(prelu_grad, ops::PReluGradOp);
 REGISTER_OP_CPU_KERNEL(
     prelu, ops::PReluKernel<paddle::platform::CPUDeviceContext, float>,
     ops::PReluKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     prelu_grad, ops::PReluGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::PReluGradKernel<paddle::platform::CPUDeviceContext, double>);

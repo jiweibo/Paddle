@@ -213,6 +213,6 @@ REGISTER_OPERATOR(smooth_l1_loss_grad, ops::SmoothL1LossGradOp);
 REGISTER_OP_CPU_KERNEL(
     smooth_l1_loss,
     ops::SmoothL1LossKernel<paddle::platform::CPUDeviceContext, float>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     smooth_l1_loss_grad,
     ops::SmoothL1LossGradKernel<paddle::platform::CPUDeviceContext, float>);

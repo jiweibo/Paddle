@@ -156,7 +156,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::SequenceSliceOpKernel<paddle::platform::CPUDeviceContext, double>,
     ops::SequenceSliceOpKernel<paddle::platform::CPUDeviceContext, int>,
     ops::SequenceSliceOpKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     sequence_slice_grad,
     ops::SequenceSliceGradOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SequenceSliceGradOpKernel<paddle::platform::CPUDeviceContext, double>,

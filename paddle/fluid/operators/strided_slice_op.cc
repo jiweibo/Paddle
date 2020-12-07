@@ -333,7 +333,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::StridedSliceKernel<paddle::platform::CPUDeviceContext,
                             paddle::platform::complex128>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     strided_slice_grad,
     ops::StridedSliceGradKernel<paddle::platform::CPUDeviceContext, int>,
     ops::StridedSliceGradKernel<paddle::platform::CPUDeviceContext, int64_t>,

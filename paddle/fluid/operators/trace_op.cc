@@ -168,7 +168,7 @@ REGISTER_OP_CPU_KERNEL(
                      paddle::platform::complex64>,
     ops::TraceKernel<paddle::platform::CPUDeviceContext,
                      paddle::platform::complex128>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     trace_grad, ops::TraceGradKernel<paddle::platform::CPUDeviceContext, int>,
     ops::TraceGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::TraceGradKernel<paddle::platform::CPUDeviceContext, double>,

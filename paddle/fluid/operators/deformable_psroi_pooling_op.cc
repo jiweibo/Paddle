@@ -330,6 +330,6 @@ REGISTER_OPERATOR(deformable_psroi_pooling_grad,
 REGISTER_OP_CPU_KERNEL(deformable_psroi_pooling,
                        ops::DeformablePSROIPoolCPUKernel<CPU, float>,
                        ops::DeformablePSROIPoolCPUKernel<CPU, double>);
-REGISTER_OP_CPU_KERNEL(deformable_psroi_pooling_grad,
-                       ops::DeformablePSROIPoolGradCPUKernel<CPU, float>,
-                       ops::DeformablePSROIPoolGradCPUKernel<CPU, double>);
+REGISTER_OP_CPU_GRAD_KERNEL(deformable_psroi_pooling_grad,
+                            ops::DeformablePSROIPoolGradCPUKernel<CPU, float>,
+                            ops::DeformablePSROIPoolGradCPUKernel<CPU, double>);

@@ -233,7 +233,7 @@ REGISTER_OP_CPU_KERNEL(
     grid_sampler,
     ops::GridSampleOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::GridSampleOpKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     grid_sampler_grad,
     ops::GridSampleGradOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::GridSampleGradOpKernel<paddle::platform::CPUDeviceContext, double>);

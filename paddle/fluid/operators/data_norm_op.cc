@@ -752,7 +752,7 @@ REGISTER_OPERATOR(data_norm_grad, ops::DataNormGradOp);
 REGISTER_OP_CPU_KERNEL(
     data_norm, ops::DataNormKernel<paddle::platform::CPUDeviceContext, float>,
     ops::DataNormKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     data_norm_grad,
     ops::DataNormGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::DataNormGradKernel<paddle::platform::CPUDeviceContext, double>);

@@ -246,7 +246,7 @@ REGISTER_OP_CPU_KERNEL(
     spectral_norm,
     ops::SpectralNormKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SpectralNormKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     spectral_norm_grad,
     ops::SpectralNormGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SpectralNormGradKernel<paddle::platform::CPUDeviceContext, double>);

@@ -160,7 +160,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::SegmentPoolKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SegmentPoolKernel<paddle::platform::CPUDeviceContext, double>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     segment_pool_grad,
     ops::SegmentPoolGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SegmentPoolGradKernel<paddle::platform::CPUDeviceContext, double>);

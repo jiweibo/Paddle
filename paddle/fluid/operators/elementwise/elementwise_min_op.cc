@@ -88,7 +88,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::ElementwiseMinKernel<paddle::platform::CPUDeviceContext, double>,
     ops::ElementwiseMinKernel<paddle::platform::CPUDeviceContext, int>,
     ops::ElementwiseMinKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     elementwise_min_grad,
     ops::ElementwiseMinGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::ElementwiseMinGradKernel<paddle::platform::CPUDeviceContext, double>,

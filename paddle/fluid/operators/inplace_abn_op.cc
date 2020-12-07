@@ -254,7 +254,7 @@ REGISTER_OP_CPU_KERNEL(
     inplace_abn,
     ops::InplaceABNKernel<paddle::platform::CPUDeviceContext, float>,
     ops::InplaceABNKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     inplace_abn_grad,
     ops::InplaceABNGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::InplaceABNGradKernel<paddle::platform::CPUDeviceContext, double>);

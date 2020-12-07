@@ -164,5 +164,5 @@ REGISTER_OPERATOR(modified_huber_loss_grad, ops::ModifiedHuberLossGradOp);
 REGISTER_OP_CPU_KERNEL(
     modified_huber_loss,
     ops::ModifiedHuberLossKernel<paddle::platform::CPUDeviceContext, float>);
-REGISTER_OP_CPU_KERNEL(modified_huber_loss_grad,
-                       ops::ModifiedHuberLossGradCPUKernel<float>);
+REGISTER_OP_CPU_GRAD_KERNEL(modified_huber_loss_grad,
+                            ops::ModifiedHuberLossGradCPUKernel<float>);

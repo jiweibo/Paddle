@@ -104,6 +104,6 @@ REGISTER_OPERATOR(spp_grad, ops::SppOpGrad);
 REGISTER_OP_CPU_KERNEL(
     spp, ops::SppKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SppKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     spp_grad, ops::SppGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SppGradKernel<paddle::platform::CPUDeviceContext, double>);

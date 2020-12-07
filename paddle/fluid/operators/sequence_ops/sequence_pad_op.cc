@@ -269,7 +269,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::SequencePadOpKernel<paddle::platform::CPUDeviceContext, double>,
     ops::SequencePadOpKernel<paddle::platform::CPUDeviceContext, int>,
     ops::SequencePadOpKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     sequence_pad_grad,
     ops::SequencePadGradOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SequencePadGradOpKernel<paddle::platform::CPUDeviceContext, double>,

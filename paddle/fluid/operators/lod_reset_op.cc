@@ -242,7 +242,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::LoDResetKernel<paddle::platform::CPUPlace, double>,
     ops::LoDResetKernel<paddle::platform::CPUPlace, int>,
     ops::LoDResetKernel<paddle::platform::CPUPlace, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     lod_reset_grad, ops::LoDResetGradKernel<paddle::platform::CPUPlace, float>,
     ops::LoDResetGradKernel<paddle::platform::CPUPlace, double>,
     ops::LoDResetGradKernel<paddle::platform::CPUPlace, int>,

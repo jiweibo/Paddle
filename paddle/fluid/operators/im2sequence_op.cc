@@ -189,6 +189,6 @@ REGISTER_OPERATOR(im2sequence_grad, ops::Im2SequenceGradOp);
 REGISTER_OP_CPU_KERNEL(
     im2sequence,
     ops::Im2SequenceKernel<paddle::platform::CPUDeviceContext, float>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     im2sequence_grad,
     ops::Im2SequenceGradKernel<paddle::platform::CPUDeviceContext, float>);

@@ -153,7 +153,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::DotKernel<paddle::platform::CPUDeviceContext, double>,
     ops::DotKernel<paddle::platform::CPUDeviceContext, int>,
     ops::DotKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     dot_grad, ops::DotGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::DotGradKernel<paddle::platform::CPUDeviceContext, double>,
     ops::DotGradKernel<paddle::platform::CPUDeviceContext, int>,

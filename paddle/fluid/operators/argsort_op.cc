@@ -132,7 +132,7 @@ REGISTER_OP_CPU_KERNEL(argsort,
                        ops::ArgsortKernel<paddle::platform::CPUPlace, double>,
                        ops::ArgsortKernel<paddle::platform::CPUPlace, int>,
                        ops::ArgsortKernel<paddle::platform::CPUPlace, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     argsort_grad, ops::ArgsortGradientKernel<paddle::platform::CPUPlace, float>,
     ops::ArgsortGradientKernel<paddle::platform::CPUPlace, double>,
     ops::ArgsortGradientKernel<paddle::platform::CPUPlace, int>,

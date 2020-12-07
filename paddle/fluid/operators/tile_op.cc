@@ -281,7 +281,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::TileKernel<paddle::platform::CPUDeviceContext, int>,
     ops::TileKernel<paddle::platform::CPUDeviceContext, int64_t>,
     ops::TileKernel<paddle::platform::CPUDeviceContext, bool>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     tile_grad, ops::TileGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::TileGradKernel<paddle::platform::CPUDeviceContext, double>,
     ops::TileGradKernel<paddle::platform::CPUDeviceContext, int>,

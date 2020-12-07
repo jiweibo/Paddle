@@ -123,7 +123,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::ShuffleChannelOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::ShuffleChannelOpKernel<paddle::platform::CPUDeviceContext, double>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     shuffle_channel_grad,
     ops::ShuffleChannelGradOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::ShuffleChannelGradOpKernel<paddle::platform::CPUDeviceContext,

@@ -175,7 +175,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::MultiplexCPUKernel<paddle::platform::CPUDeviceContext, double>,
     ops::MultiplexCPUKernel<paddle::platform::CPUDeviceContext, int>,
     ops::MultiplexCPUKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     multiplex_grad,
     ops::MultiplexGradCPUKernel<paddle::platform::CPUDeviceContext, float>,
     ops::MultiplexGradCPUKernel<paddle::platform::CPUDeviceContext, double>,

@@ -276,7 +276,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::HierarchicalSigmoidOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::HierarchicalSigmoidOpKernel<paddle::platform::CPUDeviceContext,
                                      double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     hierarchical_sigmoid_grad,
     ops::HierarchicalSigmoidGradOpKernel<paddle::platform::CPUDeviceContext,
                                          float>,

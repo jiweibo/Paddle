@@ -157,7 +157,7 @@ REGISTER_OP_CPU_KERNEL(
     label_smooth,
     ops::LabelSmoothKernel<paddle::platform::CPUDeviceContext, float>,
     ops::LabelSmoothKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     label_smooth_grad,
     ops::LabelSmoothGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::LabelSmoothGradKernel<paddle::platform::CPUDeviceContext, double>);

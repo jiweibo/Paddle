@@ -160,6 +160,6 @@ REGISTER_OPERATOR(bmm_grad, ops::BmmOpGrad);
 REGISTER_OP_CPU_KERNEL(
     bmm, ops::BmmKernel<paddle::platform::CPUDeviceContext, float>,
     ops::BmmKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     bmm_grad, ops::BmmGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::BmmGradKernel<paddle::platform::CPUDeviceContext, double>);

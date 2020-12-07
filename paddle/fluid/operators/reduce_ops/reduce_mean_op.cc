@@ -110,5 +110,5 @@ using CPUReduceMeanGradKernel =
     ops::ReduceGradKernel<paddle::platform::CPUDeviceContext, T,
                           ops::MeanGradFunctor, true>;
 
-REGISTER_OP_CPU_KERNEL(reduce_mean_grad, CPUReduceMeanGradKernel<float>,
-                       CPUReduceMeanGradKernel<double>);
+REGISTER_OP_CPU_GRAD_KERNEL(reduce_mean_grad, CPUReduceMeanGradKernel<float>,
+                            CPUReduceMeanGradKernel<double>);

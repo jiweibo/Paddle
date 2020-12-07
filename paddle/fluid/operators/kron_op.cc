@@ -177,7 +177,7 @@ REGISTER_OP_CPU_KERNEL(
                     paddle::platform::complex128>);
 
 REGISTER_OPERATOR(kron_grad, ops::KronGradOp);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     kron_grad, ops::KronGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::KronGradKernel<paddle::platform::CPUDeviceContext, double>,
     ops::KronGradKernel<paddle::platform::CPUDeviceContext,

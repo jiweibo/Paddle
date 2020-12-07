@@ -123,7 +123,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::ExpandAsV2Kernel<paddle::platform::CPUDeviceContext, int>,
     ops::ExpandAsV2Kernel<paddle::platform::CPUDeviceContext, int64_t>,
     ops::ExpandAsV2Kernel<paddle::platform::CPUDeviceContext, bool>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     expand_as_v2_grad,
     ops::ExpandAsV2GradKernel<paddle::platform::CPUDeviceContext, int>,
     ops::ExpandAsV2GradKernel<paddle::platform::CPUDeviceContext, int64_t>,

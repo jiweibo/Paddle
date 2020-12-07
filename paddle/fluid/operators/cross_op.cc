@@ -162,7 +162,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::CrossKernel<paddle::platform::CPUDeviceContext, double>,
     ops::CrossKernel<paddle::platform::CPUDeviceContext, int>,
     ops::CrossKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     cross_grad, ops::CrossGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::CrossGradKernel<paddle::platform::CPUDeviceContext, double>,
     ops::CrossGradKernel<paddle::platform::CPUDeviceContext, int>,

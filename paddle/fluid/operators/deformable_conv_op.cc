@@ -340,6 +340,6 @@ REGISTER_OPERATOR(deformable_conv_grad, ops::DeformableConvGradOp);
 
 REGISTER_OP_CPU_KERNEL(deformable_conv, ops::DeformableConvCPUKernel<float>,
                        ops::DeformableConvCPUKernel<double>);
-REGISTER_OP_CPU_KERNEL(deformable_conv_grad,
-                       ops::DeformableConvGradCPUKernel<float>,
-                       ops::DeformableConvGradCPUKernel<double>);
+REGISTER_OP_CPU_GRAD_KERNEL(deformable_conv_grad,
+                            ops::DeformableConvGradCPUKernel<float>,
+                            ops::DeformableConvGradCPUKernel<double>);

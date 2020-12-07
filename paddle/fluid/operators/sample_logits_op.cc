@@ -254,5 +254,6 @@ REGISTER_OPERATOR(sample_logits, ops::SampleLogitsOp, ops::SampleLogitsOpMaker,
 REGISTER_OPERATOR(sample_logits_grad, ops::SampleLogitsOpGrad);
 REGISTER_OP_CPU_KERNEL(sample_logits, ops::SampleLogitsKernel<float>,
                        ops::SampleLogitsKernel<double>);
-REGISTER_OP_CPU_KERNEL(sample_logits_grad, ops::SampleLogitsGradKernel<float>,
-                       ops::SampleLogitsGradKernel<double>);
+REGISTER_OP_CPU_GRAD_KERNEL(sample_logits_grad,
+                            ops::SampleLogitsGradKernel<float>,
+                            ops::SampleLogitsGradKernel<double>);

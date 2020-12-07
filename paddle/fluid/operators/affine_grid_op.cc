@@ -267,7 +267,7 @@ REGISTER_OP_CPU_KERNEL(
     affine_grid,
     ops::AffineGridOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::AffineGridOpKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     affine_grid_grad,
     ops::AffineGridGradOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::AffineGridGradOpKernel<paddle::platform::CPUDeviceContext, double>);

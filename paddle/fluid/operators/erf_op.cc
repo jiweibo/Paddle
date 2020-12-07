@@ -125,7 +125,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::ErfKernel<paddle::platform::CPUDeviceContext, double>,
     ops::ErfKernel<paddle::platform::CPUDeviceContext,
                    paddle::platform::float16>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     erf_grad, ops::ErfGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::ErfGradKernel<paddle::platform::CPUDeviceContext, double>,
     ops::ErfGradKernel<paddle::platform::CPUDeviceContext,

@@ -155,7 +155,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::IndexSelectKernel<paddle::platform::CPUDeviceContext, double>,
     ops::IndexSelectKernel<paddle::platform::CPUDeviceContext, int>,
     ops::IndexSelectKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     index_select_grad,
     ops::IndexSelectGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::IndexSelectGradKernel<paddle::platform::CPUDeviceContext, double>,

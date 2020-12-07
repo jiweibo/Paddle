@@ -232,6 +232,6 @@ REGISTER_OP_CPU_KERNEL(teacher_student_sigmoid_loss,
                        ops::TeacherStudentSigmoidLossOpKernel<float>,
                        ops::TeacherStudentSigmoidLossOpKernel<double>);
 
-REGISTER_OP_CPU_KERNEL(teacher_student_sigmoid_loss_grad,
-                       ops::TeacherStudentSigmoidLossGradOpKernel<float>,
-                       ops::TeacherStudentSigmoidLossGradOpKernel<double>);
+REGISTER_OP_CPU_GRAD_KERNEL(teacher_student_sigmoid_loss_grad,
+                            ops::TeacherStudentSigmoidLossGradOpKernel<float>,
+                            ops::TeacherStudentSigmoidLossGradOpKernel<double>);

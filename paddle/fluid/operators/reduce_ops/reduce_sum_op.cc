@@ -128,9 +128,9 @@ using CPUReduceSumGradKernel =
     ops::ReduceSumGradKernel<paddle::platform::CPUDeviceContext, T,
                              ops::SumGradFunctor, true>;
 
-REGISTER_OP_CPU_KERNEL(reduce_sum_grad, CPUReduceSumGradKernel<float>,
-                       CPUReduceSumGradKernel<double>,
-                       CPUReduceSumGradKernel<int>,
-                       CPUReduceSumGradKernel<int64_t>,
-                       CPUReduceSumGradKernel<paddle::platform::complex64>,
-                       CPUReduceSumGradKernel<paddle::platform::complex128>);
+REGISTER_OP_CPU_GRAD_KERNEL(
+    reduce_sum_grad, CPUReduceSumGradKernel<float>,
+    CPUReduceSumGradKernel<double>, CPUReduceSumGradKernel<int>,
+    CPUReduceSumGradKernel<int64_t>,
+    CPUReduceSumGradKernel<paddle::platform::complex64>,
+    CPUReduceSumGradKernel<paddle::platform::complex128>);

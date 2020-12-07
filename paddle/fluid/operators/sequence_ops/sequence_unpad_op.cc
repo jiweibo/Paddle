@@ -188,7 +188,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::SequenceUnpadOpKernel<paddle::platform::CPUDeviceContext, double>,
     ops::SequenceUnpadOpKernel<paddle::platform::CPUDeviceContext, int>,
     ops::SequenceUnpadOpKernel<paddle::platform::CPUDeviceContext, int64_t>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     sequence_unpad_grad,
     ops::SequenceUnpadGradOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SequenceUnpadGradOpKernel<paddle::platform::CPUDeviceContext, double>,

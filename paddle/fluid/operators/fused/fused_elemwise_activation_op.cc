@@ -384,7 +384,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::FusedElemwiseActivationKernel<paddle::platform::CPUDeviceContext,
                                        double>);
 
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     fused_elemwise_activation_grad,
     ops::FusedElemwiseActivationGradKernel<paddle::platform::CPUDeviceContext,
                                            float>,

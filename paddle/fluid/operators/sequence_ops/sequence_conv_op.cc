@@ -253,7 +253,7 @@ REGISTER_OP_CPU_KERNEL(
     sequence_conv,
     ops::SequenceConvKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SequenceConvKernel<paddle::platform::CPUDeviceContext, double>);
-REGISTER_OP_CPU_KERNEL(
+REGISTER_OP_CPU_GRAD_KERNEL(
     sequence_conv_grad,
     ops::SequenceConvGradKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SequenceConvGradKernel<paddle::platform::CPUDeviceContext, double>);
