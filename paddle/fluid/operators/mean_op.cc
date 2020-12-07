@@ -92,8 +92,8 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(mean, ops::MeanOp, ops::MeanOpMaker, ops::MeanOpInferVarType,
                   ops::MeanGradMaker<paddle::framework::OpDesc>,
                   ops::MeanGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(mean_grad, ops::MeanGradOp,
-                  ops::MeanGradNoNeedBufferVarsInferer);
+REGISTER_GRAD_OPERATOR(mean_grad, ops::MeanGradOp,
+                       ops::MeanGradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(
     mean, ops::MeanKernel<paddle::platform::CPUDeviceContext, float>,
     ops::MeanKernel<paddle::platform::CPUDeviceContext, double>);

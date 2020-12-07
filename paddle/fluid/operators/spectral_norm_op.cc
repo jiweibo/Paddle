@@ -241,7 +241,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(spectral_norm, ops::SpectralNormOp, ops::SpectralNormOpMaker,
                   ops::SpectralNormGradOpMaker<paddle::framework::OpDesc>,
                   ops::SpectralNormGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(spectral_norm_grad, ops::SpectralNormOpGrad);
+REGISTER_GRAD_OPERATOR(spectral_norm_grad, ops::SpectralNormOpGrad);
 REGISTER_OP_CPU_KERNEL(
     spectral_norm,
     ops::SpectralNormKernel<paddle::platform::CPUDeviceContext, float>,

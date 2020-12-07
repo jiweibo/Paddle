@@ -233,9 +233,9 @@ REGISTER_OPERATOR(lod_reset, ops::LoDResetOp, ops::LoDResetOpMaker,
                   ops::LoDResetGradMaker<paddle::framework::OpDesc>,
                   ops::LoDResetGradMaker<paddle::imperative::OpBase>,
                   ops::LoDResetOpVarTypeInference, ops::LoDResetInplaceInferer);
-REGISTER_OPERATOR(lod_reset_grad, ops::LoDResetGradOp,
-                  ops::LoDResetGradNoNeedBufferVarInferer,
-                  ops::LoDResetGradInplaceInferer);
+REGISTER_GRAD_OPERATOR(lod_reset_grad, ops::LoDResetGradOp,
+                       ops::LoDResetGradNoNeedBufferVarInferer,
+                       ops::LoDResetGradInplaceInferer);
 
 REGISTER_OP_CPU_KERNEL(
     lod_reset, ops::LoDResetKernel<paddle::platform::CPUPlace, float>,

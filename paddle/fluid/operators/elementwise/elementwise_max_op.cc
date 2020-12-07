@@ -80,7 +80,7 @@ REGISTER_OPERATOR(elementwise_max, ops::ElementwiseOp,
                   ops::ElementwiseMaxGradOpMaker<paddle::framework::OpDesc>,
                   ops::ElementwiseMaxGradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(elementwise_max_grad, ops::ElementwiseOpGrad);
+REGISTER_GRAD_OPERATOR(elementwise_max_grad, ops::ElementwiseOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
     elementwise_max,

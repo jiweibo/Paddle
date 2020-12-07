@@ -146,7 +146,7 @@ REGISTER_OPERATOR(dot, ops::DotOp, ops::DotOpMaker,
                   ops::DotOpGradMaker<paddle::framework::OpDesc>,
                   ops::DotOpGradMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(dot_grad, ops::DotGradOp);
+REGISTER_GRAD_OPERATOR(dot_grad, ops::DotGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     dot, ops::DotKernel<paddle::platform::CPUDeviceContext, float>,

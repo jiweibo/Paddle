@@ -344,7 +344,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(row_conv, ops::RowConvOp, ops::RowConvOpMaker,
                   ops::RowConvGradOpMaker<paddle::framework::OpDesc>,
                   ops::RowConvGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(row_conv_grad, ops::RowConvGradOp);
+REGISTER_GRAD_OPERATOR(row_conv_grad, ops::RowConvGradOp);
 REGISTER_OP_CPU_KERNEL(
     row_conv, ops::RowConvKernel<paddle::platform::CPUDeviceContext, float>);
 REGISTER_OP_CPU_GRAD_KERNEL(

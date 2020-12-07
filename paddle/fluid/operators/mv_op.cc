@@ -115,7 +115,7 @@ namespace plat = paddle::platform;
 REGISTER_OPERATOR(mv, ops::MVOp, ops::MVOpMaker,
                   ops::MVOpGradMaker<paddle::framework::OpDesc>,
                   ops::MVOpGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(mv_grad, ops::MVOpGrad);
+REGISTER_GRAD_OPERATOR(mv_grad, ops::MVOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
     mv, ops::MVKernel<paddle::platform::CPUDeviceContext, float>,

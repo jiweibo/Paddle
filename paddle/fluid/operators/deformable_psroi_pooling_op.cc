@@ -325,8 +325,8 @@ REGISTER_OPERATOR(
     ops::DeformablePSROIPoolOpMaker,
     ops::DeformablePSROIPoolGradOpMaker<paddle::framework::OpDesc>,
     ops::DeformablePSROIPoolGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(deformable_psroi_pooling_grad,
-                  ops::DeformablePSROIPoolGradOp);
+REGISTER_GRAD_OPERATOR(deformable_psroi_pooling_grad,
+                       ops::DeformablePSROIPoolGradOp);
 REGISTER_OP_CPU_KERNEL(deformable_psroi_pooling,
                        ops::DeformablePSROIPoolCPUKernel<CPU, float>,
                        ops::DeformablePSROIPoolCPUKernel<CPU, double>);

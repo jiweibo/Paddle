@@ -666,8 +666,8 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(pad2d, ops::Pad2dOp, ops::Pad2dOpMaker,
                   ops::Pad2dOpGradMaker<paddle::framework::OpDesc>,
                   ops::Pad2dOpGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(pad2d_grad, ops::Pad2dOpGrad,
-                  ops::Pad2dOpGradNoNeedBufferVarsInferer);
+REGISTER_GRAD_OPERATOR(pad2d_grad, ops::Pad2dOpGrad,
+                       ops::Pad2dOpGradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(pad2d, ops::Pad2dCPUKernel<float>,
                        ops::Pad2dCPUKernel<double>, ops::Pad2dCPUKernel<int>,
                        ops::Pad2dCPUKernel<int64_t>);

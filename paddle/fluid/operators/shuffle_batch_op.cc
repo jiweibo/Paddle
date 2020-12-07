@@ -131,7 +131,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(shuffle_batch, ops::ShuffleBatchOp, ops::ShuffleBatchOpMaker,
                   ops::ShuffleBatchGradOpMaker<paddle::framework::OpDesc>,
                   ops::ShuffleBatchGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(shuffle_batch_grad, ops::ShuffleBatchOpGrad);
+REGISTER_GRAD_OPERATOR(shuffle_batch_grad, ops::ShuffleBatchOpGrad);
 
 REGISTER_OP_CPU_KERNEL(shuffle_batch, ops::ShuffleBatchKernel<float>,
                        ops::ShuffleBatchKernel<double>,

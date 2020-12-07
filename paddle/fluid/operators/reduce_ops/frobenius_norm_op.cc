@@ -61,7 +61,7 @@ REGISTER_OPERATOR(frobenius_norm, ops::ReduceOp, FrobeniusNormOpMaker,
                   ops::FrobeniusNormOpGradMaker<paddle::framework::OpDesc>,
                   ops::FrobeniusNormOpGradMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(frobenius_norm_grad, ops::ReduceGradOp);
+REGISTER_GRAD_OPERATOR(frobenius_norm_grad, ops::ReduceGradOp);
 
 REGISTER_OP_CPU_KERNEL(frobenius_norm,
                        ops::ReduceKernel<paddle::platform::CPUDeviceContext,

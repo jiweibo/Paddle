@@ -225,8 +225,8 @@ REGISTER_OPERATOR(
     ops::TeacherStudentSigmoidLossGradOpMaker<paddle::framework::OpDesc>,
     ops::TeacherStudentSigmoidLossGradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(teacher_student_sigmoid_loss_grad,
-                  ops::TeacherStudentSigmoidLossGradientOp);
+REGISTER_GRAD_OPERATOR(teacher_student_sigmoid_loss_grad,
+                       ops::TeacherStudentSigmoidLossGradientOp);
 
 REGISTER_OP_CPU_KERNEL(teacher_student_sigmoid_loss,
                        ops::TeacherStudentSigmoidLossOpKernel<float>,

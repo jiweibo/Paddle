@@ -103,8 +103,8 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(masked_select, ops::MaskedSelectOp, ops::MaskedSelectOpMaker,
                   ops::MaskedSelectGradOpMaker<paddle::framework::OpDesc>,
                   ops::MaskedSelectGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(masked_select_grad, ops::MaskedSelectOpGrad,
-                  ops::MaskedSelectedGradNoNeedBufferVarsInferer);
+REGISTER_GRAD_OPERATOR(masked_select_grad, ops::MaskedSelectOpGrad,
+                       ops::MaskedSelectedGradNoNeedBufferVarsInferer);
 
 REGISTER_OP_CPU_KERNEL(
     masked_select,

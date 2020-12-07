@@ -336,7 +336,7 @@ REGISTER_OPERATOR(deformable_conv, ops::DeformableConvOp,
                   ops::DeformableConvGradOpMaker<paddle::framework::OpDesc>,
                   ops::DeformableConvGradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(deformable_conv_grad, ops::DeformableConvGradOp);
+REGISTER_GRAD_OPERATOR(deformable_conv_grad, ops::DeformableConvGradOp);
 
 REGISTER_OP_CPU_KERNEL(deformable_conv, ops::DeformableConvCPUKernel<float>,
                        ops::DeformableConvCPUKernel<double>);

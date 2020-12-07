@@ -174,7 +174,7 @@ REGISTER_OPERATOR(pixel_shuffle, ops::PixelShuffleOp, ops::PixelShuffleOpMaker,
                   ops::PixelShuffleGradMaker<paddle::framework::OpDesc>,
                   ops::PixelShuffleGradMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(pixel_shuffle_grad, ops::PixelShuffleGradOp);
+REGISTER_GRAD_OPERATOR(pixel_shuffle_grad, ops::PixelShuffleGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     pixel_shuffle,

@@ -153,7 +153,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(segment_pool, ops::SegmentPoolOp, ops::SegmentPoolOpMaker,
                   ops::SegmentPoolGradOpMaker<paddle::framework::OpDesc>,
                   ops::SegmentPoolGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(segment_pool_grad, ops::SegmentPoolGradOp);
+REGISTER_GRAD_OPERATOR(segment_pool_grad, ops::SegmentPoolGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     segment_pool,

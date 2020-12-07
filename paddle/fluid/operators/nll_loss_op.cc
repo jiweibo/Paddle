@@ -258,7 +258,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(nll_loss, ops::NLLLossOp, ops::NLLLossOpMaker,
                   ops::NLLLossGradMaker<paddle::framework::OpDesc>,
                   ops::NLLLossGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(nll_loss_grad, ops::NLLLossGradOp);
+REGISTER_GRAD_OPERATOR(nll_loss_grad, ops::NLLLossGradOp);
 REGISTER_OP_CPU_KERNEL(
     nll_loss, ops::NLLLossOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::NLLLossOpKernel<paddle::platform::CPUDeviceContext, double>);

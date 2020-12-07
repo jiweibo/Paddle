@@ -300,7 +300,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(cudnn_lstm, ops::CudnnLSTMOp, ops::CudnnLSTMOpMaker,
                   ops::CudnnLSTMGradOpMaker<paddle::framework::OpDesc>,
                   ops::CudnnLSTMGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(cudnn_lstm_grad, ops::CudnnLSTMGradOp);
+REGISTER_GRAD_OPERATOR(cudnn_lstm_grad, ops::CudnnLSTMGradOp);
 
 REGISTER_OP_CPU_KERNEL(cudnn_lstm, ops::NotImpleKernel<float>);
 REGISTER_OP_CPU_KERNEL(cudnn_lstm_grad, ops::NotImpleKernel<float>);

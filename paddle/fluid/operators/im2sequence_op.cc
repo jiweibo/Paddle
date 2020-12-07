@@ -185,7 +185,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(im2sequence, ops::Im2SequenceOp, ops::Im2SequenceOpMaker,
                   ops::Im2SequenceGradMaker<paddle::framework::OpDesc>,
                   ops::Im2SequenceGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(im2sequence_grad, ops::Im2SequenceGradOp);
+REGISTER_GRAD_OPERATOR(im2sequence_grad, ops::Im2SequenceGradOp);
 REGISTER_OP_CPU_KERNEL(
     im2sequence,
     ops::Im2SequenceKernel<paddle::platform::CPUDeviceContext, float>);

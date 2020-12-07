@@ -157,8 +157,8 @@ REGISTER_OPERATOR(trace, ops::TraceOp, ops::TraceOpMaker,
                   ops::TraceGradOpMaker<paddle::framework::OpDesc>,
                   ops::TraceGradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(trace_grad, ops::TraceOpGrad,
-                  ops::TraceGradNoNeedBufferVarsInferer);
+REGISTER_GRAD_OPERATOR(trace_grad, ops::TraceOpGrad,
+                       ops::TraceGradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(
     trace, ops::TraceKernel<paddle::platform::CPUDeviceContext, int>,
     ops::TraceKernel<paddle::platform::CPUDeviceContext, float>,

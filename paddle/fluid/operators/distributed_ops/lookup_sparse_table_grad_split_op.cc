@@ -65,7 +65,7 @@ random value and set the value into the table for the next looking up.
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
+REGISTER_GRAD_OPERATOR(
     lookup_sparse_table_grad_split, ops::LookupSparseTableGradSplitOp,
     ops::LookupSparseTableGradSplitOpMaker,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,

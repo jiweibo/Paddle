@@ -182,8 +182,8 @@ REGISTER_OPERATOR(scatter_nd_add, ops::ScatterNdAddOp, ops::ScatterNdAddOpMaker,
                   ops::ScatterNdAddGradMaker<paddle::framework::OpDesc>,
                   ops::ScatterNdAddGradMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(scatter_nd_add_grad, ops::ScatterNdAddGradOp,
-                  ops::ScatterNdAddGradNoNeedBufferVarsInferer);
+REGISTER_GRAD_OPERATOR(scatter_nd_add_grad, ops::ScatterNdAddGradOp,
+                       ops::ScatterNdAddGradNoNeedBufferVarsInferer);
 
 REGISTER_OP_CPU_KERNEL(scatter_nd_add, ops::ScatterNdAddOpKernel<float>,
                        ops::ScatterNdAddOpKernel<double>,

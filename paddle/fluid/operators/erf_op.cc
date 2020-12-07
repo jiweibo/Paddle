@@ -119,7 +119,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(erf, ops::ErfOp, ops::ErfOpMaker,
                   ops::ErfGradOpMaker<paddle::framework::OpDesc>,
                   ops::ErfGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(erf_grad, ops::ErfGradOp);
+REGISTER_GRAD_OPERATOR(erf_grad, ops::ErfGradOp);
 REGISTER_OP_CPU_KERNEL(
     erf, ops::ErfKernel<paddle::platform::CPUDeviceContext, float>,
     ops::ErfKernel<paddle::platform::CPUDeviceContext, double>,

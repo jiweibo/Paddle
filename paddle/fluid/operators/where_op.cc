@@ -144,8 +144,8 @@ REGISTER_OPERATOR(where, ops::WhereOp, ops::WhereOpMaker,
                   ops::WhereOpGradMaker<paddle::framework::OpDesc>,
                   ops::WhereOpGradMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(where_grad, ops::WhereGradOp,
-                  ops::WhereGradNoNeedBufferVarsInferer);
+REGISTER_GRAD_OPERATOR(where_grad, ops::WhereGradOp,
+                       ops::WhereGradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(
     where, ops::WhereKernel<paddle::platform::CPUDeviceContext, float>,
     ops::WhereKernel<paddle::platform::CPUDeviceContext, double>,

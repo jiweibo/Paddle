@@ -174,8 +174,8 @@ REGISTER_OPERATOR(bce_loss, ops::BCELossOp, ops::BCELossOpMaker,
                   ops::BCELossGradOpMaker<paddle::framework::OpDesc>,
                   ops::BCELossGradOpMaker<paddle::imperative::OpBase>,
                   ops::BCELossInplaceInferer);
-REGISTER_OPERATOR(bce_loss_grad, ops::BCELossGradOp,
-                  ops::BCELossGradInplaceInferer);
+REGISTER_GRAD_OPERATOR(bce_loss_grad, ops::BCELossGradOp,
+                       ops::BCELossGradInplaceInferer);
 REGISTER_OP_CPU_KERNEL(
     bce_loss, ops::BCELossOpKernel<paddle::platform::CPUDeviceContext, float>,
     ops::BCELossOpKernel<paddle::platform::CPUDeviceContext, double>);

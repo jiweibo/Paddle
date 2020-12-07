@@ -135,7 +135,7 @@ REGISTER_OPERATOR(sequence_reshape, ops::SequenceReshapeOp,
                   ops::SequenceReshapeOpMaker,
                   ops::SequenceReshapeGradOpMaker<paddle::framework::OpDesc>,
                   ops::SequenceReshapeGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(sequence_reshape_grad, ops::SequenceReshapeGradOp);
+REGISTER_GRAD_OPERATOR(sequence_reshape_grad, ops::SequenceReshapeGradOp);
 REGISTER_OP_CPU_KERNEL(
     sequence_reshape,
     ops::SequenceReshapeKernel<paddle::platform::CPUDeviceContext, float>,

@@ -110,7 +110,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(cholesky, ops::CholeskyOp, ops::CholeskyOpMaker,
                   ops::CholeskyGradOpMaker<paddle::framework::OpDesc>,
                   ops::CholeskyGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(cholesky_grad, ops::CholeskyGradOp);
+REGISTER_GRAD_OPERATOR(cholesky_grad, ops::CholeskyGradOp);
 
 REGISTER_OP_CPU_KERNEL(cholesky, ops::CholeskyCPUKernel<float>,
                        ops::CholeskyCPUKernel<double>);

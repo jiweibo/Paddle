@@ -903,8 +903,8 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(pad3d, ops::Pad3dOp, ops::Pad3dOpMaker,
                   ops::Pad3dOpGradMaker<paddle::framework::OpDesc>,
                   ops::Pad3dOpGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(pad3d_grad, ops::Pad3dOpGrad,
-                  ops::Pad3dOpGradNoNeedBufferVarsInferer);
+REGISTER_GRAD_OPERATOR(pad3d_grad, ops::Pad3dOpGrad,
+                       ops::Pad3dOpGradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(pad3d, ops::Pad3dCPUKernel<float>,
                        ops::Pad3dCPUKernel<double>, ops::Pad3dCPUKernel<int>,
                        ops::Pad3dCPUKernel<int64_t>);

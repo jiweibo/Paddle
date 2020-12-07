@@ -160,7 +160,7 @@ REGISTER_OPERATOR(unpool, ops::UnpoolOp, ops::Unpool2dOpMaker,
                   ops::UnpoolOpGradMaker<paddle::framework::OpDesc>,
                   ops::UnpoolOpGradMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(unpool_grad, ops::UnpoolOpGrad);
+REGISTER_GRAD_OPERATOR(unpool_grad, ops::UnpoolOpGrad);
 REGISTER_OP_CPU_KERNEL(
     unpool, ops::UnpoolKernel<paddle::platform::CPUDeviceContext, float>,
     ops::UnpoolKernel<paddle::platform::CPUDeviceContext, double>);

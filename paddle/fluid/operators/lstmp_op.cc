@@ -376,7 +376,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(lstmp, ops::LSTMPOp, ops::LSTMPOpMaker,
                   ops::LSTMPGradMaker<paddle::framework::OpDesc>,
                   ops::LSTMPGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(lstmp_grad, ops::LSTMPGradOp);
+REGISTER_GRAD_OPERATOR(lstmp_grad, ops::LSTMPGradOp);
 REGISTER_OP_CPU_KERNEL(
     lstmp, ops::LSTMPKernel<paddle::platform::CPUDeviceContext, float>,
     ops::LSTMPKernel<paddle::platform::CPUDeviceContext, double>);

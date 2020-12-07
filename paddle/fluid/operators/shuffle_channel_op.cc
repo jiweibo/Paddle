@@ -116,7 +116,7 @@ REGISTER_OPERATOR(shuffle_channel, ops::ShuffleChannelOp,
                   ops::ShuffleChannelGradMaker<paddle::framework::OpDesc>,
                   ops::ShuffleChannelGradMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(shuffle_channel_grad, ops::ShuffleChannelGradOp);
+REGISTER_GRAD_OPERATOR(shuffle_channel_grad, ops::ShuffleChannelGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     shuffle_channel,

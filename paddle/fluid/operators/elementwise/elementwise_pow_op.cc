@@ -69,7 +69,7 @@ REGISTER_OPERATOR(elementwise_pow, ops::ElementwiseOp,
                   ops::ElementwisePowOpMaker, ops::ElementwiseOpInferVarType,
                   ops::ElementwisePowOpGradMaker<paddle::framework::OpDesc>,
                   ops::ElementwisePowOpGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(elementwise_pow_grad, ops::ElementwiseOpGrad);
+REGISTER_GRAD_OPERATOR(elementwise_pow_grad, ops::ElementwiseOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
     elementwise_pow,

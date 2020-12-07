@@ -129,7 +129,7 @@ REGISTER_OPERATOR(
     maxout, ops::MaxOutOp, ops::MaxOutOpMaker,
     paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
     paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>);
-REGISTER_OPERATOR(maxout_grad, ops::MaxOutOpGrad);
+REGISTER_GRAD_OPERATOR(maxout_grad, ops::MaxOutOpGrad);
 REGISTER_OP_CPU_KERNEL(
     maxout, ops::MaxOutKernel<paddle::platform::CPUDeviceContext, float>,
     ops::MaxOutKernel<paddle::platform::CPUDeviceContext, double>);

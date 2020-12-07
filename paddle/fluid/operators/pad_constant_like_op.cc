@@ -231,7 +231,7 @@ REGISTER_OPERATOR(pad_constant_like, ops::PadConstantLikeOp,
                   ops::PadConstantLikeOpMaker,
                   ops::PadConstantLikeOpGradMaker<paddle::framework::OpDesc>,
                   ops::PadConstantLikeOpGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(pad_constant_like_grad, ops::PadConstantLikeOpGrad);
+REGISTER_GRAD_OPERATOR(pad_constant_like_grad, ops::PadConstantLikeOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
     pad_constant_like,

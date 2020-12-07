@@ -192,7 +192,7 @@ REGISTER_OPERATOR(partial_concat, ops::PartialConcatOp,
                   ops::PartialConcatGradMaker<paddle::framework::OpDesc>,
                   ops::PartialConcatGradMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(partial_concat_grad, ops::PartialConcatGradOp);
+REGISTER_GRAD_OPERATOR(partial_concat_grad, ops::PartialConcatGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     partial_concat,

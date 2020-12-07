@@ -116,7 +116,7 @@ REGISTER_OPERATOR(log_softmax, ops::LogSoftmaxOp, ops::LogSoftmaxOpMaker,
                   ops::LogSoftmaxOpInferVarType,
                   ops::LogSoftmaxGradOpMaker<paddle::framework::OpDesc>,
                   ops::LogSoftmaxGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(log_softmax_grad, ops::LogSoftmaxGradOp);
+REGISTER_GRAD_OPERATOR(log_softmax_grad, ops::LogSoftmaxGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     log_softmax,

@@ -225,7 +225,7 @@ REGISTER_OPERATOR(addmm, ops::AddMMOp, ops::AddMMOpMaker,
                   ops::AddMMOpGradMaker<paddle::framework::OpDesc>,
                   ops::AddMMOpGradMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(addmm_grad, ops::AddMMGradOp);
+REGISTER_GRAD_OPERATOR(addmm_grad, ops::AddMMGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     addmm, ops::AddMMKernel<paddle::platform::CPUDeviceContext, float>,

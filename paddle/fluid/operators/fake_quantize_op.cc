@@ -793,7 +793,8 @@ REGISTER_OPERATOR(
 REGISTER_OP_CPU_KERNEL(moving_average_abs_max_scale,
                        ops::MovingAverageAbsMaxScaleKernel<CPU, float>);
 
-REGISTER_OPERATOR(fake_quantize_dequantize_grad, ops::FakeQuantDequantGradOp);
+REGISTER_GRAD_OPERATOR(fake_quantize_dequantize_grad,
+                       ops::FakeQuantDequantGradOp);
 REGISTER_OP_CPU_GRAD_KERNEL(fake_quantize_dequantize_grad,
                             ops::FakeQuantDequantGradKernel<CPU, float>);
 

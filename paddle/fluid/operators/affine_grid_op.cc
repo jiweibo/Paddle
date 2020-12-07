@@ -261,7 +261,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(affine_grid, ops::AffineGridOp, ops::AffineGridOpMaker,
                   ops::AffineGridGradMaker<paddle::framework::OpDesc>,
                   ops::AffineGridGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(affine_grid_grad, ops::AffineGridOpGrad);
+REGISTER_GRAD_OPERATOR(affine_grid_grad, ops::AffineGridOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
     affine_grid,

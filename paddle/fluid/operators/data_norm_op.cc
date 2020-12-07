@@ -747,7 +747,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(data_norm, ops::DataNormOp, ops::DataNormOpMaker,
                   ops::DataNormGradMaker<paddle::framework::OpDesc>,
                   ops::DataNormGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(data_norm_grad, ops::DataNormGradOp);
+REGISTER_GRAD_OPERATOR(data_norm_grad, ops::DataNormGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     data_norm, ops::DataNormKernel<paddle::platform::CPUDeviceContext, float>,

@@ -529,7 +529,7 @@ namespace frm = paddle::framework;
 REGISTER_OPERATOR(pyramid_hash, ops::PyramidHashOP, ops::PyramidHashOpMaker,
                   ops::PyramidHashGradOpMaker<paddle::framework::OpDesc>,
                   ops::PyramidHashGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(pyramid_hash_grad, ops::PyramidHashOpGrad);
+REGISTER_GRAD_OPERATOR(pyramid_hash_grad, ops::PyramidHashOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
     pyramid_hash, ops::CPUPyramidHashOPKernel<plt::CPUDeviceContext, float>,

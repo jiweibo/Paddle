@@ -356,8 +356,8 @@ REGISTER_OPERATOR(linear_chain_crf, ops::LinearChainCRFOp,
                   ops::LinearChainCRFOpMaker,
                   ops::LinearChainCRFGradMaker<paddle::framework::OpDesc>,
                   ops::LinearChainCRFGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(linear_chain_crf_grad, ops::LinearChainCRFGradOp,
-                  ops::LinearChainCRFGradNoNeedBufferVarsInferer);
+REGISTER_GRAD_OPERATOR(linear_chain_crf_grad, ops::LinearChainCRFGradOp,
+                       ops::LinearChainCRFGradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(
     linear_chain_crf,
     ops::LinearChainCRFOpKernel<paddle::platform::CPUDeviceContext, float>,

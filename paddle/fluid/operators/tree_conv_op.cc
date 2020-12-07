@@ -214,7 +214,7 @@ REGISTER_OPERATOR(tree_conv, ops::TreeConvOp, ops::TreeConvOpMaker,
                   ops::TreeConvGradOpMaker<paddle::framework::OpDesc>,
                   ops::TreeConvGradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(tree_conv_grad, ops::TreeConvGradOp);
+REGISTER_GRAD_OPERATOR(tree_conv_grad, ops::TreeConvGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     tree_conv, ops::TreeConvKernel<paddle::platform::CPUDeviceContext, float>,

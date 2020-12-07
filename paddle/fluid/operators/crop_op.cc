@@ -213,7 +213,7 @@ REGISTER_OPERATOR(crop, ops::CropOp, ops::CropOpMaker,
                   ops::CropGradOpMaker<paddle::framework::OpDesc>,
                   ops::CropGradOpMaker<paddle::imperative::OpBase>,
                   ops::GropNoNeedBufferVarInferer);
-REGISTER_OPERATOR(crop_grad, ops::CropOpGrad);
+REGISTER_GRAD_OPERATOR(crop_grad, ops::CropOpGrad);
 REGISTER_OP_CPU_KERNEL(
     crop, ops::CropKernel<paddle::platform::CPUDeviceContext, float>,
     ops::CropKernel<paddle::platform::CPUDeviceContext, double>);

@@ -80,7 +80,7 @@ REGISTER_OPERATOR(elementwise_min, ops::ElementwiseOp,
                   ops::ElementwiseMinGradOpMaker<paddle::framework::OpDesc>,
                   ops::ElementwiseMinGradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(elementwise_min_grad, ops::ElementwiseOpGrad);
+REGISTER_GRAD_OPERATOR(elementwise_min_grad, ops::ElementwiseOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
     elementwise_min,

@@ -225,7 +225,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(rank_loss, ops::RankLossOp, ops::RankLossOpMaker,
                   ops::RankLossGradMaker<paddle::framework::OpDesc>,
                   ops::RankLossGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(rank_loss_grad, ops::RankLossGradOp);
+REGISTER_GRAD_OPERATOR(rank_loss_grad, ops::RankLossGradOp);
 REGISTER_OP_CPU_KERNEL(
     rank_loss, ops::RankLossKernel<paddle::platform::CPUDeviceContext, float>);
 REGISTER_OP_CPU_GRAD_KERNEL(

@@ -159,7 +159,7 @@ REGISTER_OPERATOR(
     ops::ModifiedHuberLossOpMaker,
     ops::ModifiedHuberLossGradOpMaker<paddle::framework::OpDesc>,
     ops::ModifiedHuberLossGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(modified_huber_loss_grad, ops::ModifiedHuberLossGradOp);
+REGISTER_GRAD_OPERATOR(modified_huber_loss_grad, ops::ModifiedHuberLossGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     modified_huber_loss,

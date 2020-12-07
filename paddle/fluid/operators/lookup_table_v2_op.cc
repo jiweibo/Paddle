@@ -192,9 +192,9 @@ REGISTER_OPERATOR(lookup_table_v2, ops::LookupTableV2Op,
                   ops::LookupTableV2GradOpMaker<paddle::framework::OpDesc>,
                   ops::LookupTableV2GradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(lookup_table_v2_grad, ops::LookupTableV2OpGrad,
-                  ops::LookupTableV2GradOpNoBufferVarsInferer,
-                  ops::LookupTableV2OpGradVarTypeInference);
+REGISTER_GRAD_OPERATOR(lookup_table_v2_grad, ops::LookupTableV2OpGrad,
+                       ops::LookupTableV2GradOpNoBufferVarsInferer,
+                       ops::LookupTableV2OpGradVarTypeInference);
 
 REGISTER_OP_CPU_KERNEL(lookup_table_v2, ops::LookupTableV2Kernel<float>,
                        ops::LookupTableV2Kernel<double>);

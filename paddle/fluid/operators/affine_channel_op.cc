@@ -338,9 +338,9 @@ REGISTER_OPERATOR(affine_channel, ops::AffineChannelOp,
                   ops::AffineChannelGradMaker<paddle::framework::OpDesc>,
                   ops::AffineChannelGradMaker<paddle::imperative::OpBase>,
                   ops::AffineChannelInplaceInferer);
-REGISTER_OPERATOR(affine_channel_grad, ops::AffineChannelOpGrad,
-                  ops::AffineChannelNoNeedBufferVarsInference,
-                  ops::AffineChannelGradInplaceInferer);
+REGISTER_GRAD_OPERATOR(affine_channel_grad, ops::AffineChannelOpGrad,
+                       ops::AffineChannelNoNeedBufferVarsInference,
+                       ops::AffineChannelGradInplaceInferer);
 
 REGISTER_OP_CPU_KERNEL(affine_channel, ops::AffineChannelKernel<CPU, float>,
                        ops::AffineChannelKernel<CPU, double>);

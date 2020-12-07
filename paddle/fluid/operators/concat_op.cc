@@ -208,8 +208,8 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(concat, ops::ConcatOp, ops::ConcatOpMaker,
                   ops::ConcatGradOpMaker<paddle::framework::OpDesc>,
                   ops::ConcatGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(concat_grad, ops::ConcatOpGrad,
-                  ops::ConcatOpGradNoNeedBufferVarInferer);
+REGISTER_GRAD_OPERATOR(concat_grad, ops::ConcatOpGrad,
+                       ops::ConcatOpGradNoNeedBufferVarInferer);
 REGISTER_OP_CPU_KERNEL(
     concat, ops::ConcatKernel<paddle::platform::CPUDeviceContext, double>,
     ops::ConcatKernel<paddle::platform::CPUDeviceContext, float>,

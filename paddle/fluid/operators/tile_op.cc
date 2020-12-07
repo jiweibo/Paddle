@@ -271,10 +271,10 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(tile, ops::TileOp, ops::TileOpMaker,
                   ops::TileGradOpMaker<paddle::framework::OpDesc>,
                   ops::TileGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(tile_grad, ops::TileGradOp,
-                  ops::TileDoubleGradOpMaker<paddle::framework::OpDesc>,
-                  ops::TileDoubleGradOpMaker<paddle::imperative::OpBase>,
-                  ops::TileGradNoNeedBufVarsInferer);
+REGISTER_GRAD_OPERATOR(tile_grad, ops::TileGradOp,
+                       ops::TileDoubleGradOpMaker<paddle::framework::OpDesc>,
+                       ops::TileDoubleGradOpMaker<paddle::imperative::OpBase>,
+                       ops::TileGradNoNeedBufVarsInferer);
 REGISTER_OP_CPU_KERNEL(
     tile, ops::TileKernel<paddle::platform::CPUDeviceContext, float>,
     ops::TileKernel<paddle::platform::CPUDeviceContext, double>,

@@ -242,7 +242,7 @@ REGISTER_OPERATOR(sigmoid_focal_loss, ops::SigmoidFocalLossOp,
                   ops::SigmoidFocalLossOpMaker,
                   ops::SigmoidFocalLossGradOpMaker<paddle::framework::OpDesc>,
                   ops::SigmoidFocalLossGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(sigmoid_focal_loss_grad, ops::SigmoidFocalLossGradOp);
+REGISTER_GRAD_OPERATOR(sigmoid_focal_loss_grad, ops::SigmoidFocalLossGradOp);
 REGISTER_OP_CPU_KERNEL(
     sigmoid_focal_loss,
     ops::SigmoidFocalLossKernel<paddle::platform::CPUDeviceContext, float>,

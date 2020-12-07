@@ -168,7 +168,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(multiplex, ops::MultiplexOp, ops::MultiplexOpMaker,
                   ops::MultiplexGradMaker<paddle::framework::OpDesc>,
                   ops::MultiplexGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(multiplex_grad, ops::MultiplexGradOp);
+REGISTER_GRAD_OPERATOR(multiplex_grad, ops::MultiplexGradOp);
 REGISTER_OP_CPU_KERNEL(
     multiplex,
     ops::MultiplexCPUKernel<paddle::platform::CPUDeviceContext, float>,

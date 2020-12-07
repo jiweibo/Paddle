@@ -146,7 +146,7 @@ REGISTER_OPERATOR(filter_by_instag, ops::FilterByInstagOp,
                   ops::FilterByInstagGradOpMaker<paddle::framework::OpDesc>,
                   ops::FilterByInstagGradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(filter_by_instag_grad, ops::FilterByInstagOpGrad);
+REGISTER_GRAD_OPERATOR(filter_by_instag_grad, ops::FilterByInstagOpGrad);
 
 REGISTER_OP_CPU_KERNEL(filter_by_instag, ops::FilterByInstagKernel<float>,
                        ops::FilterByInstagKernel<double>,

@@ -194,8 +194,8 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(warpctc, ops::WarpCTCOp, ops::WarpCTCOpMaker,
                   ops::WarpCTCGradOpMaker<paddle::framework::OpDesc>,
                   ops::WarpCTCGradOpMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(warpctc_grad, ops::WarpCTCGradOp,
-                  ops::WarpCTCGradOpNoNeedBufferVarInferer);
+REGISTER_GRAD_OPERATOR(warpctc_grad, ops::WarpCTCGradOp,
+                       ops::WarpCTCGradOpNoNeedBufferVarInferer);
 REGISTER_OP_CPU_KERNEL(
     warpctc, ops::WarpCTCKernel<paddle::platform::CPUDeviceContext, float>,
     ops::WarpCTCKernel<paddle::platform::CPUDeviceContext, double>);

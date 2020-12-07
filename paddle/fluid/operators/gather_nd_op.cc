@@ -177,8 +177,8 @@ REGISTER_OPERATOR(gather_nd, ops::GatherNdOp, ops::GatherNdOpMaker,
                   ops::GatherNdGradOpMaker<paddle::framework::OpDesc>,
                   ops::GatherNdGradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(gather_nd_grad, ops::GatherNdGradOp,
-                  ops::GatherNdGradNoNeedBufferVarInferer);
+REGISTER_GRAD_OPERATOR(gather_nd_grad, ops::GatherNdGradOp,
+                       ops::GatherNdGradNoNeedBufferVarInferer);
 
 REGISTER_OP_CPU_KERNEL(gather_nd, ops::GatherNdOpKernel<float>,
                        ops::GatherNdOpKernel<double>,

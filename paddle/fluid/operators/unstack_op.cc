@@ -141,7 +141,7 @@ REGISTER_OPERATOR(unstack, ops::UnStackOp, ops::UnStackOpMaker,
                   ops::UnStackGradOpMaker<paddle::framework::OpDesc>,
                   ops::UnStackGradOpMaker<paddle::imperative::OpBase>);
 
-REGISTER_OPERATOR(unstack_grad, ops::UnStackGradOp);
+REGISTER_GRAD_OPERATOR(unstack_grad, ops::UnStackGradOp);
 
 REGISTER_OP_CPU_KERNEL(unstack,
                        ops::UnStackKernel<plat::CPUDeviceContext, float>,

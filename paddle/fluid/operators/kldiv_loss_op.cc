@@ -175,8 +175,8 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(kldiv_loss, ops::KLDivLossOp, ops::KLDivLossOpMaker,
                   ops::KLDivLossOpGradMaker<paddle::framework::OpDesc>,
                   ops::KLDivLossOpGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(kldiv_loss_grad, ops::KLDivLossOpGrad,
-                  ops::KLDivLossGradNoNeedBufferVarInferer);
+REGISTER_GRAD_OPERATOR(kldiv_loss_grad, ops::KLDivLossOpGrad,
+                       ops::KLDivLossGradNoNeedBufferVarInferer);
 REGISTER_OP_CPU_KERNEL(
     kldiv_loss, ops::KLDivLossKernel<paddle::platform::CPUDeviceContext, float>,
     ops::KLDivLossKernel<paddle::platform::CPUDeviceContext, double>);
