@@ -561,16 +561,18 @@ REGISTER_OP_KERNEL(conv2d_transpose, CUDNN, ::paddle::platform::CUDAPlace,
                    ops::CUDNNConvTransposeOpKernel<plat::float16>,
                    ops::CUDNNConvTransposeOpKernel<float>,
                    ops::CUDNNConvTransposeOpKernel<double>);
-REGISTER_OP_KERNEL(conv2d_transpose_grad, CUDNN, ::paddle::platform::CUDAPlace,
-                   ops::CUDNNConvTransposeGradOpKernel<plat::float16>,
-                   ops::CUDNNConvTransposeGradOpKernel<float>,
-                   ops::CUDNNConvTransposeGradOpKernel<double>);
+REGISTER_OP_GRAD_KERNEL(conv2d_transpose_grad, CUDNN,
+                        ::paddle::platform::CUDAPlace,
+                        ops::CUDNNConvTransposeGradOpKernel<plat::float16>,
+                        ops::CUDNNConvTransposeGradOpKernel<float>,
+                        ops::CUDNNConvTransposeGradOpKernel<double>);
 
 REGISTER_OP_KERNEL(conv3d_transpose, CUDNN, ::paddle::platform::CUDAPlace,
                    ops::CUDNNConvTransposeOpKernel<plat::float16>,
                    ops::CUDNNConvTransposeOpKernel<float>,
                    ops::CUDNNConvTransposeOpKernel<double>);
-REGISTER_OP_KERNEL(conv3d_transpose_grad, CUDNN, ::paddle::platform::CUDAPlace,
-                   ops::CUDNNConvTransposeGradOpKernel<plat::float16>,
-                   ops::CUDNNConvTransposeGradOpKernel<float>,
-                   ops::CUDNNConvTransposeGradOpKernel<double>);
+REGISTER_OP_GRAD_KERNEL(conv3d_transpose_grad, CUDNN,
+                        ::paddle::platform::CUDAPlace,
+                        ops::CUDNNConvTransposeGradOpKernel<plat::float16>,
+                        ops::CUDNNConvTransposeGradOpKernel<float>,
+                        ops::CUDNNConvTransposeGradOpKernel<double>);

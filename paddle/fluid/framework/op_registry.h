@@ -318,10 +318,22 @@ struct OpKernelRegistrarFunctorEx<PlaceType, false, I,
   REGISTER_OP_KERNEL(op_type, CPU, ::paddle::platform::CPUPlace, __VA_ARGS__)
 #define REGISTER_OP_XPU_GRAD_KERNEL(op_type, ...) \
   REGISTER_OP_KERNEL(op_type, XPU, ::paddle::platform::XPUPlace, __VA_ARGS__)
+#define REGISTER_OP_GRAD_KERNEL(op_type, library_type, place_class, ...) \
+  REGISTER_OP_KERNEL(op_type, library_type, place_class, __VA_ARGS__)
+#define REGISTER_OP_GRAD_KERNEL_WITH_CUSTOM_TYPE(op_type, library_type, \
+                                                 place_class, customized_name, \
+                                                 customized_type_value, ...) \
+  REGISTER_OP_KERNEL_WITH_CUSTOM_TYPE(op_type, library_type, place_class, \
+                                      customized_name, customized_type_value, \
+                                       __VA_ARGS__)
 #else
 #define REGISTER_OP_CUDA_GRAD_KERNEL(op_type, ...)
 #define REGISTER_OP_CPU_GRAD_KERNEL(op_type, ...)
 #define REGISTER_OP_XPU_GRAD_KERNEL(op_type, ...)
+#define REGISTER_OP_GRAD_KERNEL(op_type, library_type, place_class, ...)
+#define REGISTER_OP_GRAD_KERNEL_WITH_CUSTOM_TYPE(op_type, library_type, \
+                                                 place_class, customized_name, \
+                                                 customized_type_value, ...)
 #endif
 
 #define REGISTER_OP_KERNEL_EX(op_type, library_type, place_class,  \
