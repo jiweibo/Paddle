@@ -203,8 +203,9 @@ https://arxiv.org/abs/1512.02325
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
-    detection_map, ops::DetectionMAPOp, ops::DetectionMAPOpMaker,
+REGISTER_OPERATOR(detection_map, ops::DetectionMAPOp, ops::DetectionMAPOpMaker);
+REGISTER_OPERATOR_MAKER(
+    detection_map, ops::DetectionMAPOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(

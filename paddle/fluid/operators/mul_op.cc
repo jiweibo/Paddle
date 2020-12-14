@@ -304,9 +304,10 @@ class MulDoubleGradMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(mul, ops::MulOp, ops::MulOpMaker, ops::MulOpInferVarType,
-                  ops::MulOpGradMaker<paddle::framework::OpDesc>,
-                  ops::MulOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(mul, ops::MulOp, ops::MulOpMaker, ops::MulOpInferVarType);
+REGISTER_OPERATOR_MAKER(mul, ops::MulOp,
+                        ops::MulOpGradMaker<paddle::framework::OpDesc>,
+                        ops::MulOpGradMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(mul_grad, ops::MulGradOp,
                        ops::MulDoubleGradMaker<paddle::framework::OpDesc>,

@@ -182,9 +182,10 @@ class PRROIPoolGradMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(prroi_pool, ops::PRROIPoolOp, ops::PRROIPoolOpMaker,
-                  ops::PRROIPoolGradMaker<paddle::framework::OpDesc>,
-                  ops::PRROIPoolGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(prroi_pool, ops::PRROIPoolOp, ops::PRROIPoolOpMaker);
+REGISTER_OPERATOR_MAKER(prroi_pool, ops::PRROIPoolOp,
+                        ops::PRROIPoolGradMaker<paddle::framework::OpDesc>,
+                        ops::PRROIPoolGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(prroi_pool_grad, ops::PRROIPoolGradOp);
 REGISTER_OP_CPU_KERNEL(
     prroi_pool,

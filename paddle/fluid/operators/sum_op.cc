@@ -324,6 +324,8 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(sum, ops::SumOp, ops::SumOpMaker, ops::SumGradDescMaker,
                   ops::SumGradOpBaseMaker, ops::SumOpVarTypeInference,
                   ops::SumInplaceInferer);
+REGISTER_OPERATOR_MAKER(sum, ops::SumOp, ops::SumGradDescMaker,
+                        ops::SumGradOpBaseMaker);
 
 REGISTER_OP_CPU_KERNEL(
     sum, ops::SumKernel<paddle::platform::CPUDeviceContext, float>,

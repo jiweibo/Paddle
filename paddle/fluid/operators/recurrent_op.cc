@@ -711,7 +711,9 @@ class RecurrentGradOpShapeInference : public framework::InferShapeBase {
 }  // namespace operators
 }  // namespace paddle
 
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(recurrent, paddle::operators::RecurrentOp,
+                  paddle::operators::RecurrentOpProtoMaker);
+REGISTER_OPERATOR_MAKER(
     recurrent, paddle::operators::RecurrentOp,
     paddle::operators::RecurrentOpProtoMaker,
     paddle::operators::RecurrentGradOpMaker<paddle::framework::OpDesc>);

@@ -649,6 +649,10 @@ REGISTER_OPERATOR(
     pool2d, ops::PoolOp, ops::Pool2dOpMaker, ops::PoolOpInferVarType,
     paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
     paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>);
+REGISTER_OPERATOR_MAKER(
+    pool2d, ops::PoolOp,
+    paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
+    paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>);
 REGISTER_GRAD_OPERATOR(pool2d_grad, ops::PoolOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
@@ -660,6 +664,10 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 
 REGISTER_OPERATOR(
     pool3d, ops::PoolOp, ops::Pool3dOpMaker, ops::PoolOpInferVarType,
+    paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
+    paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>);
+REGISTER_OPERATOR_MAKER(
+    pool3d, ops::PoolOp,
     paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
     paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>);
 REGISTER_GRAD_OPERATOR(pool3d_grad, ops::PoolOpGrad);

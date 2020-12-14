@@ -212,9 +212,10 @@ class ROIPoolGradMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(roi_pool, ops::ROIPoolOp, ops::ROIPoolOpMaker,
-                  ops::ROIPoolGradMaker<paddle::framework::OpDesc>,
-                  ops::ROIPoolGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(roi_pool, ops::ROIPoolOp, ops::ROIPoolOpMaker);
+REGISTER_OPERATOR_MAKER(roi_pool, ops::ROIPoolOp,
+                        ops::ROIPoolGradMaker<paddle::framework::OpDesc>,
+                        ops::ROIPoolGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(roi_pool_grad, ops::ROIPoolGradOp);
 REGISTER_OP_CPU_KERNEL(
     roi_pool,

@@ -112,9 +112,10 @@ class MVOpGrad : public framework::OperatorWithKernel {
 namespace ops = paddle::operators;
 namespace plat = paddle::platform;
 
-REGISTER_OPERATOR(mv, ops::MVOp, ops::MVOpMaker,
-                  ops::MVOpGradMaker<paddle::framework::OpDesc>,
-                  ops::MVOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(mv, ops::MVOp, ops::MVOpMaker);
+REGISTER_OPERATOR_MAKER(mv, ops::MVOp,
+                        ops::MVOpGradMaker<paddle::framework::OpDesc>,
+                        ops::MVOpGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(mv_grad, ops::MVOpGrad);
 
 REGISTER_OP_CPU_KERNEL(

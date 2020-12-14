@@ -202,12 +202,14 @@ DECLARE_INPLACE_OP_INFERER(SigmoidCrossEntropyWithLogitsGradInplaceInferer,
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(sigmoid_cross_entropy_with_logits,
+                  ops::SigmoidCrossEntropyWithLogitsOp,
+                  ops::SigmoidCrossEntropyWithLogitsOpMaker,
+                  ops::SigmoidCrossEntropyWithLogitsInplaceInferer);
+REGISTER_OPERATOR_MAKER(
     sigmoid_cross_entropy_with_logits, ops::SigmoidCrossEntropyWithLogitsOp,
-    ops::SigmoidCrossEntropyWithLogitsOpMaker,
     ops::SigmoidCrossEntropyWithLogitsGradOpMaker<paddle::framework::OpDesc>,
-    ops::SigmoidCrossEntropyWithLogitsGradOpMaker<paddle::imperative::OpBase>,
-    ops::SigmoidCrossEntropyWithLogitsInplaceInferer);
+    ops::SigmoidCrossEntropyWithLogitsGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(sigmoid_cross_entropy_with_logits_grad,
                        ops::SigmoidCrossEntropyWithLogitsGradOp,
                        ops::SigmoidCrossEntropyWithLogitsGradInplaceInferer);

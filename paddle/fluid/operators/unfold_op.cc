@@ -180,9 +180,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(UnfoldGradOpNoNeedBufferVarsInferer, "X");
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(unfold, ops::UnfoldOp, ops::UnfoldOpMaker,
-                  ops::UnfoldGradMaker<paddle::framework::OpDesc>,
-                  ops::UnfoldGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(unfold, ops::UnfoldOp, ops::UnfoldOpMaker);
+REGISTER_OPERATOR_MAKER(unfold, ops::UnfoldOp,
+                        ops::UnfoldGradMaker<paddle::framework::OpDesc>,
+                        ops::UnfoldGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(unfold_grad, ops::UnfoldGradOp,
                        ops::UnfoldGradOpNoNeedBufferVarsInferer);
 

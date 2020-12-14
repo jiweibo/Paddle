@@ -52,8 +52,9 @@ class DiagOpMaker : public framework::OpProtoAndCheckerMaker {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
-    diag, ops::DiagOp, ops::DiagOpMaker,
+REGISTER_OPERATOR(diag, ops::DiagOp, ops::DiagOpMaker);
+REGISTER_OPERATOR_MAKER(
+    diag, ops::DiagOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(

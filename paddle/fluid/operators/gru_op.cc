@@ -463,9 +463,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(GRUGradOpNoNeedBufferVarInferer, "Input",
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(gru, ops::GRUOp, ops::GRUOpMaker,
-                  ops::GRUGradOpMaker<paddle::framework::OpDesc>,
-                  ops::GRUGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(gru, ops::GRUOp, ops::GRUOpMaker);
+REGISTER_OPERATOR_MAKER(gru, ops::GRUOp,
+                        ops::GRUGradOpMaker<paddle::framework::OpDesc>,
+                        ops::GRUGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(gru_grad, ops::GRUGradOp,
                        ops::GRUGradOpNoNeedBufferVarInferer);
 REGISTER_OP_CPU_KERNEL(gru, ops::GRUCPUKernel<float>,

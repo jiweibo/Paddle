@@ -114,10 +114,23 @@ namespace ops = paddle::operators;
   };                                                                  \
   }                                                                   \
   }                                                                   \
-  REGISTER_OPERATOR(                                                  \
-      op_type, ops::OverflowOp, ops::_##op_type##OverflowOpMaker,     \
+  REGISTER_OPERATOR(op_type, ops::OverflowOp,                         \
+                    ops::_##op_type##OverflowOpMaker)                 \
+  REGISTER_OPERATOR_MAKER(                                            \
+      op_type, ops::OverflowOp,                                       \
       paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>, \
       paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>)
+
+#define REGISTER_OVERFLOW_CPU_KERNEL(op_type, functor)                      \
+  REGISTER_OP_CPU_KERNEL(                                                   \
+      op_type, ops::OverflowKernel<paddle::platform::CPUDeviceContext, int, \
+                                   ops::functor>,                           \
+      ops::OverflowKernel<paddle::platform::CPUDeviceContext, int64_t,      \
+                          ops::functor>,                                    \
+      ops::OverflowKernel<paddle::platform::CPUDeviceContext, float,        \
+                          ops::functor>,                                    \
+      ops::OverflowKernel<paddle::platform::CPUDeviceContext, double,       \
+                          ops::functor>);
 
 #define REGISTER_OVERFLOW_CPU_KERNEL(op_type, functor)                      \
   REGISTER_OP_CPU_KERNEL(                                                   \

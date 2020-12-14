@@ -334,10 +334,11 @@ namespace ops = paddle::operators;
 using CPU = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(affine_channel, ops::AffineChannelOp,
-                  ops::AffineChannelOpMaker,
-                  ops::AffineChannelGradMaker<paddle::framework::OpDesc>,
-                  ops::AffineChannelGradMaker<paddle::imperative::OpBase>,
-                  ops::AffineChannelInplaceInferer);
+                  ops::AffineChannelOpMaker, ops::AffineChannelInplaceInferer);
+REGISTER_OPERATOR_MAKER(
+    affine_channel, ops::AffineChannelOp,
+    ops::AffineChannelGradMaker<paddle::framework::OpDesc>,
+    ops::AffineChannelGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(affine_channel_grad, ops::AffineChannelOpGrad,
                        ops::AffineChannelNoNeedBufferVarsInference,
                        ops::AffineChannelGradInplaceInferer);

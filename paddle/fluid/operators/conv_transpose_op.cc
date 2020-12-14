@@ -520,9 +520,11 @@ namespace ops = paddle::operators;
 
 // conv2d_transpose
 REGISTER_OPERATOR(conv2d_transpose, ops::ConvTransposeOp,
-                  ops::Conv2DTransposeOpMaker,
-                  ops::ConvTransposeGradOpMaker<paddle::framework::OpDesc>,
-                  ops::ConvTransposeGradOpMaker<paddle::imperative::OpBase>);
+                  ops::Conv2DTransposeOpMaker);
+REGISTER_OPERATOR_MAKER(
+    conv2d_transpose, ops::ConvTransposeOp,
+    ops::ConvTransposeGradOpMaker<paddle::framework::OpDesc>,
+    ops::ConvTransposeGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(conv2d_transpose_grad, ops::ConvTransposeOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
@@ -537,9 +539,11 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 
 // conv3d_transpose
 REGISTER_OPERATOR(conv3d_transpose, ops::ConvTransposeOp,
-                  ops::Conv3DTransposeOpMaker,
-                  ops::ConvTransposeGradOpMaker<paddle::framework::OpDesc>,
-                  ops::ConvTransposeGradOpMaker<paddle::imperative::OpBase>);
+                  ops::Conv3DTransposeOpMaker);
+REGISTER_OPERATOR_MAKER(
+    conv3d_transpose, ops::ConvTransposeOp,
+    ops::ConvTransposeGradOpMaker<paddle::framework::OpDesc>,
+    ops::ConvTransposeGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(conv3d_transpose_grad, ops::ConvTransposeOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
@@ -554,9 +558,11 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 
 // depthwise conv2d_transpose
 REGISTER_OPERATOR(depthwise_conv2d_transpose, ops::ConvTransposeOp,
-                  ops::Conv2DTransposeOpMaker,
-                  ops::ConvTransposeGradOpMaker<paddle::framework::OpDesc>,
-                  ops::ConvTransposeGradOpMaker<paddle::imperative::OpBase>);
+                  ops::Conv2DTransposeOpMaker);
+REGISTER_OPERATOR_MAKER(
+    depthwise_conv2d_transpose, ops::ConvTransposeOp,
+    ops::ConvTransposeGradOpMaker<paddle::framework::OpDesc>,
+    ops::ConvTransposeGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(depthwise_conv2d_transpose_grad,
                        ops::ConvTransposeOpGrad);
 

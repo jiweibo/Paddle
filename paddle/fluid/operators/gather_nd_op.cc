@@ -173,9 +173,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(GatherNdGradNoNeedBufferVarInferer, "X");
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(gather_nd, ops::GatherNdOp, ops::GatherNdOpMaker,
-                  ops::GatherNdGradOpMaker<paddle::framework::OpDesc>,
-                  ops::GatherNdGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(gather_nd, ops::GatherNdOp, ops::GatherNdOpMaker);
+REGISTER_OPERATOR_MAKER(gather_nd, ops::GatherNdOp,
+                        ops::GatherNdGradOpMaker<paddle::framework::OpDesc>,
+                        ops::GatherNdGradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(gather_nd_grad, ops::GatherNdGradOp,
                        ops::GatherNdGradNoNeedBufferVarInferer);

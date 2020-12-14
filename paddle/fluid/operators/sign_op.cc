@@ -63,9 +63,10 @@ class SignGradMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(sign, ops::SignOp, ops::SignOpMaker<float>,
-                  ops::SignGradMaker<paddle::framework::OpDesc>,
-                  ops::SignGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(sign, ops::SignOp, ops::SignOpMaker<float>);
+REGISTER_OPERATOR_MAKER(sign, ops::SignOp,
+                        ops::SignGradMaker<paddle::framework::OpDesc>,
+                        ops::SignGradMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(
     sign, ops::SignKernel<paddle::platform::CPUDeviceContext, float>,
     ops::SignKernel<paddle::platform::CPUDeviceContext, double>);

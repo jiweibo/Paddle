@@ -115,8 +115,9 @@ Out is a LoDTensor:
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
-    one_hot_v2, ops::OneHotV2Op, ops::OneHotV2OpMaker,
+REGISTER_OPERATOR(one_hot_v2, ops::OneHotV2Op, ops::OneHotV2OpMaker);
+REGISTER_OPERATOR_MAKER(
+    one_hot_v2, ops::OneHotV2Op,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(

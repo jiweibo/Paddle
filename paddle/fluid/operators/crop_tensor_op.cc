@@ -303,9 +303,10 @@ class CropTensorGradOpMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(crop_tensor, ops::CropTensorOp, ops::CropTensorOpMaker,
-                  ops::CropTensorGradOpMaker<paddle::framework::OpDesc>,
-                  ops::CropTensorGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(crop_tensor, ops::CropTensorOp, ops::CropTensorOpMaker);
+REGISTER_OPERATOR_MAKER(crop_tensor, ops::CropTensorOp,
+                        ops::CropTensorGradOpMaker<paddle::framework::OpDesc>,
+                        ops::CropTensorGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(crop_tensor_grad, ops::CropTensorOpGrad);
 REGISTER_OP_CPU_KERNEL(
     crop_tensor,

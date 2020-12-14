@@ -254,10 +254,16 @@ class MergeLoDTensorGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(merge_lod_tensor, ops::MergeLoDTensorOp,
                   ops::MergeLoDTensorOpProtoMaker,
-                  ops::MergeLoDTensorInferShape,
-                  ops::MergeLoDTensorGradMaker<paddle::framework::OpDesc>,
-                  ops::MergeLoDTensorGradMaker<paddle::imperative::OpBase>);
-REGISTER_OPERATOR(
+                  ops::MergeLoDTensorInferShape);
+REGISTER_OPERATOR_MAKER(
+    merge_lod_tensor, ops::MergeLoDTensorOp, ops::MergeLoDTensorOpProtoMaker,
+    ops::MergeLoDTensorInferShape,
+    ops::MergeLoDTensorGradMaker<paddle::framework::OpDesc>,
+    ops::MergeLoDTensorGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(merge_lod_tensor_infer, ops::MergeLoDTensorInferOp,
+                  ops::MergeLoDTensorOpProtoMaker,
+                  ops::MergeLoDTensorInferShape);
+REGISTER_OPERATOR_MAKER(
     merge_lod_tensor_infer, ops::MergeLoDTensorInferOp,
     ops::MergeLoDTensorOpProtoMaker, ops::MergeLoDTensorInferShape,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,

@@ -320,9 +320,10 @@ class DeformablePSROIPoolGradOp : public framework::OperatorWithKernel {
 
 namespace ops = paddle::operators;
 using CPU = paddle::platform::CPUDeviceContext;
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(deformable_psroi_pooling, ops::DeformablePSROIPoolOp,
+                  ops::DeformablePSROIPoolOpMaker);
+REGISTER_OPERATOR_MAKER(
     deformable_psroi_pooling, ops::DeformablePSROIPoolOp,
-    ops::DeformablePSROIPoolOpMaker,
     ops::DeformablePSROIPoolGradOpMaker<paddle::framework::OpDesc>,
     ops::DeformablePSROIPoolGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(deformable_psroi_pooling_grad,

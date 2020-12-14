@@ -245,10 +245,11 @@ class InplaceABNGradKernel
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(inplace_abn, ops::InplaceABNOp, ops::InplaceABNOpMaker,
-                  ops::BatchNormOpInferVarType,
-                  ops::InplaceABNOpGradMaker<paddle::framework::OpDesc>,
-                  ops::InplaceABNOpGradMaker<paddle::imperative::OpBase>)
-REGISTER_GRAD_OPERATOR(inplace_abn_grad, ops::InplaceABNGradOp)
+                  ops::BatchNormOpInferVarType);
+REGISTER_OPERATOR_MAKER(inplace_abn, ops::InplaceABNOp,
+                        ops::InplaceABNOpGradMaker<paddle::framework::OpDesc>,
+                        ops::InplaceABNOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_GRAD_OPERATOR(inplace_abn_grad, ops::InplaceABNGradOp);
 
 REGISTER_OP_CPU_KERNEL(
     inplace_abn,

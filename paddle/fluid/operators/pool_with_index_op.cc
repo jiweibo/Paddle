@@ -332,9 +332,11 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(max_pool2d_with_index, ops::MaxPoolWithIndexOp,
-                  ops::MaxPool2dWithIndexOpMaker,
-                  ops::MaxPoolWithIndexGradOpMaker<paddle::framework::OpDesc>,
-                  ops::MaxPoolWithIndexGradOpMaker<paddle::imperative::OpBase>);
+                  ops::MaxPool2dWithIndexOpMaker);
+REGISTER_OPERATOR_MAKER(
+    max_pool2d_with_index, ops::MaxPoolWithIndexOp,
+    ops::MaxPoolWithIndexGradOpMaker<paddle::framework::OpDesc>,
+    ops::MaxPoolWithIndexGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(max_pool2d_with_index_grad, ops::MaxPoolWithIndexOpGrad,
                        ops::MaxPoolWithIndexOpGradNoNeedBufferVarsInferer);
 
@@ -351,9 +353,11 @@ REGISTER_OP_CPU_GRAD_KERNEL(
                                     int>);
 
 REGISTER_OPERATOR(max_pool3d_with_index, ops::MaxPoolWithIndexOp,
-                  ops::MaxPool3dWithIndexOpMaker,
-                  ops::MaxPoolWithIndexGradOpMaker<paddle::framework::OpDesc>,
-                  ops::MaxPoolWithIndexGradOpMaker<paddle::imperative::OpBase>);
+                  ops::MaxPool3dWithIndexOpMaker);
+REGISTER_OPERATOR_MAKER(
+    max_pool3d_with_index, ops::MaxPoolWithIndexOp,
+    ops::MaxPoolWithIndexGradOpMaker<paddle::framework::OpDesc>,
+    ops::MaxPoolWithIndexGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(max_pool3d_with_index_grad, ops::MaxPoolWithIndexOpGrad,
                        ops::MaxPoolWithIndexOpGradNoNeedBufferVarsInferer);
 

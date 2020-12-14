@@ -152,11 +152,12 @@ DECLARE_INPLACE_OP_INFERER(AssignOpInplaceInferer, {"X", "Out"});
 
 namespace ops = paddle::operators;
 namespace plat = paddle::platform;
-REGISTER_OPERATOR(assign, ops::AssignOp,
-                  ops::AssignGradMaker<paddle::framework::OpDesc>,
-                  ops::AssignGradMaker<paddle::imperative::OpBase>,
-                  ops::AssignOpProtoMaker, ops::AssignOpInplaceInferer,
-                  ops::AssignInferVarType);
+REGISTER_OPERATOR(assign, ops::AssignOp, ops::AssignOpProtoMaker,
+                  ops::AssignOpInplaceInferer, ops::AssignInferVarType);
+REGISTER_OPERATOR_MAKER(assign, ops::AssignOp,
+                        ops::AssignGradMaker<paddle::framework::OpDesc>,
+                        ops::AssignGradMaker<paddle::imperative::OpBase>,
+                        ops::AssignOpProtoMaker);
 
 REGISTER_OP_CPU_KERNEL_FUNCTOR(assign, float, ops::AssignKernel, double,
                                ops::AssignKernel, int, ops::AssignKernel,

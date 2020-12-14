@@ -146,10 +146,11 @@ class AllcloseOpVarTypeInference : public framework::VarTypeInference {
 namespace ops = paddle::operators;
 using CPU = paddle::platform::CPUDeviceContext;
 
-REGISTER_OPERATOR(
-    allclose, ops::AllcloseOp, ops::AllcloseOpMaker,
+REGISTER_OPERATOR(allclose, ops::AllcloseOp, ops::AllcloseOpMaker,
+                  ops::AllcloseOpVarTypeInference);
+REGISTER_OPERATOR_MAKER(
+    allclose, ops::AllcloseOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
-    paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>,
-    ops::AllcloseOpVarTypeInference);
+    paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(allclose, ops::AllcloseKernel<CPU, float>,
                        ops::AllcloseKernel<CPU, double>);

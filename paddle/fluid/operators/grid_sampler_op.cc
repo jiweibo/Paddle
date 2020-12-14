@@ -224,9 +224,10 @@ class GridSampleGradMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(grid_sampler, ops::GridSampleOp, ops::GridSampleOpMaker,
-                  ops::GridSampleGradMaker<paddle::framework::OpDesc>,
-                  ops::GridSampleGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(grid_sampler, ops::GridSampleOp, ops::GridSampleOpMaker);
+REGISTER_OPERATOR_MAKER(grid_sampler, ops::GridSampleOp,
+                        ops::GridSampleGradMaker<paddle::framework::OpDesc>,
+                        ops::GridSampleGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(grid_sampler_grad, ops::GridSampleOpGrad);
 
 REGISTER_OP_CPU_KERNEL(

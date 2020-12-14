@@ -84,8 +84,9 @@ Return an identity tensor whose shape is [num_rows, num_columns].
 namespace ops = paddle::operators;
 using CPU = paddle::platform::CPUDeviceContext;
 
-REGISTER_OPERATOR(
-    eye, ops::EyeOp, ops::EyeOpMaker, ops::EyeOpVarTypeInference,
+REGISTER_OPERATOR(eye, ops::EyeOp, ops::EyeOpMaker, ops::EyeOpVarTypeInference);
+REGISTER_OPERATOR_MAKER(
+    eye, ops::EyeOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 

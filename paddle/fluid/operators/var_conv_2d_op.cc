@@ -474,9 +474,10 @@ class CPUVarConv2dOPGradKernel : public framework::OpKernel<T> {
 namespace ops = paddle::operators;
 namespace plt = paddle::platform;
 namespace frm = paddle::framework;
-REGISTER_OPERATOR(var_conv_2d, ops::VarConv2dOP, ops::VarConv2dOpMaker,
-                  ops::VarConv2dGradMaker<paddle::framework::OpDesc>,
-                  ops::VarConv2dGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(var_conv_2d, ops::VarConv2dOP, ops::VarConv2dOpMaker);
+REGISTER_OPERATOR_MAKER(var_conv_2d, ops::VarConv2dOP,
+                        ops::VarConv2dGradMaker<paddle::framework::OpDesc>,
+                        ops::VarConv2dGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(var_conv_2d_grad, ops::VarConv2dOpGrad);
 
 REGISTER_OP_CPU_KERNEL(var_conv_2d,

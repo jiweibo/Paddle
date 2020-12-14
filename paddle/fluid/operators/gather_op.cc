@@ -169,9 +169,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(GatherGradNoNeedBufferVarInferer, "X");
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(gather, ops::GatherOp, ops::GatherOpMaker,
-                  ops::GatherGradOpMaker<paddle::framework::OpDesc>,
-                  ops::GatherGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(gather, ops::GatherOp, ops::GatherOpMaker);
+REGISTER_OPERATOR_MAKER(gather, ops::GatherOp,
+                        ops::GatherGradOpMaker<paddle::framework::OpDesc>,
+                        ops::GatherGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(gather_grad, ops::GatherGradOp,
                        ops::GatherGradNoNeedBufferVarInferer);
 REGISTER_OP_CPU_KERNEL(gather, ops::GatherOpKernel<float>,

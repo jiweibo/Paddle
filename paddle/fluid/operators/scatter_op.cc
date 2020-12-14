@@ -147,9 +147,10 @@ DECLARE_INPLACE_OP_INFERER(ScatterGradInplaceInferer,
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(scatter, ops::ScatterOp, ops::ScatterOpMaker,
-                  ops::ScatterGradMaker<paddle::framework::OpDesc>,
-                  ops::ScatterGradMaker<paddle::imperative::OpBase>,
                   ops::ScatterInplaceInferer);
+REGISTER_OPERATOR_MAKER(scatter, ops::ScatterOp,
+                        ops::ScatterGradMaker<paddle::framework::OpDesc>,
+                        ops::ScatterGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(scatter_grad, ops::ScatterGradOp,
                        ops::ScatterGradNoNeedBufferVarsInferer,
                        ops::ScatterGradInplaceInferer);

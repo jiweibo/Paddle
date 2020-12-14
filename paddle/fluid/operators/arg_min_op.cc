@@ -15,8 +15,10 @@ limitations under the License. */
 #include "paddle/fluid/framework/op_version_registry.h"
 #include "paddle/fluid/operators/arg_min_max_op_base.h"
 
-REGISTER_OPERATOR(
-    arg_min, paddle::operators::ArgMinMaxOp, paddle::operators::ArgMinOpMaker,
+REGISTER_OPERATOR(arg_min, paddle::operators::ArgMinMaxOp,
+                  paddle::operators::ArgMinOpMaker);
+REGISTER_OPERATOR_MAKER(
+    arg_min, paddle::operators::ArgMinMaxOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 

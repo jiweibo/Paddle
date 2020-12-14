@@ -191,9 +191,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(WarpCTCGradOpNoNeedBufferVarInferer,
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(warpctc, ops::WarpCTCOp, ops::WarpCTCOpMaker,
-                  ops::WarpCTCGradOpMaker<paddle::framework::OpDesc>,
-                  ops::WarpCTCGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(warpctc, ops::WarpCTCOp, ops::WarpCTCOpMaker);
+REGISTER_OPERATOR_MAKER(warpctc, ops::WarpCTCOp,
+                        ops::WarpCTCGradOpMaker<paddle::framework::OpDesc>,
+                        ops::WarpCTCGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(warpctc_grad, ops::WarpCTCGradOp,
                        ops::WarpCTCGradOpNoNeedBufferVarInferer);
 REGISTER_OP_CPU_KERNEL(

@@ -153,9 +153,10 @@ class CrossGradMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(cross, ops::CrossOp, ops::CrossOpMaker,
-                  ops::CrossGradMaker<paddle::framework::OpDesc>,
-                  ops::CrossGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(cross, ops::CrossOp, ops::CrossOpMaker);
+REGISTER_OPERATOR_MAKER(cross, ops::CrossOp,
+                        ops::CrossGradMaker<paddle::framework::OpDesc>,
+                        ops::CrossGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(cross_grad, ops::CrossGradOp);
 REGISTER_OP_CPU_KERNEL(
     cross, ops::CrossKernel<paddle::platform::CPUDeviceContext, float>,

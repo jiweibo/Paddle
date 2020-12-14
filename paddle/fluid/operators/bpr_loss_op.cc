@@ -168,9 +168,10 @@ class BprLossGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 using CPUCtx = paddle::platform::CPUDeviceContext;
 
-REGISTER_OPERATOR(bpr_loss, ops::BprLossOp, ops::BprLossOpMaker,
-                  ops::BprLossGradMaker<paddle::framework::OpDesc>,
-                  ops::BprLossGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(bpr_loss, ops::BprLossOp, ops::BprLossOpMaker);
+REGISTER_OPERATOR_MAKER(bpr_loss, ops::BprLossOp,
+                        ops::BprLossGradMaker<paddle::framework::OpDesc>,
+                        ops::BprLossGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(bpr_loss_grad, ops::BprLossGradientOp);
 REGISTER_OP_CPU_KERNEL(bpr_loss, ops::BprLossOpKernel<CPUCtx, float>,
                        ops::BprLossOpKernel<CPUCtx, double>);

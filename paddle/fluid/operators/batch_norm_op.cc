@@ -1245,9 +1245,10 @@ DECLARE_INPLACE_OP_INFERER(BatchNormDoubleGradOpInplaceInferer, {"DY", "DDY"});
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(batch_norm, ops::BatchNormOp, ops::BatchNormOpMaker,
-                  ops::BatchNormOpInferVarType,
-                  ops::BatchNormGradMaker<paddle::framework::OpDesc>,
-                  ops::BatchNormGradMaker<paddle::imperative::OpBase>);
+                  ops::BatchNormOpInferVarType);
+REGISTER_OPERATOR_MAKER(batch_norm, ops::BatchNormOp,
+                        ops::BatchNormGradMaker<paddle::framework::OpDesc>,
+                        ops::BatchNormGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(
     batch_norm_grad, ops::BatchNormGradOp,
     ops::BatchNormDoubleGradMaker<paddle::framework::OpDesc>,

@@ -153,9 +153,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(TraceGradNoNeedBufferVarsInferer, "Input");
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(trace, ops::TraceOp, ops::TraceOpMaker,
-                  ops::TraceGradOpMaker<paddle::framework::OpDesc>,
-                  ops::TraceGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(trace, ops::TraceOp, ops::TraceOpMaker);
+REGISTER_OPERATOR_MAKER(trace, ops::TraceOp,
+                        ops::TraceGradOpMaker<paddle::framework::OpDesc>,
+                        ops::TraceGradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(trace_grad, ops::TraceOpGrad,
                        ops::TraceGradNoNeedBufferVarsInferer);

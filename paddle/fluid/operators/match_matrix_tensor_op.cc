@@ -388,9 +388,10 @@ class MatchMatrixTensorGradOpMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(match_matrix_tensor, ops::MatchMatrixTensorOP,
+                  ops::MatchMatrixTensorOpMaker);
+REGISTER_OPERATOR_MAKER(
     match_matrix_tensor, ops::MatchMatrixTensorOP,
-    ops::MatchMatrixTensorOpMaker,
     ops::MatchMatrixTensorGradOpMaker<paddle::framework::OpDesc>,
     ops::MatchMatrixTensorGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(match_matrix_tensor_grad, ops::MatchMatrixTensorOpGrad);

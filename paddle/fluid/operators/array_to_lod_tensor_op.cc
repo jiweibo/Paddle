@@ -264,6 +264,9 @@ class ArrayToLoDTensorGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(array_to_lod_tensor, ops::ArrayToLoDTensorOp,
                   ops::ArrayToLoDTensorOpProtoMaker,
-                  ops::ArrayToLoDTensorInferShape,
-                  ops::ArrayToLoDTensorGradMaker<paddle::framework::OpDesc>,
-                  ops::ArrayToLoDTensorGradMaker<paddle::imperative::OpBase>);
+                  ops::ArrayToLoDTensorInferShape);
+REGISTER_OPERATOR_MAKER(
+    array_to_lod_tensor, ops::ArrayToLoDTensorOp,
+    ops::ArrayToLoDTensorOpProtoMaker, ops::ArrayToLoDTensorInferShape,
+    ops::ArrayToLoDTensorGradMaker<paddle::framework::OpDesc>,
+    ops::ArrayToLoDTensorGradMaker<paddle::imperative::OpBase>);

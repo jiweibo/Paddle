@@ -219,9 +219,11 @@ we add another label(z') to original.
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(teacher_student_sigmoid_loss,
+                  ops::TeacherStudentSigmoidLossOp,
+                  ops::TeacherStudentSigmoidLossOpMaker);
+REGISTER_OPERATOR_MAKER(
     teacher_student_sigmoid_loss, ops::TeacherStudentSigmoidLossOp,
-    ops::TeacherStudentSigmoidLossOpMaker,
     ops::TeacherStudentSigmoidLossGradOpMaker<paddle::framework::OpDesc>,
     ops::TeacherStudentSigmoidLossGradOpMaker<paddle::imperative::OpBase>);
 

@@ -217,9 +217,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(RoiAlignGradNoNeedBufVarsInferer, "X");
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(roi_align, ops::ROIAlignOp, ops::ROIAlignOpMaker,
-                  ops::ROIAlignGradMaker<paddle::framework::OpDesc>,
-                  ops::ROIAlignGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(roi_align, ops::ROIAlignOp, ops::ROIAlignOpMaker);
+REGISTER_OPERATOR_MAKER(roi_align, ops::ROIAlignOp,
+                        ops::ROIAlignGradMaker<paddle::framework::OpDesc>,
+                        ops::ROIAlignGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(roi_align_grad, ops::ROIAlignGradOp,
                        ops::RoiAlignGradNoNeedBufVarsInferer);
 REGISTER_OP_CPU_KERNEL(

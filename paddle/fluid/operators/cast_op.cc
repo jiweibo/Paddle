@@ -86,10 +86,11 @@ class CastOp : public framework::OperatorWithKernel {
 
 namespace ops = paddle::operators;
 using CPU = paddle::platform::CPUDeviceContext;
-REGISTER_OPERATOR(cast, ops::CastOp,
-                  ops::CastOpGradMaker<paddle::framework::OpDesc>,
-                  ops::CastOpGradMaker<paddle::imperative::OpBase>,
-                  ops::CastOpProtoMaker);
+REGISTER_OPERATOR(cast, ops::CastOp, ops::CastOpProtoMaker);
+REGISTER_OPERATOR_MAKER(cast, ops::CastOp,
+                        ops::CastOpGradMaker<paddle::framework::OpDesc>,
+                        ops::CastOpGradMaker<paddle::imperative::OpBase>,
+                        ops::CastOpProtoMaker);
 REGISTER_OP_CPU_KERNEL(cast, ops::CastOpKernel<CPU, float>,
                        ops::CastOpKernel<CPU, double>,
                        ops::CastOpKernel<CPU, int>,

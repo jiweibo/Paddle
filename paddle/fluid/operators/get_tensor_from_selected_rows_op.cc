@@ -100,6 +100,9 @@ REGISTER_OPERATOR(get_tensor_from_selected_rows,
                   ops::GetTensorFromSelectedRowsOp,
                   ops::GetTensorFromSelectedRowsOpProtoMaker,
                   ops::GetTensorFromSelectedRowsOpVarTypeInference);
+REGISTER_OPERATOR_MAKER(get_tensor_from_selected_rows,
+                        ops::GetTensorFromSelectedRowsOp,
+                        ops::GetTensorFromSelectedRowsOpProtoMaker);
 
 REGISTER_OP_CPU_KERNEL_FUNCTOR(get_tensor_from_selected_rows, float,
                                ops::GetTensorFromSelectedRowsKernel, double,

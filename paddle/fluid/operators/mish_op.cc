@@ -109,9 +109,10 @@ class MishGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(mish, ops::MishOp, ops::MishOpMaker,
-                  ops::MishGradOpMaker<paddle::framework::OpDesc>,
-                  ops::MishGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(mish, ops::MishOp, ops::MishOpMaker);
+REGISTER_OPERATOR_MAKER(mish, ops::MishOp,
+                        ops::MishGradOpMaker<paddle::framework::OpDesc>,
+                        ops::MishGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(mish_grad, ops::MishGradOp);
 REGISTER_OP_CPU_KERNEL(
     mish, ops::MishFP32CPUKernel<paddle::platform::CPUDeviceContext>,

@@ -298,9 +298,12 @@ class TensorArrayToTensorGradOpMaker : public framework::SingleGradOpMaker<T> {
 USE_OP(concat);
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(tensor_array_to_tensor, ops::LoDTensorArray2TensorOp,
+                  ops::LoDTensorArray2TensorOpMaker,
+                  ops::LoDTensorArray2TensorOpInferShape);
+REGISTER_OPERATOR_MAKER(
     tensor_array_to_tensor, ops::LoDTensorArray2TensorOp,
-    ops::LoDTensorArray2TensorOpMaker, ops::LoDTensorArray2TensorOpInferShape,
+    ops::LoDTensorArray2TensorOpInferShape,
     ops::TensorArrayToTensorGradOpMaker<paddle::framework::OpDesc>,
     ops::TensorArrayToTensorGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(tensor_array_to_tensor_grad,

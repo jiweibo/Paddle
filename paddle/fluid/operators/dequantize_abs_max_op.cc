@@ -103,8 +103,10 @@ $$Out = \frac{scale*X}{ max\_range }$$
 namespace ops = paddle::operators;
 using CPU = paddle::platform::CPUDeviceContext;
 
-REGISTER_OPERATOR(
-    dequantize_abs_max, ops::DequantizeMaxAbsOp, ops::DequantizeMaxAbsOpMaker,
+REGISTER_OPERATOR(dequantize_abs_max, ops::DequantizeMaxAbsOp,
+                  ops::DequantizeMaxAbsOpMaker);
+REGISTER_OPERATOR_MAKER(
+    dequantize_abs_max, ops::DequantizeMaxAbsOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(dequantize_abs_max,

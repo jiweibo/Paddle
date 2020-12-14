@@ -268,9 +268,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(TileGradNoNeedBufVarsInferer, "X");
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(tile, ops::TileOp, ops::TileOpMaker,
-                  ops::TileGradOpMaker<paddle::framework::OpDesc>,
-                  ops::TileGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(tile, ops::TileOp, ops::TileOpMaker);
+REGISTER_OPERATOR_MAKER(tile, ops::TileOp,
+                        ops::TileGradOpMaker<paddle::framework::OpDesc>,
+                        ops::TileGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(tile_grad, ops::TileGradOp,
                        ops::TileDoubleGradOpMaker<paddle::framework::OpDesc>,
                        ops::TileDoubleGradOpMaker<paddle::imperative::OpBase>,

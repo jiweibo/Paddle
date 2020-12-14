@@ -210,9 +210,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(GropNoNeedBufferVarInferer, "Y");
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(crop, ops::CropOp, ops::CropOpMaker,
-                  ops::CropGradOpMaker<paddle::framework::OpDesc>,
-                  ops::CropGradOpMaker<paddle::imperative::OpBase>,
                   ops::GropNoNeedBufferVarInferer);
+REGISTER_OPERATOR_MAKER(crop, ops::CropOp,
+                        ops::CropGradOpMaker<paddle::framework::OpDesc>,
+                        ops::CropGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(crop_grad, ops::CropOpGrad);
 REGISTER_OP_CPU_KERNEL(
     crop, ops::CropKernel<paddle::platform::CPUDeviceContext, float>,

@@ -256,9 +256,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(ExpandV2GradNoNeedBufVarsInferer, "X");
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(expand_v2, ops::ExpandV2Op, ops::ExpandV2OpMaker,
-                  ops::ExpandV2GradOpMaker<paddle::framework::OpDesc>,
-                  ops::ExpandV2GradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(expand_v2, ops::ExpandV2Op, ops::ExpandV2OpMaker);
+REGISTER_OPERATOR_MAKER(expand_v2, ops::ExpandV2Op,
+                        ops::ExpandV2GradOpMaker<paddle::framework::OpDesc>,
+                        ops::ExpandV2GradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(
     expand_v2_grad, ops::ExpandV2GradOp,
     ops::ExpandV2DoubleGradOpMaker<paddle::framework::OpDesc>,

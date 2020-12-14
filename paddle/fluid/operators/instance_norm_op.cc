@@ -678,9 +678,10 @@ DECLARE_INPLACE_OP_INFERER(InstanceNormDoubleGradOpInplaceInferer,
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(instance_norm, ops::InstanceNormOp, ops::InstanceNormOpMaker,
-                  ops::InstanceNormOpInferVarType,
-                  ops::InstanceNormGradMaker<paddle::framework::OpDesc>,
-                  ops::InstanceNormGradMaker<paddle::imperative::OpBase>);
+                  ops::InstanceNormOpInferVarType);
+REGISTER_OPERATOR_MAKER(instance_norm, ops::InstanceNormOp,
+                        ops::InstanceNormGradMaker<paddle::framework::OpDesc>,
+                        ops::InstanceNormGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(
     instance_norm_grad, ops::InstanceNormGradOp,
     ops::InstanceNormDoubleGradMaker<paddle::framework::OpDesc>,

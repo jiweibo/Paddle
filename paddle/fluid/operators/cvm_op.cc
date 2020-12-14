@@ -153,9 +153,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(CVMGradNoNeedBufferVarInferer, "X");
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(cvm, ops::CVMOp, ops::CVMOpMaker,
-                  ops::CVMGradOpMaker<paddle::framework::OpDesc>,
-                  ops::CVMGradOpMaker<paddle::imperative::OpBase>,
                   ops::CVMNoNeedBufferVarInferer);
+REGISTER_OPERATOR_MAKER(cvm, ops::CVMOp,
+                        ops::CVMGradOpMaker<paddle::framework::OpDesc>,
+                        ops::CVMGradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(cvm_grad, ops::CVMGradientOp,
                        ops::CVMGradNoNeedBufferVarInferer);

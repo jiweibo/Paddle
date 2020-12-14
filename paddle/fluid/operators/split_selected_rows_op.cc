@@ -91,9 +91,11 @@ class SplitSelectedRowsGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(split_selected_rows, ops::SplitSelectedRowsOp,
                   ops::SplitSelectedRowsOpMaker,
-                  ops::SplitSelectedRowsGradMaker<paddle::framework::OpDesc>,
-                  ops::SplitSelectedRowsGradMaker<paddle::imperative::OpBase>,
                   ops::SplitSelectedRowsOpInferVarType);
+REGISTER_OPERATOR_MAKER(
+    split_selected_rows, ops::SplitSelectedRowsOp,
+    ops::SplitSelectedRowsGradMaker<paddle::framework::OpDesc>,
+    ops::SplitSelectedRowsGradMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(
     split_selected_rows,
     ops::SplitSelectedRowsOpKernel<paddle::platform::CPUPlace, float>);

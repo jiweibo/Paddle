@@ -153,9 +153,10 @@ class BmmOpGradMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(bmm, ops::BmmOp, ops::BmmOpMaker,
-                  ops::BmmOpGradMaker<paddle::framework::OpDesc>,
-                  ops::BmmOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(bmm, ops::BmmOp, ops::BmmOpMaker);
+REGISTER_OPERATOR_MAKER(bmm, ops::BmmOp,
+                        ops::BmmOpGradMaker<paddle::framework::OpDesc>,
+                        ops::BmmOpGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(bmm_grad, ops::BmmOpGrad);
 REGISTER_OP_CPU_KERNEL(
     bmm, ops::BmmKernel<paddle::platform::CPUDeviceContext, float>,

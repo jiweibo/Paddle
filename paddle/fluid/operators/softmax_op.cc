@@ -240,10 +240,10 @@ DECLARE_INPLACE_OP_INFERER(SoftmaxInplaceInferer, {"X", "Out"});
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(softmax, ops::SoftmaxOp, ops::SoftmaxOpMaker,
-                  ops::SoftmaxOpInferVarType,
-                  ops::SoftmaxOpGradMaker<paddle::framework::OpDesc>,
-                  ops::SoftmaxOpGradMaker<paddle::imperative::OpBase>,
-                  ops::SoftmaxInplaceInferer);
+                  ops::SoftmaxOpInferVarType, ops::SoftmaxInplaceInferer);
+REGISTER_OPERATOR_MAKER(softmax, ops::SoftmaxOp,
+                        ops::SoftmaxOpGradMaker<paddle::framework::OpDesc>,
+                        ops::SoftmaxOpGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(softmax_grad, ops::SoftmaxOpGrad);
 REGISTER_OP_CPU_KERNEL(
     softmax, ops::SoftmaxKernel<paddle::platform::CPUDeviceContext, float>,

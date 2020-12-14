@@ -62,9 +62,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(PushDenseNoNeedBufferVarsInferer, "Ids");
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
-    push_dense, ops::PushDenseOp, ops::PushDenseOpMaker,
+REGISTER_OPERATOR(push_dense, ops::PushDenseOp, ops::PushDenseOpMaker,
+                  ops::PushDenseNoNeedBufferVarsInferer);
+REGISTER_OPERATOR_MAKER(
+    push_dense, ops::PushDenseOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
-    paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>,
-    ops::PushDenseNoNeedBufferVarsInferer);
+    paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(push_dense, ops::PushDenseCPUKernel<float>)

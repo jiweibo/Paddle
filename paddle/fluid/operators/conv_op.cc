@@ -759,9 +759,10 @@ framework::OpKernelType ConvOpDoubleGrad::GetExpectedKernelType(
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(conv2d, ops::ConvOp, ops::Conv2DOpMaker,
-                  ops::ConvOpInferVarType,
-                  ops::Conv2DGradMaker<paddle::framework::OpDesc>,
-                  ops::Conv2DGradMaker<paddle::imperative::OpBase>);
+                  ops::ConvOpInferVarType);
+REGISTER_OPERATOR_MAKER(conv2d, ops::ConvOp,
+                        ops::Conv2DGradMaker<paddle::framework::OpDesc>,
+                        ops::Conv2DGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(conv2d_grad, ops::ConvOpGrad,
                        ops::Conv2DDoubleGradMaker<paddle::framework::OpDesc>,
                        ops::Conv2DDoubleGradMaker<paddle::imperative::OpBase>);
@@ -769,15 +770,17 @@ REGISTER_GRAD_OPERATOR(conv2d_grad_grad, ops::ConvOpDoubleGrad);
 
 // depthwise convolution op
 REGISTER_OPERATOR(depthwise_conv2d, ops::ConvOp, ops::Conv2DOpMaker,
-                  ops::ConvOpInferVarType,
-                  ops::Conv2DGradMaker<paddle::framework::OpDesc>,
-                  ops::Conv2DGradMaker<paddle::imperative::OpBase>);
+                  ops::ConvOpInferVarType);
+REGISTER_OPERATOR_MAKER(depthwise_conv2d, ops::ConvOp,
+                        ops::Conv2DGradMaker<paddle::framework::OpDesc>,
+                        ops::Conv2DGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(depthwise_conv2d_grad, ops::ConvOpGrad);
 
 REGISTER_OPERATOR(conv3d, ops::ConvOp, ops::Conv3DOpMaker,
-                  ops::ConvOpInferVarType,
-                  ops::Conv3DGradMaker<paddle::framework::OpDesc>,
-                  ops::Conv3DGradMaker<paddle::imperative::OpBase>);
+                  ops::ConvOpInferVarType);
+REGISTER_OPERATOR_MAKER(conv3d, ops::ConvOp,
+                        ops::Conv3DGradMaker<paddle::framework::OpDesc>,
+                        ops::Conv3DGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(conv3d_grad, ops::ConvOpGrad,
                        ops::Conv3DDoubleGradMaker<paddle::framework::OpDesc>,
                        ops::Conv3DDoubleGradMaker<paddle::imperative::OpBase>);

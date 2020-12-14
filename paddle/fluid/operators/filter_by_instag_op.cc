@@ -142,9 +142,11 @@ class FilterByInstagGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(filter_by_instag, ops::FilterByInstagOp,
-                  ops::FilterByInstagOpMaker,
-                  ops::FilterByInstagGradOpMaker<paddle::framework::OpDesc>,
-                  ops::FilterByInstagGradOpMaker<paddle::imperative::OpBase>);
+                  ops::FilterByInstagOpMaker);
+REGISTER_OPERATOR_MAKER(
+    filter_by_instag, ops::FilterByInstagOp,
+    ops::FilterByInstagGradOpMaker<paddle::framework::OpDesc>,
+    ops::FilterByInstagGradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(filter_by_instag_grad, ops::FilterByInstagOpGrad);
 

@@ -263,9 +263,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(hierarchical_sigmoid, ops::HierarchicalSigmoidOp,
+                  ops::HierarchicalSigmoidOpMaker<int>);
+REGISTER_OPERATOR_MAKER(
     hierarchical_sigmoid, ops::HierarchicalSigmoidOp,
-    ops::HierarchicalSigmoidOpMaker<int>,
     ops::HierarchicalSigmoidGradMaker<paddle::framework::OpDesc>,
     ops::HierarchicalSigmoidGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(hierarchical_sigmoid_grad,

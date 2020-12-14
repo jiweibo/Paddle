@@ -144,9 +144,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(IndexSelectGradNoNeedBufferVarsInferer,
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(index_select, ops::IndexSelectOp, ops::IndexSelectOpMaker,
-                  ops::IndexSelectGradMaker<paddle::framework::OpDesc>,
-                  ops::IndexSelectGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(index_select, ops::IndexSelectOp, ops::IndexSelectOpMaker);
+REGISTER_OPERATOR_MAKER(index_select, ops::IndexSelectOp,
+                        ops::IndexSelectGradMaker<paddle::framework::OpDesc>,
+                        ops::IndexSelectGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(index_select_grad, ops::IndexSelectGradOp,
                        ops::IndexSelectGradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(

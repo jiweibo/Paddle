@@ -147,9 +147,10 @@ class PadOpGradMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(pad, ops::PadOp, ops::PadOpMaker,
-                  ops::PadOpGradMaker<paddle::framework::OpDesc>,
-                  ops::PadOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(pad, ops::PadOp, ops::PadOpMaker);
+REGISTER_OPERATOR_MAKER(pad, ops::PadOp,
+                        ops::PadOpGradMaker<paddle::framework::OpDesc>,
+                        ops::PadOpGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(pad_grad, ops::PadOpGrad);
 REGISTER_OP_CPU_KERNEL(
     pad, ops::PadKernel<paddle::platform::CPUDeviceContext, float>,

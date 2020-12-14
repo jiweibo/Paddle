@@ -108,6 +108,9 @@ class SelectInputGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(select_input, ops::SelectInputOp,
-                  ops::SelectInputOpProtoMaker, ops::SelectInputInferShape,
-                  ops::SelectInputGradMaker<paddle::framework::OpDesc>,
-                  ops::SelectInputGradMaker<paddle::imperative::OpBase>);
+                  ops::SelectInputOpProtoMaker, ops::SelectInputInferShape);
+REGISTER_OPERATOR_MAKER(select_input, ops::SelectInputOp,
+                        ops::SelectInputOpProtoMaker,
+                        ops::SelectInputInferShape,
+                        ops::SelectInputGradMaker<paddle::framework::OpDesc>,
+                        ops::SelectInputGradMaker<paddle::imperative::OpBase>);

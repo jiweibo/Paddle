@@ -202,9 +202,12 @@ class SpaceToDepthGradOp : public framework::OperatorWithKernel {
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(space_to_depth, ops::SpaceToDepthOp, ops::SpaceToDepthOpMaker,
-                  ops::SpaceToDepthGradOpMaker<paddle::framework::OpDesc>,
-                  ops::SpaceToDepthGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(space_to_depth, ops::SpaceToDepthOp,
+                  ops::SpaceToDepthOpMaker);
+REGISTER_OPERATOR_MAKER(
+    space_to_depth, ops::SpaceToDepthOp,
+    ops::SpaceToDepthGradOpMaker<paddle::framework::OpDesc>,
+    ops::SpaceToDepthGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(space_to_depth_grad, ops::SpaceToDepthGradOp,
                        ops::SpaceToDepthGradOpNoBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(

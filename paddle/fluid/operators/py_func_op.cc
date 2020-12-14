@@ -340,3 +340,5 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(py_func, ops::PyFuncOp, ops::PyFuncOpMaker,
                   ops::PyFuncOpVarTypeInference, ops::PyFuncOpShapeInference,
                   ops::PyFuncOpGradDescMaker);
+REGISTER_OPERATOR_MAKER(py_func, ops::PyFuncOp, ops::PyFuncOpShapeInference,
+                        ops::PyFuncOpGradDescMaker);

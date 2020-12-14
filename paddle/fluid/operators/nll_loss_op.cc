@@ -255,9 +255,10 @@ class NLLLossGradMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(nll_loss, ops::NLLLossOp, ops::NLLLossOpMaker,
-                  ops::NLLLossGradMaker<paddle::framework::OpDesc>,
-                  ops::NLLLossGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(nll_loss, ops::NLLLossOp, ops::NLLLossOpMaker);
+REGISTER_OPERATOR_MAKER(nll_loss, ops::NLLLossOp,
+                        ops::NLLLossGradMaker<paddle::framework::OpDesc>,
+                        ops::NLLLossGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(nll_loss_grad, ops::NLLLossGradOp);
 REGISTER_OP_CPU_KERNEL(
     nll_loss, ops::NLLLossOpKernel<paddle::platform::CPUDeviceContext, float>,

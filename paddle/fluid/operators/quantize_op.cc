@@ -55,6 +55,7 @@ void QuantOpMaker::Make() {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(quantize, ops::QuantOp, ops::QuantOpMaker);
+REGISTER_OPERATOR_MAKER(quantize, ops::QuantOp);
 
 REGISTER_OP_VERSION(quantize)
     .AddCheckpoint(

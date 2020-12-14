@@ -221,9 +221,10 @@ class CosSimGradOpMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(cos_sim, ops::CosSimOp, ops::CosSimOpMaker,
-                  ops::CosSimGradOpMaker<paddle::framework::OpDesc>,
-                  ops::CosSimGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(cos_sim, ops::CosSimOp, ops::CosSimOpMaker);
+REGISTER_OPERATOR_MAKER(cos_sim, ops::CosSimOp,
+                        ops::CosSimGradOpMaker<paddle::framework::OpDesc>,
+                        ops::CosSimGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(cos_sim_grad, ops::CosSimOpGrad);
 REGISTER_OP_CPU_KERNEL(
     cos_sim, ops::CosSimKernel<paddle::platform::CPUDeviceContext, float>);

@@ -126,8 +126,10 @@ class EmptyOpVarTypeInference : public framework::VarTypeInference {
 namespace ops = paddle::operators;
 namespace plat = paddle::platform;
 
-REGISTER_OPERATOR(
-    empty, ops::EmptyOp, ops::EmptyOpMaker, ops::EmptyOpVarTypeInference,
+REGISTER_OPERATOR(empty, ops::EmptyOp, ops::EmptyOpMaker,
+                  ops::EmptyOpVarTypeInference);
+REGISTER_OPERATOR_MAKER(
+    empty, ops::EmptyOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 

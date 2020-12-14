@@ -108,8 +108,9 @@ class MultinomialOpKernel<platform::CPUDeviceContext, T>
 
 namespace ops = paddle::operators;
 namespace plat = paddle::platform;
-REGISTER_OPERATOR(
-    multinomial, ops::MultinomialOp, ops::MultinomialOpMaker,
+REGISTER_OPERATOR(multinomial, ops::MultinomialOp, ops::MultinomialOpMaker);
+REGISTER_OPERATOR_MAKER(
+    multinomial, ops::MultinomialOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 

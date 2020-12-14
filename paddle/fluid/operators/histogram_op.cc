@@ -81,8 +81,9 @@ class HistogramOpMaker : public framework::OpProtoAndCheckerMaker {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
-    histogram, ops::HistogramOp, ops::HistogramOpMaker,
+REGISTER_OPERATOR(histogram, ops::HistogramOp, ops::HistogramOpMaker);
+REGISTER_OPERATOR_MAKER(
+    histogram, ops::HistogramOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(

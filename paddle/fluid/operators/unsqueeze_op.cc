@@ -340,9 +340,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(UnsqueezeGradOpNoNeedBufferVarInferer, "X");
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(unsqueeze, ops::UnsqueezeOp, ops::UnsqueezeOpMaker,
-                  ops::UnsqueezeGradOpMaker<paddle::framework::OpDesc>,
-                  ops::UnsqueezeGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(unsqueeze, ops::UnsqueezeOp, ops::UnsqueezeOpMaker);
+REGISTER_OPERATOR_MAKER(unsqueeze, ops::UnsqueezeOp,
+                        ops::UnsqueezeGradOpMaker<paddle::framework::OpDesc>,
+                        ops::UnsqueezeGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(
     unsqueeze_grad, ops::UnsqueezeGradOp,
     ops::UnsqueezeDoubleGradOpMaker<paddle::framework::OpDesc>,
@@ -350,9 +351,10 @@ REGISTER_GRAD_OPERATOR(
     ops::UnsqueezeGradOpNoNeedBufferVarInferer);
 
 REGISTER_OPERATOR(unsqueeze2, ops::Unsqueeze2Op, ops::Unsqueeze2OpMaker,
-                  ops::Unsqueeze2GradOpMaker<paddle::framework::OpDesc>,
-                  ops::Unsqueeze2GradOpMaker<paddle::imperative::OpBase>,
                   ops::UnsqueezeInplaceInferer);
+REGISTER_OPERATOR_MAKER(unsqueeze2, ops::Unsqueeze2Op,
+                        ops::Unsqueeze2GradOpMaker<paddle::framework::OpDesc>,
+                        ops::Unsqueeze2GradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(
     unsqueeze2_grad, ops::Unsqueeze2GradOp,
     ops::Unsqueeze2DoubleGradOpMaker<paddle::framework::OpDesc>,

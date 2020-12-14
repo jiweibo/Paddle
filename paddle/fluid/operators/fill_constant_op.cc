@@ -132,9 +132,10 @@ Fill up a variable with specified constant value.
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(
-    fill_constant, ops::FillConstantOp, ops::FillConstantOpMaker,
-    ops::FillConstantOpVarTypeInference,
+REGISTER_OPERATOR(fill_constant, ops::FillConstantOp, ops::FillConstantOpMaker,
+                  ops::FillConstantOpVarTypeInference);
+REGISTER_OPERATOR_MAKER(
+    fill_constant, ops::FillConstantOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 

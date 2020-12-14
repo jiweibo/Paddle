@@ -98,6 +98,23 @@ struct OperatorRegistrar : public Registrar {
   }
 };
 
+template <typename... ARGS>
+struct OperatorMakerRegistrar : public Registrar {
+  explicit OperatorMakerRegistrar(const char* op_type) {
+    PADDLE_ENFORCE_EQ(
+        OpInfoMap::Instance().Has(op_type), true,
+        platform::errors::NotFound(
+            "Operator '%s' is not found, please call REGISTER_OPERATOR first.",
+            op_type));
+    static_assert(
+        sizeof...(ARGS) != 0,
+        "OperatorMakerRegistrar should be invoked at least by OpClass");
+    OpInfo info;
+    details::OperatorRegistrarRecursive<0, false, ARGS...>(op_type, &info);
+    OpInfoMap::Instance().Insert(op_type, info);
+  }
+};
+
 class OpRegistry {
  public:
   /**
@@ -267,8 +284,19 @@ struct OpKernelRegistrarFunctorEx<PlaceType, false, I,
 #ifndef PADDLE_ON_INFERENCE
 #define REGISTER_GRAD_OPERATOR(op_type, op_class, ...) \
   REGISTER_OPERATOR(op_type, op_class, __VA_ARGS__)
+#define REGISTER_OPERATOR_MAKER(op_type, op_class, ...)                  \
+  STATIC_ASSERT_GLOBAL_NAMESPACE(                                        \
+      __reg_op__##op_type,                                               \
+      "REGISTER_OPERATOR must be called in global namespace");           \
+  static ::paddle::framework::OperatorMakerRegistrar<op_class, ##__VA_ARGS__> \
+      __op_registrar_##op_type##__(#op_type);                            \
+  int TouchOpRegistrar_##op_type() {                                     \
+    __op_registrar_##op_type##__.Touch();                                \
+    return 0;                                                            \
+  }
 #else
 #define REGISTER_GRAD_OPERATOR(op_type, op_class, ...)
+#define REGISTER_OPERATOR_MAKER(op_type, op_class, ...)
 #endif
 
 #define REGISTER_OP_WITHOUT_GRADIENT(op_type, op_class, op_maker_class) \

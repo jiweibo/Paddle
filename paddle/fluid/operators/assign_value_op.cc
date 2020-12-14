@@ -92,8 +92,9 @@ $$Out = values$$
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(
-    assign_value, ops::AssignValueOp, ops::AssignValueOpMaker,
+REGISTER_OPERATOR(assign_value, ops::AssignValueOp, ops::AssignValueOpMaker);
+REGISTER_OPERATOR_MAKER(
+    assign_value, ops::AssignValueOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(assign_value, ops::AssignValueKernel<bool>,

@@ -178,9 +178,11 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(ScatterNdAddGradNoNeedBufferVarsInferer,
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(scatter_nd_add, ops::ScatterNdAddOp, ops::ScatterNdAddOpMaker,
-                  ops::ScatterNdAddGradMaker<paddle::framework::OpDesc>,
-                  ops::ScatterNdAddGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(scatter_nd_add, ops::ScatterNdAddOp,
+                  ops::ScatterNdAddOpMaker);
+REGISTER_OPERATOR_MAKER(scatter_nd_add, ops::ScatterNdAddOp,
+                        ops::ScatterNdAddGradMaker<paddle::framework::OpDesc>,
+                        ops::ScatterNdAddGradMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(scatter_nd_add_grad, ops::ScatterNdAddGradOp,
                        ops::ScatterNdAddGradNoNeedBufferVarsInferer);

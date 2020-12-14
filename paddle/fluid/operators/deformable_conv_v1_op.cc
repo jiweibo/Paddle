@@ -301,9 +301,11 @@ class DeformableConvV1GradOp : public framework::OperatorWithKernel {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(deformable_conv_v1, ops::DeformableConvV1Op,
-                  ops::DeformableConvV1OpMaker,
-                  ops::DeformableConvV1GradOpMaker<paddle::framework::OpDesc>,
-                  ops::DeformableConvV1GradOpMaker<paddle::imperative::OpBase>);
+                  ops::DeformableConvV1OpMaker);
+REGISTER_OPERATOR_MAKER(
+    deformable_conv_v1, ops::DeformableConvV1Op,
+    ops::DeformableConvV1GradOpMaker<paddle::framework::OpDesc>,
+    ops::DeformableConvV1GradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(deformable_conv_v1_grad, ops::DeformableConvV1GradOp);
 
 REGISTER_OP_CPU_KERNEL(deformable_conv_v1,

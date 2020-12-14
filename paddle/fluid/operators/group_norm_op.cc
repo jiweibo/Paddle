@@ -236,10 +236,10 @@ class GroupNormOpInferVarType
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(group_norm, ops::GroupNormOp, ops::GroupNormOpMaker,
-                  ops::GroupNormOpInferVarType,
-                  ops::GroupNormGradMaker<paddle::framework::OpDesc>,
-                  ops::GroupNormGradMaker<paddle::imperative::OpBase>,
-                  ops::GroupNormInplaceInferer);
+                  ops::GroupNormOpInferVarType, ops::GroupNormInplaceInferer);
+REGISTER_OPERATOR_MAKER(group_norm, ops::GroupNormOp,
+                        ops::GroupNormGradMaker<paddle::framework::OpDesc>,
+                        ops::GroupNormGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(group_norm_grad, ops::GroupNormGradOp,
                        ops::GroupNormGradInplaceInferer);
 REGISTER_OP_CPU_KERNEL(

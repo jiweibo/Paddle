@@ -101,8 +101,9 @@ is based on area of rectangle.
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
-    mean_iou, ops::MeanIoUOp, ops::MeanIoUOpMaker,
+REGISTER_OPERATOR(mean_iou, ops::MeanIoUOp, ops::MeanIoUOpMaker);
+REGISTER_OPERATOR_MAKER(
+    mean_iou, ops::MeanIoUOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(mean_iou, ops::MeanIoUKernel<int>,

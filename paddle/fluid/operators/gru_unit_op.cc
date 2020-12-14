@@ -277,9 +277,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(GRUUnitGradOpNoNeedBufferVarInferer,
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(gru_unit, ops::GRUUnitOp, ops::GRUUnitOpMaker,
-                  ops::GRUUnitGradOpMaker<paddle::framework::OpDesc>,
-                  ops::GRUUnitGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(gru_unit, ops::GRUUnitOp, ops::GRUUnitOpMaker);
+REGISTER_OPERATOR_MAKER(gru_unit, ops::GRUUnitOp,
+                        ops::GRUUnitGradOpMaker<paddle::framework::OpDesc>,
+                        ops::GRUUnitGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(gru_unit_grad, ops::GRUUnitGradOp,
                        ops::GRUUnitGradOpNoNeedBufferVarInferer);
 

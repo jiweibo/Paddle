@@ -170,9 +170,10 @@ class PixelShuffleGradOp : public framework::OperatorWithKernel {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(pixel_shuffle, ops::PixelShuffleOp, ops::PixelShuffleOpMaker,
-                  ops::PixelShuffleGradMaker<paddle::framework::OpDesc>,
-                  ops::PixelShuffleGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(pixel_shuffle, ops::PixelShuffleOp, ops::PixelShuffleOpMaker);
+REGISTER_OPERATOR_MAKER(pixel_shuffle, ops::PixelShuffleOp,
+                        ops::PixelShuffleGradMaker<paddle::framework::OpDesc>,
+                        ops::PixelShuffleGradMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(pixel_shuffle_grad, ops::PixelShuffleGradOp);
 

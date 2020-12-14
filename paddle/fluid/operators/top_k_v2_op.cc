@@ -168,9 +168,10 @@ class TopkV2GradOpMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(top_k_v2, ops::TopkV2Op, ops::TopkV2OpMaker,
-                  ops::TopkV2GradOpMaker<paddle::framework::OpDesc>,
-                  ops::TopkV2GradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(top_k_v2, ops::TopkV2Op, ops::TopkV2OpMaker);
+REGISTER_OPERATOR_MAKER(top_k_v2, ops::TopkV2Op,
+                        ops::TopkV2GradOpMaker<paddle::framework::OpDesc>,
+                        ops::TopkV2GradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(top_k_v2_grad, ops::TopkV2OpGrad);
 

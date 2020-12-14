@@ -393,9 +393,10 @@ class LRNGradOpMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(lrn, ops::LRNOp, ops::LRNOpMaker<float>,
-                  ops::LRNGradOpMaker<paddle::framework::OpDesc>,
-                  ops::LRNGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(lrn, ops::LRNOp, ops::LRNOpMaker<float>);
+REGISTER_OPERATOR_MAKER(lrn, ops::LRNOp,
+                        ops::LRNGradOpMaker<paddle::framework::OpDesc>,
+                        ops::LRNGradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(lrn_grad, ops::LRNOpGrad);
 REGISTER_OP_CPU_KERNEL(

@@ -641,27 +641,35 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(InterpolateV2GradNoNeedBufferVarsInferer,
 // compatible with interp_op, so a new one is added in paddle2.0
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(bilinear_interp_v2, ops::InterpolateV2Op,
-                  ops::InterpolateV2OpMaker,
-                  ops::InterpolateV2GradMaker<paddle::framework::OpDesc>,
-                  ops::InterpolateV2GradMaker<paddle::imperative::OpBase>);
+                  ops::InterpolateV2OpMaker);
+REGISTER_OPERATOR_MAKER(
+    bilinear_interp_v2, ops::InterpolateV2Op,
+    ops::InterpolateV2GradMaker<paddle::framework::OpDesc>,
+    ops::InterpolateV2GradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(bilinear_interp_v2_grad, ops::InterpolateV2OpGrad,
                        ops::InterpolateV2GradNoNeedBufferVarsInferer);
 REGISTER_OPERATOR(nearest_interp_v2, ops::InterpolateV2Op,
-                  ops::InterpolateV2OpMaker,
-                  ops::InterpolateV2GradMaker<paddle::framework::OpDesc>,
-                  ops::InterpolateV2GradMaker<paddle::imperative::OpBase>);
+                  ops::InterpolateV2OpMaker);
+REGISTER_OPERATOR_MAKER(
+    nearest_interp_v2, ops::InterpolateV2Op,
+    ops::InterpolateV2GradMaker<paddle::framework::OpDesc>,
+    ops::InterpolateV2GradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(nearest_interp_v2_grad, ops::InterpolateV2OpGrad,
                        ops::InterpolateV2GradNoNeedBufferVarsInferer);
 REGISTER_OPERATOR(trilinear_interp_v2, ops::InterpolateV2Op,
-                  ops::InterpolateV2OpMaker,
-                  ops::InterpolateV2GradMaker<paddle::framework::OpDesc>,
-                  ops::InterpolateV2GradMaker<paddle::imperative::OpBase>);
+                  ops::InterpolateV2OpMaker);
+REGISTER_OPERATOR_MAKER(
+    trilinear_interp_v2, ops::InterpolateV2Op,
+    ops::InterpolateV2GradMaker<paddle::framework::OpDesc>,
+    ops::InterpolateV2GradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(trilinear_interp_v2_grad, ops::InterpolateV2OpGrad,
                        ops::InterpolateV2GradNoNeedBufferVarsInferer);
 REGISTER_OPERATOR(bicubic_interp_v2, ops::InterpolateV2Op,
-                  ops::InterpolateV2OpMaker,
-                  ops::InterpolateV2GradMaker<paddle::framework::OpDesc>,
-                  ops::InterpolateV2GradMaker<paddle::imperative::OpBase>);
+                  ops::InterpolateV2OpMaker);
+REGISTER_OPERATOR_MAKER(
+    bicubic_interp_v2, ops::InterpolateV2Op,
+    ops::InterpolateV2GradMaker<paddle::framework::OpDesc>,
+    ops::InterpolateV2GradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(bicubic_interp_v2_grad, ops::InterpolateV2OpGrad,
                        ops::InterpolateV2GradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(bilinear_interp_v2, ops::InterpolateV2Kernel<float>,
@@ -683,9 +691,11 @@ REGISTER_OP_CPU_GRAD_KERNEL(trilinear_interp_v2_grad,
                             ops::InterpolateV2GradKernel<float>,
                             ops::InterpolateV2GradKernel<double>);
 REGISTER_OPERATOR(linear_interp_v2, ops::InterpolateV2Op,
-                  ops::InterpolateV2OpMaker,
-                  ops::InterpolateV2GradMaker<paddle::framework::OpDesc>,
-                  ops::InterpolateV2GradMaker<paddle::imperative::OpBase>);
+                  ops::InterpolateV2OpMaker);
+REGISTER_OPERATOR_MAKER(
+    linear_interp_v2, ops::InterpolateV2Op,
+    ops::InterpolateV2GradMaker<paddle::framework::OpDesc>,
+    ops::InterpolateV2GradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(linear_interp_v2_grad, ops::InterpolateV2OpGrad,
                        ops::InterpolateV2GradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(linear_interp_v2, ops::InterpolateV2Kernel<float>,

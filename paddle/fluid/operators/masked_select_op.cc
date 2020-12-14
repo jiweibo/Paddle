@@ -100,9 +100,11 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(MaskedSelectedGradNoNeedBufferVarsInferer,
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(masked_select, ops::MaskedSelectOp, ops::MaskedSelectOpMaker,
-                  ops::MaskedSelectGradOpMaker<paddle::framework::OpDesc>,
-                  ops::MaskedSelectGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(masked_select, ops::MaskedSelectOp, ops::MaskedSelectOpMaker);
+REGISTER_OPERATOR_MAKER(
+    masked_select, ops::MaskedSelectOp,
+    ops::MaskedSelectGradOpMaker<paddle::framework::OpDesc>,
+    ops::MaskedSelectGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(masked_select_grad, ops::MaskedSelectOpGrad,
                        ops::MaskedSelectedGradNoNeedBufferVarsInferer);
 

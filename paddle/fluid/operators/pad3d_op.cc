@@ -900,9 +900,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(Pad3dOpGradNoNeedBufferVarsInferer, "X");
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(pad3d, ops::Pad3dOp, ops::Pad3dOpMaker,
-                  ops::Pad3dOpGradMaker<paddle::framework::OpDesc>,
-                  ops::Pad3dOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(pad3d, ops::Pad3dOp, ops::Pad3dOpMaker);
+REGISTER_OPERATOR_MAKER(pad3d, ops::Pad3dOp,
+                        ops::Pad3dOpGradMaker<paddle::framework::OpDesc>,
+                        ops::Pad3dOpGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(pad3d_grad, ops::Pad3dOpGrad,
                        ops::Pad3dOpGradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(pad3d, ops::Pad3dCPUKernel<float>,

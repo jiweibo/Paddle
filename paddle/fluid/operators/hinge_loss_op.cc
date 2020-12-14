@@ -133,9 +133,10 @@ class HingeLossGradOpMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(hinge_loss, ops::HingeLossOp, ops::HingeLossOpMaker<float>,
-                  ops::HingeLossGradOpMaker<paddle::framework::OpDesc>,
-                  ops::HingeLossGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(hinge_loss, ops::HingeLossOp, ops::HingeLossOpMaker<float>);
+REGISTER_OPERATOR_MAKER(hinge_loss, ops::HingeLossOp,
+                        ops::HingeLossGradOpMaker<paddle::framework::OpDesc>,
+                        ops::HingeLossGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(hinge_loss_grad, ops::HingeLossGradOp);
 REGISTER_OP_CPU_KERNEL(
     hinge_loss,

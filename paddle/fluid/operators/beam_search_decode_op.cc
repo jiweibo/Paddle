@@ -244,10 +244,13 @@ class BeamSearchDecodeInferVarType : public framework::VarTypeInference {
 }  // namespace operators
 }  // namespace paddle
 
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(beam_search_decode, paddle::operators::BeamSearchDecodeOp,
+                  paddle::operators::BeamSearchDecodeOpProtoMaker,
+                  paddle::operators::BeamSearchDecodeInferShape,
+                  paddle::operators::BeamSearchDecodeInferVarType);
+REGISTER_OPERATOR_MAKER(
     beam_search_decode, paddle::operators::BeamSearchDecodeOp,
     paddle::operators::BeamSearchDecodeOpProtoMaker,
     paddle::operators::BeamSearchDecodeInferShape,
-    paddle::operators::BeamSearchDecodeInferVarType,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

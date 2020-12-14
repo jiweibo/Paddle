@@ -189,9 +189,10 @@ And for a mini-batch in training, accumulators were computed as below steps:
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(average_accumulates, ops::AverageAccumulatesOp,
+                  ops::AverageAccumulatesOpMaker);
+REGISTER_OPERATOR_MAKER(
     average_accumulates, ops::AverageAccumulatesOp,
-    ops::AverageAccumulatesOpMaker,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(

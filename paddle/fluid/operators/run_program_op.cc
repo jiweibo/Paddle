@@ -165,9 +165,10 @@ class RunProgramGradOpMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(run_program, ops::RunProgramOp, ops::RunProgramOpMaker,
-                  ops::RunProgramGradOpMaker<paddle::framework::OpDesc>,
-                  ops::RunProgramGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(run_program, ops::RunProgramOp, ops::RunProgramOpMaker);
+REGISTER_OPERATOR_MAKER(run_program, ops::RunProgramOp,
+                        ops::RunProgramGradOpMaker<paddle::framework::OpDesc>,
+                        ops::RunProgramGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(run_program_grad, ops::RunProgramGradOp);
 
 /* see [Why use single type kernel] */

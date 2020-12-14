@@ -895,9 +895,10 @@ class MatMulOpDoubleGradMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(matmul, ops::MatMulOp, ops::MatMulOpMaker,
-                  ops::MatMulOpGradMaker<paddle::framework::OpDesc>,
-                  ops::MatMulOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(matmul, ops::MatMulOp, ops::MatMulOpMaker);
+REGISTER_OPERATOR_MAKER(matmul, ops::MatMulOp,
+                        ops::MatMulOpGradMaker<paddle::framework::OpDesc>,
+                        ops::MatMulOpGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(
     matmul_grad, ops::MatMulOpGrad,
     ops::MatMulOpDoubleGradMaker<paddle::framework::OpDesc>,

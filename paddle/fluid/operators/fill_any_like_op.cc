@@ -86,13 +86,22 @@ class FillAnyLikeVarTypeInference : public framework::VarTypeInference {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
-    fill_any_like, ops::FillAnyLikeOp, ops::FillAnyLikeOpMaker,
-    ::paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
-    ::paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>,
-    ops::FillAnyLikeVarTypeInference)
+REGISTER_OPERATOR(fill_any_like, ops::FillAnyLikeOp, ops::FillAnyLikeOpMaker,
+                  ops::FillAnyLikeVarTypeInference)
 
 REGISTER_OP_CPU_KERNEL(
+    fill_any_like,
+    ops::FillAnyLikeKernel<paddle::platform::CPUDeviceContext, int>,
+    ops::FillAnyLikeKernel<paddle::platform::CPUDeviceContext, int64_t>,
+    ops::FillAnyLikeKernel<paddle::platform::CPUDeviceContext, float>,
+    ops::FillAnyLikeKernel<paddle::platform::CPUDeviceContext, double>,
+    ops::FillAnyLikeKernel<paddle::platform::CPUDeviceContext,
+                           paddle::platform::float16>,
+    ops::FillAnyLikeKernel<paddle::platform::CPUDeviceContext, bool>);
+REGISTER_OPERATOR_MAKER(
+    fill_any_like, ops::FillAnyLikeOp,
+    ::paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
+    ::paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>,
     fill_any_like,
     ops::FillAnyLikeKernel<paddle::platform::CPUDeviceContext, int>,
     ops::FillAnyLikeKernel<paddle::platform::CPUDeviceContext, int64_t>,

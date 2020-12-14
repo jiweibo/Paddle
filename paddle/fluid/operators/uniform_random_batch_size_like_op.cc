@@ -72,11 +72,13 @@ with random values sampled from a uniform distribution.
 }  // namespace operators
 }  // namespace paddle
 
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(uniform_random_batch_size_like,
+                  paddle::operators::UniformRandomBatchSizeLikeOp,
+                  paddle::operators::UniformRandomBatchSizeLikeOpMaker,
+                  paddle::operators::BatchSizeLikeNoNeedBufferVarsInferer);
+REGISTER_OPERATOR_MAKER(
     uniform_random_batch_size_like,
     paddle::operators::UniformRandomBatchSizeLikeOp,
-    paddle::operators::UniformRandomBatchSizeLikeOpMaker,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
-    paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>,
-    paddle::operators::BatchSizeLikeNoNeedBufferVarsInferer);
+    paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 // Kernels are registered in uniform_random_op.cc and uniform_random_op.cu

@@ -317,6 +317,10 @@ REGISTER_OPERATOR(
     transpose, ops::TransposeOp, ops::TransposeOpMaker,
     paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
     paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>);
+REGISTER_OPERATOR_MAKER(
+    transpose, ops::TransposeOp,
+    paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
+    paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>);
 REGISTER_GRAD_OPERATOR(transpose_grad, ops::TransposeOpGrad);
 
 REGISTER_OP_CPU_KERNEL(
@@ -335,9 +339,10 @@ REGISTER_OP_CPU_GRAD_KERNEL(
     ops::TransposeGradKernel<paddle::platform::CPUDeviceContext,
                              paddle::platform::complex128>);
 
-REGISTER_OPERATOR(transpose2, ops::Transpose2Op, ops::Transpose2OpMaker,
-                  ops::Transpose2GradMaker<paddle::framework::OpDesc>,
-                  ops::Transpose2GradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(transpose2, ops::Transpose2Op, ops::Transpose2OpMaker);
+REGISTER_OPERATOR_MAKER(transpose2, ops::Transpose2Op,
+                        ops::Transpose2GradMaker<paddle::framework::OpDesc>,
+                        ops::Transpose2GradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(transpose2_grad, ops::Transpose2OpGrad);
 
 REGISTER_OP_CPU_KERNEL(

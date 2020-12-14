@@ -313,9 +313,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(NCEGradOpNoNeedBufferVarInferer, "Bias");
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(nce, ops::NCEOp, ops::NCEOpMaker,
-                  ops::NCEGradOpMaker<paddle::framework::OpDesc>,
-                  ops::NCEGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(nce, ops::NCEOp, ops::NCEOpMaker);
+REGISTER_OPERATOR_MAKER(nce, ops::NCEOp,
+                        ops::NCEGradOpMaker<paddle::framework::OpDesc>,
+                        ops::NCEGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(nce_grad, ops::NCEOpGrad, ops::NCEOpGradVarTypeInference,
                        ops::NCEGradOpNoNeedBufferVarInferer);
 REGISTER_OP_CPU_KERNEL(nce, ops::NCEKernel<paddle::platform::CPUPlace, float>,

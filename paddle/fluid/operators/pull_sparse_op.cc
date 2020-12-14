@@ -135,9 +135,9 @@ class PushSparseOp : public framework::OperatorWithKernel {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(pull_sparse, ops::PullSparseOp, ops::PullSparseOpMaker,
-                  ops::PushSparseOpMaker<paddle::framework::OpDesc>,
-                  ops::PushSparseOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(pull_sparse, ops::PullSparseOp, ops::PullSparseOpMaker);
+REGISTER_OPERATOR_MAKER(pull_sparse, ops::PullSparseOp);
 REGISTER_OPERATOR(push_sparse, ops::PushSparseOp);
+REGISTER_OPERATOR_MAKER(push_sparse, ops::PushSparseOp);
 REGISTER_OP_CPU_KERNEL(pull_sparse, ops::PullSparseCPUKernel<float>)
 REGISTER_OP_CPU_KERNEL(push_sparse, ops::PushSparseCPUKernel<float>)

@@ -247,9 +247,10 @@ class NotImpleKernel : public framework::OpKernel<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(rnn, ops::RNNOp, ops::RNNOpMaker,
-                  ops::RNNGradOpMaker<paddle::framework::OpDesc>,
-                  ops::RNNGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(rnn, ops::RNNOp, ops::RNNOpMaker);
+REGISTER_OPERATOR_MAKER(rnn, ops::RNNOp,
+                        ops::RNNGradOpMaker<paddle::framework::OpDesc>,
+                        ops::RNNGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(rnn_grad, ops::RNNGradOp);
 
 REGISTER_OP_CPU_KERNEL(

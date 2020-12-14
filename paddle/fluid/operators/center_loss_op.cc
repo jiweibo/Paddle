@@ -137,9 +137,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(CenterLossGradNoNeedBufVarsInferer, "X");
 namespace ops = paddle::operators;
 using CPUCtx = paddle::platform::CPUDeviceContext;
 
-REGISTER_OPERATOR(center_loss, ops::CenterLossOp, ops::CenterLossOpMaker,
-                  ops::CenterLossOpGradMaker<paddle::framework::OpDesc>,
-                  ops::CenterLossOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(center_loss, ops::CenterLossOp, ops::CenterLossOpMaker);
+REGISTER_OPERATOR_MAKER(center_loss, ops::CenterLossOp,
+                        ops::CenterLossOpGradMaker<paddle::framework::OpDesc>,
+                        ops::CenterLossOpGradMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(center_loss_grad, ops::CenterLossGradOp,
                        ops::CenterLossGradNoNeedBufVarsInferer);

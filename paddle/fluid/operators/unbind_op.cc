@@ -76,9 +76,10 @@ Example:
 
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(unbind, ops::UnbindOp, ops::UnbindOpMaker,
-                  ops::UnbindGradMaker<paddle::framework::OpDesc>,
-                  ops::UnbindGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(unbind, ops::UnbindOp, ops::UnbindOpMaker);
+REGISTER_OPERATOR_MAKER(unbind, ops::UnbindOp,
+                        ops::UnbindGradMaker<paddle::framework::OpDesc>,
+                        ops::UnbindGradMaker<paddle::imperative::OpBase>);
 namespace plat = paddle::platform;
 REGISTER_OP_CPU_KERNEL(
     unbind, ops::UnbindOpKernel<plat::CPUDeviceContext, double>,

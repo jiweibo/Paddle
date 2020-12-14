@@ -159,9 +159,11 @@ class MarginRankLossGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(margin_rank_loss, ops::MarginRankLossOp,
-                  ops::MarginRankLossOpMaker<float>,
-                  ops::MarginRankLossGradMaker<paddle::framework::OpDesc>,
-                  ops::MarginRankLossGradMaker<paddle::imperative::OpBase>);
+                  ops::MarginRankLossOpMaker<float>);
+REGISTER_OPERATOR_MAKER(
+    margin_rank_loss, ops::MarginRankLossOp,
+    ops::MarginRankLossGradMaker<paddle::framework::OpDesc>,
+    ops::MarginRankLossGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(margin_rank_loss_grad, ops::MarginRankLossGradOp);
 REGISTER_OP_CPU_KERNEL(
     margin_rank_loss,

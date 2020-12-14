@@ -73,5 +73,6 @@ selected ids.
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(gather_tree, ops::GatherTreeOp, ops::GatherTreeOpMaker);
+REGISTER_OPERATOR_MAKER(gather_tree, ops::GatherTreeOp);
 REGISTER_OP_CPU_KERNEL(gather_tree, ops::GatherTreeOpKernel<int32_t>,
                        ops::GatherTreeOpKernel<int64_t>);

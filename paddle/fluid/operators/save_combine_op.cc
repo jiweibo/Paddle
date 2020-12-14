@@ -97,6 +97,8 @@ namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(save_combine, ops::SaveCombineOp,
                   ops::SaveCombineOpProtoMaker, ops::SaveCombineOpInferVarType);
+REGISTER_OPERATOR_MAKER(save_combine, ops::SaveCombineOp,
+                        ops::SaveCombineOpProtoMaker);
 
 REGISTER_OP_CPU_KERNEL(
     save_combine,

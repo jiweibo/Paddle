@@ -100,6 +100,10 @@ REGISTER_OPERATOR(
     spp, ops::SppOp, ops::SppOpMaker,
     paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
     paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>);
+REGISTER_OPERATOR_MAKER(
+    spp, ops::SppOp,
+    paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
+    paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>);
 REGISTER_GRAD_OPERATOR(spp_grad, ops::SppOpGrad);
 REGISTER_OP_CPU_KERNEL(
     spp, ops::SppKernel<paddle::platform::CPUDeviceContext, float>,

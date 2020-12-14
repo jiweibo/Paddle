@@ -68,12 +68,14 @@ via input arguments.
 }  // namespace operators
 }  // namespace paddle
 
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(gaussian_random_batch_size_like,
+                  paddle::operators::GaussianRandomBatchSizeLikeOp,
+                  paddle::operators::GaussianRandomBatchSizeLikeOpMaker,
+                  paddle::operators::BatchSizeLikeNoNeedBufferVarsInferer);
+REGISTER_OPERATOR_MAKER(
     gaussian_random_batch_size_like,
     paddle::operators::GaussianRandomBatchSizeLikeOp,
-    paddle::operators::GaussianRandomBatchSizeLikeOpMaker,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
-    paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>,
-    paddle::operators::BatchSizeLikeNoNeedBufferVarsInferer);
+    paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 
 // Kernels are registered in gaussian_random_op.cc and gaussian_random_op.cu

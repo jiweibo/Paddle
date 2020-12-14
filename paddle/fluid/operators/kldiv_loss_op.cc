@@ -172,9 +172,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(KLDivLossGradNoNeedBufferVarInferer, "X");
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(kldiv_loss, ops::KLDivLossOp, ops::KLDivLossOpMaker,
-                  ops::KLDivLossOpGradMaker<paddle::framework::OpDesc>,
-                  ops::KLDivLossOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(kldiv_loss, ops::KLDivLossOp, ops::KLDivLossOpMaker);
+REGISTER_OPERATOR_MAKER(kldiv_loss, ops::KLDivLossOp,
+                        ops::KLDivLossOpGradMaker<paddle::framework::OpDesc>,
+                        ops::KLDivLossOpGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(kldiv_loss_grad, ops::KLDivLossOpGrad,
                        ops::KLDivLossGradNoNeedBufferVarInferer);
 REGISTER_OP_CPU_KERNEL(

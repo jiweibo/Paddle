@@ -82,11 +82,13 @@ class RandpermOpVarTypeInference : public framework::VarTypeInference {
 }  // namespace operators
 }  // namespace paddle
 
-REGISTER_OPERATOR(
-    randperm, paddle::operators::RandpermOp, paddle::operators::RandpermOpMaker,
+REGISTER_OPERATOR(randperm, paddle::operators::RandpermOp,
+                  paddle::operators::RandpermOpMaker,
+                  paddle::operators::RandpermOpVarTypeInference);
+REGISTER_OPERATOR_MAKER(
+    randperm, paddle::operators::RandpermOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
-    paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>,
-    paddle::operators::RandpermOpVarTypeInference);
+    paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 
 template <typename T>
 using kernel =

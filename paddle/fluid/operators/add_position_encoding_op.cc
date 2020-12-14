@@ -111,9 +111,10 @@ class AddPositionEncodingGradOpMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 namespace plt = paddle::platform;
 
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(add_position_encoding, ops::AddPositionEncodingOp,
+                  ops::AddPositionEncodingOpMaker);
+REGISTER_OPERATOR_MAKER(
     add_position_encoding, ops::AddPositionEncodingOp,
-    ops::AddPositionEncodingOpMaker,
     ops::AddPositionEncodingGradOpMaker<paddle::framework::OpDesc>,
     ops::AddPositionEncodingGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(add_position_encoding_grad,

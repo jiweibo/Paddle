@@ -187,9 +187,10 @@ class SquaredL2DistanceGradOp : public framework::OperatorWithKernel {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(
+REGISTER_OPERATOR(squared_l2_distance, ops::SquaredL2DistanceOp,
+                  ops::SquaredL2DistanceOpMaker);
+REGISTER_OPERATOR_MAKER(
     squared_l2_distance, ops::SquaredL2DistanceOp,
-    ops::SquaredL2DistanceOpMaker,
     ops::SquaredL2DistanceGradOpMaker<paddle::framework::OpDesc>,
     ops::SquaredL2DistanceGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(squared_l2_distance_grad, ops::SquaredL2DistanceGradOp,

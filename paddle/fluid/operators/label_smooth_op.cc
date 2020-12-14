@@ -149,9 +149,10 @@ class LabelSmoothGradMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 namespace ops = paddle::operators;
 
-REGISTER_OPERATOR(label_smooth, ops::LabelSmoothOp, ops::LabelSmoothOpMaker,
-                  ops::LabelSmoothGradMaker<paddle::framework::OpDesc>,
-                  ops::LabelSmoothGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(label_smooth, ops::LabelSmoothOp, ops::LabelSmoothOpMaker);
+REGISTER_OPERATOR_MAKER(label_smooth, ops::LabelSmoothOp,
+                        ops::LabelSmoothGradMaker<paddle::framework::OpDesc>,
+                        ops::LabelSmoothGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(label_smooth_grad, ops::LabelSmoothGradOp);
 REGISTER_OP_CPU_KERNEL(
     label_smooth,

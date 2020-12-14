@@ -287,9 +287,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(LayerNormGradNoNeedBufferVarInferer,
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(layer_norm, ops::LayerNormOp, ops::LayerNormOpMaker,
-                  ops::LayerNormGradOpMaker<paddle::framework::OpDesc>,
-                  ops::LayerNormGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(layer_norm, ops::LayerNormOp, ops::LayerNormOpMaker);
+REGISTER_OPERATOR_MAKER(layer_norm, ops::LayerNormOp,
+                        ops::LayerNormGradOpMaker<paddle::framework::OpDesc>,
+                        ops::LayerNormGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(layer_norm_grad, ops::LayerNormGradOp,
                        ops::LayerNormGradNoNeedBufferVarInferer);
 REGISTER_OP_CPU_KERNEL(

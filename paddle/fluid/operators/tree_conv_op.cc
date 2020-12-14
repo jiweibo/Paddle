@@ -210,9 +210,10 @@ class TreeConvGradOp : public framework::OperatorWithKernel {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(tree_conv, ops::TreeConvOp, ops::TreeConvOpMaker,
-                  ops::TreeConvGradOpMaker<paddle::framework::OpDesc>,
-                  ops::TreeConvGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(tree_conv, ops::TreeConvOp, ops::TreeConvOpMaker);
+REGISTER_OPERATOR_MAKER(tree_conv, ops::TreeConvOp,
+                        ops::TreeConvGradOpMaker<paddle::framework::OpDesc>,
+                        ops::TreeConvGradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(tree_conv_grad, ops::TreeConvGradOp);
 

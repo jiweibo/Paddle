@@ -97,6 +97,7 @@ namespace plat = paddle::platform;
 REGISTER_OPERATOR(merge_selected_rows, ops::MergeSelectedRowsOp,
                   ops::MergeSelectedRowsOpMaker,
                   ops::MergeSelectedRowsOpInferVarType);
+REGISTER_OPERATOR_MAKER(merge_selected_rows, ops::MergeSelectedRowsOp);
 
 REGISTER_OP_CPU_KERNEL(
     merge_selected_rows,

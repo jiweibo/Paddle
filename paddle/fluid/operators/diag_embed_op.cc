@@ -102,8 +102,9 @@ class DiagEmbedOpMaker : public framework::OpProtoAndCheckerMaker {
 
 namespace ops = paddle::operators;
 namespace platform = paddle::platform;
-REGISTER_OPERATOR(
-    diag_embed, ops::DiagEmbedOp, ops::DiagEmbedOpMaker,
+REGISTER_OPERATOR(diag_embed, ops::DiagEmbedOp, ops::DiagEmbedOpMaker);
+REGISTER_OPERATOR_MAKER(
+    diag_embed, ops::DiagEmbedOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(

@@ -126,9 +126,10 @@ class LstmUnitGradOpMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 namespace ops = paddle::operators;
-REGISTER_OPERATOR(lstm_unit, ops::LstmUnitOp, ops::LstmUnitOpMaker,
-                  ops::LstmUnitGradOpMaker<paddle::framework::OpDesc>,
-                  ops::LstmUnitGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR(lstm_unit, ops::LstmUnitOp, ops::LstmUnitOpMaker);
+REGISTER_OPERATOR_MAKER(lstm_unit, ops::LstmUnitOp,
+                        ops::LstmUnitGradOpMaker<paddle::framework::OpDesc>,
+                        ops::LstmUnitGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(lstm_unit_grad, ops::LstmUnitGradOp);
 REGISTER_OP_CPU_KERNEL(lstm_unit,
                        ops::LstmUnitKernel<paddle::platform::CPUPlace, float>,
