@@ -338,8 +338,6 @@ class PyFuncOp : public framework::OperatorBase {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(py_func, ops::PyFuncOp, ops::PyFuncOpMaker,
-                  ops::PyFuncOpVarTypeInference, ops::PyFuncOpShapeInference,
-                  ops::PyFuncOpGradDescMaker);
+                  ops::PyFuncOpVarTypeInference, ops::PyFuncOpShapeInference);
 REGISTER_OPERATOR_GRAD_MAKER(py_func, ops::PyFuncOp,
-                             ops::PyFuncOpShapeInference,
                              ops::PyFuncOpGradDescMaker);
