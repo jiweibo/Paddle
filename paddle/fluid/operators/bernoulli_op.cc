@@ -79,7 +79,7 @@ class BernoulliOpKernel<platform::CPUDeviceContext, T>
 namespace ops = paddle::operators;
 namespace plat = paddle::platform;
 REGISTER_OPERATOR(bernoulli, ops::BernoulliOp, ops::BernoulliOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     bernoulli, ops::BernoulliOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

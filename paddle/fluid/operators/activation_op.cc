@@ -1029,7 +1029,7 @@ namespace plat = paddle::platform;
       ops::ActivationOpInferVarType,                                        \
       std::conditional<ops::CanInplaceAct<ops::grad_functor<float>>(),      \
                        ops::ActFwdInplaceInferer, void>::type);             \
-  REGISTER_OPERATOR_MAKER(                                                  \
+  REGISTER_OPERATOR_GRAD_MAKER(                                             \
       KERNEL_TYPE, ops::ActivationOp,                                       \
       ops::ActivationGradOpMaker<ops::grad_functor<float>::FwdDeps(),       \
                                  paddle::framework::OpDesc>,                \
@@ -1058,7 +1058,7 @@ FOR_EACH_ACTIVATION_OP(REGISTER_ACTIVATION_CPU_KERNEL);
 /* ==========================    relu register  ============================= */
 REGISTER_OPERATOR(relu, ops::ActivationOp, ops::ReluOpMaker,
                   ops::ActivationOpInferVarType, ops::ActFwdInplaceInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     relu, ops::ActivationOp,
     ops::ActivationGradOpMaker<ops::ReluGradFunctor<float>::FwdDeps(),
                                paddle::framework::OpDesc>,
@@ -1088,7 +1088,7 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 /* ======================== leaky relu register  ============================ */
 REGISTER_OPERATOR(leaky_relu, ops::ActivationOp, ops::LeakyReluOpMaker,
                   ops::ActivationOpInferVarType, ops::ActFwdInplaceInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     leaky_relu, ops::ActivationOp,
     ops::ActivationGradOpMaker<ops::LeakyReluGradFunctor<float>::FwdDeps(),
                                paddle::framework::OpDesc>,
@@ -1118,7 +1118,7 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 /* ========================    elu  register     ============================ */
 REGISTER_OPERATOR(elu, ops::ActivationOp, ops::ELUOpMaker,
                   ops::ActivationOpInferVarType, ops::ActFwdInplaceInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     elu, ops::ActivationOp,
     ops::ActivationGradOpMaker<ops::ELUGradFunctor<float>::FwdDeps(),
                                paddle::framework::OpDesc>,
@@ -1147,7 +1147,7 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 /* ===========================   sqrt register  ============================= */
 REGISTER_OPERATOR(sqrt, ops::ActivationOp, ops::SqrtOpMaker,
                   ops::ActivationOpInferVarType, ops::ActFwdInplaceInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     sqrt, ops::ActivationOp,
     ops::ActivationGradOpMaker<ops::SqrtGradFunctor<float>::FwdDeps(),
                                paddle::framework::OpDesc>,
@@ -1175,7 +1175,7 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 /* ==========================   square register  ============================ */
 REGISTER_OPERATOR(square, ops::ActivationOp, ops::SquareOpMaker,
                   ops::ActivationOpInferVarType, ops::ActFwdInplaceInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     square, ops::ActivationOp,
     ops::ActivationGradOpMaker<ops::SquareGradFunctor<float>::FwdDeps(),
                                paddle::framework::OpDesc>,
@@ -1229,9 +1229,9 @@ REGISTER_OPERATOR(
     pow, ops::PowOp, ops::PowOpMaker, ops::ActivationOpInferVarType,
     std::conditional<ops::CanInplaceAct<ops::PowGradFunctor<float>>(),
                      ops::ActFwdInplaceInferer, void>::type);
-REGISTER_OPERATOR_MAKER(pow, ops::PowOp,
-                        ops::PowGradOpMaker<paddle::framework::OpDesc>,
-                        ops::PowGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(pow, ops::PowOp,
+                             ops::PowGradOpMaker<paddle::framework::OpDesc>,
+                             ops::PowGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(pow_grad, ops::PowOpGrad,
                        ops::ActivationGradOpInplaceInferer);
 
@@ -1253,7 +1253,7 @@ REGISTER_OPERATOR(
     exp, ops::ActivationOp, ops::ExpOpMaker, ops::ActivationOpInferVarType,
     std::conditional<ops::CanInplaceAct<ops::ExpGradFunctor<float>>(),
                      ops::ActFwdInplaceInferer, void>::type);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     exp, ops::ActivationOp,
     ops::ActivationGradOpMaker<ops::ExpGradFunctor<float>::FwdDeps(),
                                paddle::framework::OpDesc>,
@@ -1287,7 +1287,7 @@ REGISTER_OPERATOR(
     abs, ops::ActivationOp, ops::AbsOpMaker, ops::ActivationOpInferVarType,
     std::conditional<ops::CanInplaceAct<ops::AbsGradFunctor<float>>(),
                      ops::ActFwdInplaceInferer, void>::type);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     abs, ops::ActivationOp,
     ops::ActivationGradOpMaker<ops::AbsGradFunctor<float>::FwdDeps(),
                                paddle::framework::OpDesc>,
@@ -1337,7 +1337,7 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 /* ==========================  Log register ==================================*/
 REGISTER_OPERATOR(log, ops::ActivationOp, ops::LogOpMaker,
                   ops::ActivationOpInferVarType, ops::ActFwdInplaceInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     log, ops::ActivationOp,
     ops::ActivationGradOpMaker<ops::LogGradFunctor<float>::FwdDeps(),
                                paddle::framework::OpDesc>,

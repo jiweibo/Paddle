@@ -64,7 +64,7 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(PushDenseNoNeedBufferVarsInferer, "Ids");
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(push_dense, ops::PushDenseOp, ops::PushDenseOpMaker,
                   ops::PushDenseNoNeedBufferVarsInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     push_dense, ops::PushDenseOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

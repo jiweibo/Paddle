@@ -229,7 +229,7 @@ namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(pad_constant_like, ops::PadConstantLikeOp,
                   ops::PadConstantLikeOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     pad_constant_like, ops::PadConstantLikeOp,
     ops::PadConstantLikeOpGradMaker<paddle::framework::OpDesc>,
     ops::PadConstantLikeOpGradMaker<paddle::imperative::OpBase>);

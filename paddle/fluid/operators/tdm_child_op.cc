@@ -106,7 +106,7 @@ class TDMChildOp : public framework::OperatorWithKernel {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(tdm_child, ops::TDMChildOp, ops::TDMChildOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     tdm_child, ops::TDMChildOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

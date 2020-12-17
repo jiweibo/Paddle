@@ -138,9 +138,10 @@ namespace ops = paddle::operators;
 using CPUCtx = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(center_loss, ops::CenterLossOp, ops::CenterLossOpMaker);
-REGISTER_OPERATOR_MAKER(center_loss, ops::CenterLossOp,
-                        ops::CenterLossOpGradMaker<paddle::framework::OpDesc>,
-                        ops::CenterLossOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    center_loss, ops::CenterLossOp,
+    ops::CenterLossOpGradMaker<paddle::framework::OpDesc>,
+    ops::CenterLossOpGradMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(center_loss_grad, ops::CenterLossGradOp,
                        ops::CenterLossGradNoNeedBufVarsInferer);

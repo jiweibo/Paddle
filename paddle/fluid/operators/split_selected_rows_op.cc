@@ -92,7 +92,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(split_selected_rows, ops::SplitSelectedRowsOp,
                   ops::SplitSelectedRowsOpMaker,
                   ops::SplitSelectedRowsOpInferVarType);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     split_selected_rows, ops::SplitSelectedRowsOp,
     ops::SplitSelectedRowsGradMaker<paddle::framework::OpDesc>,
     ops::SplitSelectedRowsGradMaker<paddle::imperative::OpBase>);

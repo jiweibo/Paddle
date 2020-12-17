@@ -138,9 +138,9 @@ class ClipDoubleGradOpMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(clip, ops::ClipOp, ops::ClipOpMaker<float>,
                   ops::ClipInplaceInferer);
-REGISTER_OPERATOR_MAKER(clip, ops::ClipOp,
-                        ops::ClipGradOpMaker<paddle::framework::OpDesc>,
-                        ops::ClipGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(clip, ops::ClipOp,
+                             ops::ClipGradOpMaker<paddle::framework::OpDesc>,
+                             ops::ClipGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(clip_grad, ops::ClipOpGrad, ops::ClipGradInplaceInferer,
                        ops::ClipDoubleGradOpMaker<paddle::framework::OpDesc>,
                        ops::ClipDoubleGradOpMaker<paddle::imperative::OpBase>);

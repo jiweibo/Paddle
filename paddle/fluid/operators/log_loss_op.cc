@@ -146,9 +146,9 @@ class LogLossGradMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(log_loss, ops::LogLossOp, ops::LogLossOpMaker<float>);
-REGISTER_OPERATOR_MAKER(log_loss, ops::LogLossOp,
-                        ops::LogLossGradMaker<paddle::framework::OpDesc>,
-                        ops::LogLossGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(log_loss, ops::LogLossOp,
+                             ops::LogLossGradMaker<paddle::framework::OpDesc>,
+                             ops::LogLossGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(log_loss_grad, ops::LogLossGradOp);
 REGISTER_OP_CPU_KERNEL(
     log_loss, ops::LogLossKernel<paddle::platform::CPUDeviceContext, float>);

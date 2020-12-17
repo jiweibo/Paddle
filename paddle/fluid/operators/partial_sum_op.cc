@@ -187,9 +187,10 @@ class PartialSumGradMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(partial_sum, ops::PartialSumOp, ops::PartialSumOpMaker);
-REGISTER_OPERATOR_MAKER(partial_sum, ops::PartialSumOp,
-                        ops::PartialSumGradMaker<paddle::framework::OpDesc>,
-                        ops::PartialSumGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    partial_sum, ops::PartialSumOp,
+    ops::PartialSumGradMaker<paddle::framework::OpDesc>,
+    ops::PartialSumGradMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(partial_sum_grad, ops::PartialSumGradOp);
 

@@ -108,9 +108,9 @@ class DistGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(dist, ops::DistOp, ops::DistOpMaker);
-REGISTER_OPERATOR_MAKER(dist, ops::DistOp,
-                        ops::DistGradOpMaker<paddle::framework::OpDesc>,
-                        ops::DistGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(dist, ops::DistOp,
+                             ops::DistGradOpMaker<paddle::framework::OpDesc>,
+                             ops::DistGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(dist_grad, ops::DistOpGrad);
 REGISTER_OP_CPU_KERNEL(
     dist, ops::DistKernel<paddle::platform::CPUDeviceContext, float>,

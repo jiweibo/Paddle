@@ -98,7 +98,7 @@ REGISTER_OP_CPU_KERNEL(
     ops::FillAnyLikeKernel<paddle::platform::CPUDeviceContext,
                            paddle::platform::float16>,
     ops::FillAnyLikeKernel<paddle::platform::CPUDeviceContext, bool>);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fill_any_like, ops::FillAnyLikeOp,
     ::paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     ::paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>,

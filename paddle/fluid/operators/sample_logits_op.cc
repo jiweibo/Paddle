@@ -249,9 +249,10 @@ class SampleLogitsGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(sample_logits, ops::SampleLogitsOp, ops::SampleLogitsOpMaker);
-REGISTER_OPERATOR_MAKER(sample_logits, ops::SampleLogitsOp,
-                        ops::SampleLogitsGradMaker<paddle::framework::OpDesc>,
-                        ops::SampleLogitsGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    sample_logits, ops::SampleLogitsOp,
+    ops::SampleLogitsGradMaker<paddle::framework::OpDesc>,
+    ops::SampleLogitsGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(sample_logits_grad, ops::SampleLogitsOpGrad);
 REGISTER_OP_CPU_KERNEL(sample_logits, ops::SampleLogitsKernel<float>,
                        ops::SampleLogitsKernel<double>);

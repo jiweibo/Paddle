@@ -116,7 +116,7 @@ namespace ops = paddle::operators;
   }                                                                   \
   REGISTER_OPERATOR(op_type, ops::OverflowOp,                         \
                     ops::_##op_type##OverflowOpMaker)                 \
-  REGISTER_OPERATOR_MAKER(                                            \
+  REGISTER_OPERATOR_GRAD_MAKER(                                       \
       op_type, ops::OverflowOp,                                       \
       paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>, \
       paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>)

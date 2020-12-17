@@ -317,7 +317,7 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(StridedSliceOpGradNoNeedBufferVarsInferer,
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(strided_slice, ops::StridedSliceOp, ops::StridedSliceOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     strided_slice, ops::StridedSliceOp,
     ops::StridedSliceOpGradMaker<paddle::framework::OpDesc>,
     ops::StridedSliceOpGradMaker<paddle::imperative::OpBase>);

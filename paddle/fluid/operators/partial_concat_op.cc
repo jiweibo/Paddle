@@ -189,7 +189,7 @@ class PartialConcatGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(partial_concat, ops::PartialConcatOp,
                   ops::PartialConcatOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     partial_concat, ops::PartialConcatOp,
     ops::PartialConcatGradMaker<paddle::framework::OpDesc>,
     ops::PartialConcatGradMaker<paddle::imperative::OpBase>);

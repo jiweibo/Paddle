@@ -44,4 +44,4 @@ void DeQuantOpMaker::Make() {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(dequantize, ops::DeQuantOp, ops::DeQuantOpMaker);
-REGISTER_OPERATOR_MAKER(dequantize, ops::DeQuantOp);
+REGISTER_OPERATOR_GRAD_MAKER(dequantize, ops::DeQuantOp);

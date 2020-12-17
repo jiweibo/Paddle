@@ -76,7 +76,7 @@ REGISTER_OPERATOR(uniform_random_batch_size_like,
                   paddle::operators::UniformRandomBatchSizeLikeOp,
                   paddle::operators::UniformRandomBatchSizeLikeOpMaker,
                   paddle::operators::BatchSizeLikeNoNeedBufferVarsInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     uniform_random_batch_size_like,
     paddle::operators::UniformRandomBatchSizeLikeOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,

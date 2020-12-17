@@ -298,9 +298,10 @@ class NotImpleKernel : public framework::OpKernel<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(cudnn_lstm, ops::CudnnLSTMOp, ops::CudnnLSTMOpMaker);
-REGISTER_OPERATOR_MAKER(cudnn_lstm, ops::CudnnLSTMOp,
-                        ops::CudnnLSTMGradOpMaker<paddle::framework::OpDesc>,
-                        ops::CudnnLSTMGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    cudnn_lstm, ops::CudnnLSTMOp,
+    ops::CudnnLSTMGradOpMaker<paddle::framework::OpDesc>,
+    ops::CudnnLSTMGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(cudnn_lstm_grad, ops::CudnnLSTMGradOp);
 
 REGISTER_OP_CPU_GRAD_KERNEL(cudnn_lstm, ops::NotImpleKernel<float>);

@@ -149,9 +149,9 @@ class StackGradOpMaker : public framework::SingleGradOpMaker<T> {
 }  // namespace paddle
 
 REGISTER_OPERATOR(stack, ops::StackOp, ops::StackOpMaker);
-REGISTER_OPERATOR_MAKER(stack, ops::StackOp,
-                        ops::StackGradOpMaker<paddle::framework::OpDesc>,
-                        ops::StackGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(stack, ops::StackOp,
+                             ops::StackGradOpMaker<paddle::framework::OpDesc>,
+                             ops::StackGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(stack_grad, ops::StackOpGrad);
 
 REGISTER_OP_CPU_KERNEL(stack, ops::StackKernel<plat::CPUDeviceContext, float>,

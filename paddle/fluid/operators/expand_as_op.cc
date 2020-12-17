@@ -131,9 +131,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(ExpandAsGradNoNeedBufVarsInferer, "X");
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(expand_as, ops::ExpandAsOp, ops::ExpandAsOpMaker);
-REGISTER_OPERATOR_MAKER(expand_as, ops::ExpandAsOp,
-                        ops::ExpandAsGradOpMaker<paddle::framework::OpDesc>,
-                        ops::ExpandAsGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    expand_as, ops::ExpandAsOp,
+    ops::ExpandAsGradOpMaker<paddle::framework::OpDesc>,
+    ops::ExpandAsGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(expand_as_grad, ops::ExpandAsGradOp,
                        ops::ExpandAsGradNoNeedBufVarsInferer);
 REGISTER_OP_CPU_KERNEL(

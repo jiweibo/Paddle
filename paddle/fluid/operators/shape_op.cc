@@ -65,7 +65,7 @@ Return the shape of the input.
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(shape, ops::ShapeOp, ops::ShapeOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     shape, ops::ShapeOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

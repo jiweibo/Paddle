@@ -402,7 +402,7 @@ using CPUCtx = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(cross_entropy, ops::CrossEntropyOpBase,
                   ops::CrossEntropyOpMaker, ops::CrossEntropyOpInferVarType);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     cross_entropy, ops::CrossEntropyOpBase,
     ops::CrossEntropyGradOpMaker<paddle::framework::OpDesc>,
     ops::CrossEntropyGradOpMaker<paddle::imperative::OpBase>);
@@ -417,7 +417,7 @@ REGISTER_OPERATOR(cross_entropy2, ops::CrossEntropyOp2,
                   ops::CrossEntropyOpMaker2, ops::CrossEntropyOpInferVarType,
                   ops::CrossEntropyGradOpMaker2<paddle::framework::OpDesc>,
                   ops::CrossEntropyGradOpMaker2<paddle::imperative::OpBase>);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     cross_entropy2, ops::CrossEntropyOp2,
     ops::CrossEntropyGradOpMaker2<paddle::framework::OpDesc>,
     ops::CrossEntropyGradOpMaker2<paddle::imperative::OpBase>);

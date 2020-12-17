@@ -745,9 +745,10 @@ class DataNormGradMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(data_norm, ops::DataNormOp, ops::DataNormOpMaker);
-REGISTER_OPERATOR_MAKER(data_norm, ops::DataNormOp,
-                        ops::DataNormGradMaker<paddle::framework::OpDesc>,
-                        ops::DataNormGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    data_norm, ops::DataNormOp,
+    ops::DataNormGradMaker<paddle::framework::OpDesc>,
+    ops::DataNormGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(data_norm_grad, ops::DataNormGradOp);
 
 REGISTER_OP_CPU_KERNEL(

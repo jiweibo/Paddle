@@ -239,7 +239,7 @@ class SpectralNormOpGrad : public framework::OperatorWithKernel {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(spectral_norm, ops::SpectralNormOp, ops::SpectralNormOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     spectral_norm, ops::SpectralNormOp,
     ops::SpectralNormGradOpMaker<paddle::framework::OpDesc>,
     ops::SpectralNormGradOpMaker<paddle::imperative::OpBase>);

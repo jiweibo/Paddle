@@ -114,9 +114,10 @@ namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(log_softmax, ops::LogSoftmaxOp, ops::LogSoftmaxOpMaker,
                   ops::LogSoftmaxOpInferVarType);
-REGISTER_OPERATOR_MAKER(log_softmax, ops::LogSoftmaxOp,
-                        ops::LogSoftmaxGradOpMaker<paddle::framework::OpDesc>,
-                        ops::LogSoftmaxGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    log_softmax, ops::LogSoftmaxOp,
+    ops::LogSoftmaxGradOpMaker<paddle::framework::OpDesc>,
+    ops::LogSoftmaxGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(log_softmax_grad, ops::LogSoftmaxGradOp);
 
 REGISTER_OP_CPU_KERNEL(

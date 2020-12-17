@@ -145,9 +145,9 @@ Example:
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(split, ops::SplitOp, ops::SplitOpMaker);
-REGISTER_OPERATOR_MAKER(split, ops::SplitOp,
-                        ops::SplitGradMaker<paddle::framework::OpDesc>,
-                        ops::SplitGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(split, ops::SplitOp,
+                             ops::SplitGradMaker<paddle::framework::OpDesc>,
+                             ops::SplitGradMaker<paddle::imperative::OpBase>);
 namespace plat = paddle::platform;
 REGISTER_OP_CPU_KERNEL(
     split, ops::SplitOpKernel<plat::CPUDeviceContext, double>,

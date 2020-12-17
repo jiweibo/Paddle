@@ -172,9 +172,10 @@ DECLARE_INPLACE_OP_INFERER(BCELossGradInplaceInferer,
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(bce_loss, ops::BCELossOp, ops::BCELossOpMaker,
                   ops::BCELossInplaceInferer);
-REGISTER_OPERATOR_MAKER(bce_loss, ops::BCELossOp,
-                        ops::BCELossGradOpMaker<paddle::framework::OpDesc>,
-                        ops::BCELossGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    bce_loss, ops::BCELossOp,
+    ops::BCELossGradOpMaker<paddle::framework::OpDesc>,
+    ops::BCELossGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(bce_loss_grad, ops::BCELossGradOp,
                        ops::BCELossGradInplaceInferer);
 REGISTER_OP_CPU_KERNEL(

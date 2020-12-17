@@ -204,7 +204,7 @@ https://arxiv.org/abs/1512.02325
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(detection_map, ops::DetectionMAPOp, ops::DetectionMAPOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     detection_map, ops::DetectionMAPOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

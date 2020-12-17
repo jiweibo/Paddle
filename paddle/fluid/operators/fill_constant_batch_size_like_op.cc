@@ -62,7 +62,7 @@ REGISTER_OPERATOR(fill_constant_batch_size_like,
                   ops::FillConstantBatchSizeLikeOp,
                   ops::FillConstantBatchSizeLikeOpMaker,
                   ops::BatchSizeLikeNoNeedBufferVarsInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fill_constant_batch_size_like, ops::FillConstantBatchSizeLikeOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

@@ -153,9 +153,9 @@ class FSPGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(fsp, ops::FSPOp, ops::FSPOpMaker);
-REGISTER_OPERATOR_MAKER(fsp, ops::FSPOp,
-                        ops::FSPGradOpMaker<paddle::framework::OpDesc>,
-                        ops::FSPGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(fsp, ops::FSPOp,
+                             ops::FSPGradOpMaker<paddle::framework::OpDesc>,
+                             ops::FSPGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(fsp_grad, ops::FSPOpGrad);
 REGISTER_OP_CPU_KERNEL(
     fsp, ops::FSPOpKernel<paddle::platform::CPUDeviceContext, float>,

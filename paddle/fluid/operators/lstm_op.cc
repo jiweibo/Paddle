@@ -321,9 +321,9 @@ class LSTMGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(lstm, ops::LSTMOp, ops::LSTMOpMaker);
-REGISTER_OPERATOR_MAKER(lstm, ops::LSTMOp,
-                        ops::LSTMGradOpMaker<paddle::framework::OpDesc>,
-                        ops::LSTMGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(lstm, ops::LSTMOp,
+                             ops::LSTMGradOpMaker<paddle::framework::OpDesc>,
+                             ops::LSTMGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(lstm_grad, ops::LSTMGradOp);
 REGISTER_OP_CPU_KERNEL(
     lstm, ops::LSTMKernel<paddle::platform::CPUDeviceContext, float>,

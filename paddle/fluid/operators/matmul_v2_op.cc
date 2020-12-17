@@ -174,9 +174,10 @@ class MatMulV2GradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(matmul_v2, ops::MatMulV2Op, ops::MatMulV2OpMaker);
-REGISTER_OPERATOR_MAKER(matmul_v2, ops::MatMulV2Op,
-                        ops::MatMulV2GradOpMaker<paddle::framework::OpDesc>,
-                        ops::MatMulV2GradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    matmul_v2, ops::MatMulV2Op,
+    ops::MatMulV2GradOpMaker<paddle::framework::OpDesc>,
+    ops::MatMulV2GradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(matmul_v2_grad, ops::MatMulV2OpGrad);
 

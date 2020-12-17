@@ -100,9 +100,10 @@ class IncrementGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(increment, ops::IncrementOp, ops::IncrementOpMaker);
-REGISTER_OPERATOR_MAKER(increment, ops::IncrementOp,
-                        ops::IncrementGradOpMaker<paddle::framework::OpDesc>,
-                        ops::IncrementGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    increment, ops::IncrementOp,
+    ops::IncrementGradOpMaker<paddle::framework::OpDesc>,
+    ops::IncrementGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(
     increment, ops::IncrementKernel<paddle::platform::CPUDeviceContext, float>,
     ops::IncrementKernel<paddle::platform::CPUDeviceContext, double>,

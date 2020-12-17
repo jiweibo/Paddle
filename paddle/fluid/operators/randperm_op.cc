@@ -85,7 +85,7 @@ class RandpermOpVarTypeInference : public framework::VarTypeInference {
 REGISTER_OPERATOR(randperm, paddle::operators::RandpermOp,
                   paddle::operators::RandpermOpMaker,
                   paddle::operators::RandpermOpVarTypeInference);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     randperm, paddle::operators::RandpermOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

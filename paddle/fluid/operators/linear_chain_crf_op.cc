@@ -354,7 +354,7 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(LinearChainCRFGradNoNeedBufferVarsInferer,
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(linear_chain_crf, ops::LinearChainCRFOp,
                   ops::LinearChainCRFOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     linear_chain_crf, ops::LinearChainCRFOp,
     ops::LinearChainCRFGradMaker<paddle::framework::OpDesc>,
     ops::LinearChainCRFGradMaker<paddle::imperative::OpBase>);

@@ -17,7 +17,7 @@ limitations under the License. */
 
 REGISTER_OPERATOR(arg_min, paddle::operators::ArgMinMaxOp,
                   paddle::operators::ArgMinOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     arg_min, paddle::operators::ArgMinMaxOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

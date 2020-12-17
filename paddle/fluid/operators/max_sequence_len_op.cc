@@ -80,7 +80,7 @@ class MaxSeqenceLenInferShape : public framework::InferShapeBase {
 REGISTER_OPERATOR(max_sequence_len, paddle::operators::MaxSeqenceLenOp,
                   paddle::operators::MaxSeqenceLenOpProtoMaker,
                   paddle::operators::MaxSeqenceLenInferShape);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     max_sequence_len, paddle::operators::MaxSeqenceLenOp,
     paddle::operators::MaxSeqenceLenOpProtoMaker,
     paddle::operators::MaxSeqenceLenInferShape,

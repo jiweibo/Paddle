@@ -50,7 +50,7 @@ Seed Operator.
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(seed, ops::SeedOp, ops::SeedOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     seed, ops::SeedOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

@@ -265,7 +265,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(array_to_lod_tensor, ops::ArrayToLoDTensorOp,
                   ops::ArrayToLoDTensorOpProtoMaker,
                   ops::ArrayToLoDTensorInferShape);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     array_to_lod_tensor, ops::ArrayToLoDTensorOp,
     ops::ArrayToLoDTensorOpProtoMaker, ops::ArrayToLoDTensorInferShape,
     ops::ArrayToLoDTensorGradMaker<paddle::framework::OpDesc>,

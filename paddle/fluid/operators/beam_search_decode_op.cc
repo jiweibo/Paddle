@@ -248,7 +248,7 @@ REGISTER_OPERATOR(beam_search_decode, paddle::operators::BeamSearchDecodeOp,
                   paddle::operators::BeamSearchDecodeOpProtoMaker,
                   paddle::operators::BeamSearchDecodeInferShape,
                   paddle::operators::BeamSearchDecodeInferVarType);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     beam_search_decode, paddle::operators::BeamSearchDecodeOp,
     paddle::operators::BeamSearchDecodeOpProtoMaker,
     paddle::operators::BeamSearchDecodeInferShape,

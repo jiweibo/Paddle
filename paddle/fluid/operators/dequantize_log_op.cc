@@ -112,7 +112,7 @@ using CPU = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(dequantize_log, ops::DequantizeLogOp,
                   ops::DequantizeLogOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     dequantize_log, ops::DequantizeLogOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

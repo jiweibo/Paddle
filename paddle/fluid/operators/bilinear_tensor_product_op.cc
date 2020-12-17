@@ -208,7 +208,7 @@ class BilinearTensorProductGradOpMaker
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(bilinear_tensor_product, ops::BilinearTensorProductOp,
                   ops::BilinearTensorProductOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     bilinear_tensor_product, ops::BilinearTensorProductOp,
     ops::BilinearTensorProductGradOpMaker<paddle::framework::OpDesc>,
     ops::BilinearTensorProductGradOpMaker<paddle::imperative::OpBase>);

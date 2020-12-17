@@ -121,7 +121,7 @@ or not. And the output only shares the LoD information with input Ids.
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(lookup_table_dequant, ops::LookupTableDequantOp,
                   ops::LookupTableDequantOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     lookup_table_dequant, ops::LookupTableDequantOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

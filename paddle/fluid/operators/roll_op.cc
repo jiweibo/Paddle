@@ -127,9 +127,9 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(RollGradNoNeedBufferVarsInferer, "X");
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(roll, ops::RollOp, ops::RollOpMaker);
-REGISTER_OPERATOR_MAKER(roll, ops::RollOp,
-                        ops::RollGradMaker<paddle::framework::OpDesc>,
-                        ops::RollGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(roll, ops::RollOp,
+                             ops::RollGradMaker<paddle::framework::OpDesc>,
+                             ops::RollGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(roll_grad, ops::RollGradOp,
                        ops::RollGradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(

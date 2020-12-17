@@ -143,9 +143,9 @@ class DotOpGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(dot, ops::DotOp, ops::DotOpMaker);
-REGISTER_OPERATOR_MAKER(dot, ops::DotOp,
-                        ops::DotOpGradMaker<paddle::framework::OpDesc>,
-                        ops::DotOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(dot, ops::DotOp,
+                             ops::DotOpGradMaker<paddle::framework::OpDesc>,
+                             ops::DotOpGradMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(dot_grad, ops::DotGradOp);
 

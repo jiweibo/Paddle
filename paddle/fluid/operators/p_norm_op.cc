@@ -167,9 +167,9 @@ namespace ops = paddle::operators;
 using CPU = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(p_norm, ops::PnormOp, ops::PnormOpMaker);
-REGISTER_OPERATOR_MAKER(p_norm, ops::PnormOp,
-                        ops::PnormOpGradOpMaker<paddle::framework::OpDesc>,
-                        ops::PnormOpGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    p_norm, ops::PnormOp, ops::PnormOpGradOpMaker<paddle::framework::OpDesc>,
+    ops::PnormOpGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(p_norm_grad, ops::PnormOpGrad);
 REGISTER_OP_CPU_KERNEL(p_norm, ops::PnormKernel<CPU, float>,
                        ops::PnormKernel<CPU, double>);

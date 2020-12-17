@@ -140,9 +140,10 @@ class MeshgridGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(meshgrid, ops::MeshgridOp, ops::MeshgridOpMaker);
-REGISTER_OPERATOR_MAKER(meshgrid, ops::MeshgridOp,
-                        ops::MeshgridGradOpMaker<paddle::framework::OpDesc>,
-                        ops::MeshgridGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    meshgrid, ops::MeshgridOp,
+    ops::MeshgridGradOpMaker<paddle::framework::OpDesc>,
+    ops::MeshgridGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(meshgrid_grad, ops::MeshgridGradOp);
 REGISTER_OP_CPU_KERNEL(
     meshgrid, ops::MeshgridKernel<paddle::platform::CPUDeviceContext, float>,

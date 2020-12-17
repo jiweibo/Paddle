@@ -113,7 +113,7 @@ class ShuffleChannelGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(shuffle_channel, ops::ShuffleChannelOp,
                   ops::ShuffleChannelOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     shuffle_channel, ops::ShuffleChannelOp,
     ops::ShuffleChannelGradMaker<paddle::framework::OpDesc>,
     ops::ShuffleChannelGradMaker<paddle::imperative::OpBase>);

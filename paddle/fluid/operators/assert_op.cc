@@ -118,7 +118,7 @@ class AssertOpInferShape : public framework::InferShapeBase {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(assert, ops::AssertOp, ops::AssertOpProtoMaker,
                   ops::AssertOpInferShape);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     assert, ops::AssertOp, ops::AssertOpProtoMaker, ops::AssertOpInferShape,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

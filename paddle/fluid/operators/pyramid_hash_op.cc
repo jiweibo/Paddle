@@ -527,7 +527,7 @@ namespace ops = paddle::operators;
 namespace plt = paddle::platform;
 namespace frm = paddle::framework;
 REGISTER_OPERATOR(pyramid_hash, ops::PyramidHashOP, ops::PyramidHashOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     pyramid_hash, ops::PyramidHashOP,
     ops::PyramidHashGradOpMaker<paddle::framework::OpDesc>,
     ops::PyramidHashGradOpMaker<paddle::imperative::OpBase>);

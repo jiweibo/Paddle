@@ -105,7 +105,7 @@ using CPU = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(dequantize_abs_max, ops::DequantizeMaxAbsOp,
                   ops::DequantizeMaxAbsOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     dequantize_abs_max, ops::DequantizeMaxAbsOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

@@ -403,25 +403,26 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(FlattenGradNoNeedBufferVarsInferer, "X");
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(flatten, ops::FlattenOp, ops::FlattenOpMaker,
                   ops::FlattenOpInplaceInferer);
-REGISTER_OPERATOR_MAKER(flatten, ops::FlattenOp,
-                        ops::FlattenGradOpMaker<paddle::framework::OpDesc>,
-                        ops::FlattenGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    flatten, ops::FlattenOp, ops::FlattenGradOpMaker<paddle::framework::OpDesc>,
+    ops::FlattenGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(flatten_grad, ops::FlattenGradOp,
                        ops::FlattenGradInplaceInferer,
                        ops::FlattenGradNoNeedBufferVarsInferer);
 
 REGISTER_OPERATOR(flatten2, ops::Flatten2Op, ops::Flatten2OpMaker,
                   ops::FlattenOpInplaceInferer);
-REGISTER_OPERATOR_MAKER(flatten2, ops::Flatten2Op,
-                        ops::Flatten2GradOpMaker<paddle::framework::OpDesc>,
-                        ops::Flatten2GradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    flatten2, ops::Flatten2Op,
+    ops::Flatten2GradOpMaker<paddle::framework::OpDesc>,
+    ops::Flatten2GradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(flatten2_grad, ops::Flatten2GradOp,
                        ops::FlattenGradInplaceInferer);
 
 REGISTER_OPERATOR(flatten_contiguous_range, ops::FlattenContiguousRangeOp,
                   ops::FlattenContiguousRangeOpMaker,
                   ops::FlattenOpInplaceInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     flatten_contiguous_range, ops::FlattenContiguousRangeOp,
     ops::FlattenContiguousRangeGradOpMaker<paddle::framework::OpDesc>,
     ops::FlattenContiguousRangeGradOpMaker<paddle::imperative::OpBase>);

@@ -231,9 +231,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(LoDResetGradNoNeedBufferVarInferer, "X");
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(lod_reset, ops::LoDResetOp, ops::LoDResetOpMaker,
                   ops::LoDResetOpVarTypeInference, ops::LoDResetInplaceInferer);
-REGISTER_OPERATOR_MAKER(lod_reset, ops::LoDResetOp,
-                        ops::LoDResetGradMaker<paddle::framework::OpDesc>,
-                        ops::LoDResetGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    lod_reset, ops::LoDResetOp,
+    ops::LoDResetGradMaker<paddle::framework::OpDesc>,
+    ops::LoDResetGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(lod_reset_grad, ops::LoDResetGradOp,
                        ops::LoDResetGradNoNeedBufferVarInferer,
                        ops::LoDResetGradInplaceInferer);

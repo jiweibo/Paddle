@@ -128,7 +128,7 @@ namespace plat = paddle::platform;
 
 REGISTER_OPERATOR(empty, ops::EmptyOp, ops::EmptyOpMaker,
                   ops::EmptyOpVarTypeInference);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     empty, ops::EmptyOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

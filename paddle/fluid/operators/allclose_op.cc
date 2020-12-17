@@ -148,7 +148,7 @@ using CPU = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(allclose, ops::AllcloseOp, ops::AllcloseOpMaker,
                   ops::AllcloseOpVarTypeInference);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     allclose, ops::AllcloseOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

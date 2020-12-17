@@ -162,9 +162,9 @@ class KronGradOpMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(kron, ops::KronOp, ops::KronOpMaker);
-REGISTER_OPERATOR_MAKER(kron, ops::KronOp,
-                        ops::KronGradOpMaker<paddle::framework::OpDesc>,
-                        ops::KronGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(kron, ops::KronOp,
+                             ops::KronGradOpMaker<paddle::framework::OpDesc>,
+                             ops::KronGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(
     kron, ops::KronKernel<paddle::platform::CPUDeviceContext, float>,
     ops::KronKernel<paddle::platform::CPUDeviceContext, double>,

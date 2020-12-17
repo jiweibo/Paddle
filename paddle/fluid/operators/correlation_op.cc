@@ -174,7 +174,7 @@ class CorrelationKernel : public framework::OpKernel<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(correlation, ops::CorrelationOp, ops::CorrelationOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     correlation, ops::CorrelationOp,
     ops::CorrelationOpGradMaker<paddle::framework::OpDesc>,
     ops::CorrelationOpGradMaker<paddle::imperative::OpBase>);

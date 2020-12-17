@@ -161,9 +161,9 @@ class PadOpDoubleGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(pad, ops::PadOp, ops::PadOpMaker);
-REGISTER_OPERATOR_MAKER(pad, ops::PadOp,
-                        ops::PadOpGradMaker<paddle::framework::OpDesc>,
-                        ops::PadOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(pad, ops::PadOp,
+                             ops::PadOpGradMaker<paddle::framework::OpDesc>,
+                             ops::PadOpGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(pad_grad, ops::PadOpGrad,
                        ops::PadOpDoubleGradMaker<paddle::framework::OpDesc>,
                        ops::PadOpDoubleGradMaker<paddle::imperative::OpBase>);

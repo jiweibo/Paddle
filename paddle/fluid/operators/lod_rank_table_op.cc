@@ -92,7 +92,7 @@ REGISTER_OPERATOR(lod_rank_table, paddle::operators::LoDRankTableOp,
                   paddle::operators::LoDRankTableOpProtoMaker,
                   paddle::operators::LoDRankTableInferShape,
                   paddle::operators::LoDRankTableInferVarType);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     lod_rank_table, paddle::operators::LoDRankTableOp,
     paddle::operators::LoDRankTableOpProtoMaker,
     paddle::operators::LoDRankTableInferShape,

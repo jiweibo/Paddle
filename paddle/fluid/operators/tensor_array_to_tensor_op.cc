@@ -301,7 +301,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(tensor_array_to_tensor, ops::LoDTensorArray2TensorOp,
                   ops::LoDTensorArray2TensorOpMaker,
                   ops::LoDTensorArray2TensorOpInferShape);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     tensor_array_to_tensor, ops::LoDTensorArray2TensorOp,
     ops::LoDTensorArray2TensorOpInferShape,
     ops::TensorArrayToTensorGradOpMaker<paddle::framework::OpDesc>,

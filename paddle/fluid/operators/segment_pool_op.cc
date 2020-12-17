@@ -151,7 +151,7 @@ class SegmentPoolGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(segment_pool, ops::SegmentPoolOp, ops::SegmentPoolOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     segment_pool, ops::SegmentPoolOp,
     ops::SegmentPoolGradOpMaker<paddle::framework::OpDesc>,
     ops::SegmentPoolGradOpMaker<paddle::imperative::OpBase>);

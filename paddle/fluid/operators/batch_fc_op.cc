@@ -144,9 +144,10 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(BatchFCGradOpNoNeedBufferVarsInferer,
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(batch_fc, ops::BatchFCOp, ops::BatchFCOpMaker);
-REGISTER_OPERATOR_MAKER(batch_fc, ops::BatchFCOp,
-                        ops::BatchFCGradOpMaker<paddle::framework::OpDesc>,
-                        ops::BatchFCGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    batch_fc, ops::BatchFCOp,
+    ops::BatchFCGradOpMaker<paddle::framework::OpDesc>,
+    ops::BatchFCGradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(batch_fc_grad, ops::BatchFCGradOp,
                        ops::BatchFCGradOpNoNeedBufferVarsInferer);

@@ -521,7 +521,7 @@ namespace ops = paddle::operators;
 // conv2d_transpose
 REGISTER_OPERATOR(conv2d_transpose, ops::ConvTransposeOp,
                   ops::Conv2DTransposeOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     conv2d_transpose, ops::ConvTransposeOp,
     ops::ConvTransposeGradOpMaker<paddle::framework::OpDesc>,
     ops::ConvTransposeGradOpMaker<paddle::imperative::OpBase>);
@@ -540,7 +540,7 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 // conv3d_transpose
 REGISTER_OPERATOR(conv3d_transpose, ops::ConvTransposeOp,
                   ops::Conv3DTransposeOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     conv3d_transpose, ops::ConvTransposeOp,
     ops::ConvTransposeGradOpMaker<paddle::framework::OpDesc>,
     ops::ConvTransposeGradOpMaker<paddle::imperative::OpBase>);
@@ -559,7 +559,7 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 // depthwise conv2d_transpose
 REGISTER_OPERATOR(depthwise_conv2d_transpose, ops::ConvTransposeOp,
                   ops::Conv2DTransposeOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     depthwise_conv2d_transpose, ops::ConvTransposeOp,
     ops::ConvTransposeGradOpMaker<paddle::framework::OpDesc>,
     ops::ConvTransposeGradOpMaker<paddle::imperative::OpBase>);

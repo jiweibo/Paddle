@@ -144,7 +144,7 @@ class MinusGradMaker : public imperative::GradOpBaseMakerBase {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(minus, ops::MinusOp, ops::MinusOpMaker,
                   ops::MinusGradDescMaker, ops::MinusGradMaker);
-REGISTER_OPERATOR_MAKER(minus, ops::MinusOp, ops::MinusGradDescMaker,
-                        ops::MinusGradMaker);
+REGISTER_OPERATOR_GRAD_MAKER(minus, ops::MinusOp, ops::MinusGradDescMaker,
+                             ops::MinusGradMaker);
 REGISTER_OP_CPU_KERNEL(
     minus, ops::MinusKernel<paddle::platform::CPUDeviceContext, float>);

@@ -166,7 +166,7 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(rank_attention, ops::RankAttentionOp,
                   ops::RankAttentionOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     rank_attention, ops::RankAttentionOp,
     ops::RankAttentionGradOpMaker<paddle::framework::OpDesc>,
     ops::RankAttentionGradOpMaker<paddle::imperative::OpBase>);

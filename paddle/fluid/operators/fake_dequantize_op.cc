@@ -222,7 +222,7 @@ using CPU = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(fake_dequantize_max_abs, ops::FakeDequantizeMaxAbsOp,
                   ops::FakeDequantizeMaxAbsOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fake_dequantize_max_abs, ops::FakeDequantizeMaxAbsOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
@@ -233,7 +233,7 @@ REGISTER_OP_CPU_KERNEL(fake_dequantize_max_abs,
 REGISTER_OPERATOR(fake_channel_wise_dequantize_max_abs,
                   ops::FakeChannelWiseDequantizeMaxAbsOp,
                   ops::FakeChannelWiseDequantizeMaxAbsOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fake_channel_wise_dequantize_max_abs,
     ops::FakeChannelWiseDequantizeMaxAbsOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,

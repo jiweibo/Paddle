@@ -138,7 +138,7 @@ namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(beam_search, ops::BeamSearchOp, ops::BeamSearchOpMaker,
                   ops::BeamSearchInferVarType);
-REGISTER_OPERATOR_MAKER(beam_search, ops::BeamSearchOp);
+REGISTER_OPERATOR_GRAD_MAKER(beam_search, ops::BeamSearchOp);
 REGISTER_OP_CPU_KERNEL(
     beam_search,
     ops::BeamSearchOpKernel<paddle::platform::CPUDeviceContext, float>,

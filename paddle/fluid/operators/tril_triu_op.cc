@@ -100,9 +100,10 @@ class TrilTriuGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(tril_triu, ops::TrilTriuOp, ops::TrilTriuOpMaker);
-REGISTER_OPERATOR_MAKER(tril_triu, ops::TrilTriuOp,
-                        ops::TrilTriuGradOpMaker<paddle::framework::OpDesc>,
-                        ops::TrilTriuGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    tril_triu, ops::TrilTriuOp,
+    ops::TrilTriuGradOpMaker<paddle::framework::OpDesc>,
+    ops::TrilTriuGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(tril_triu_grad, ops::TrilTriuGradOp);
 REGISTER_OP_CPU_KERNEL(
     tril_triu, ops::TrilTriuOpKernel<paddle::platform::CPUDeviceContext, float>,

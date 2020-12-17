@@ -125,7 +125,7 @@ Out is a LoDTensor:
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(one_hot, ops::OneHotOp, ops::OneHotOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     one_hot, ops::OneHotOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

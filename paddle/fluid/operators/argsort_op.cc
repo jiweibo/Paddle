@@ -123,9 +123,9 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(ArgsortGradNoNeedBufferVarsInferer, "X");
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(argsort, ops::ArgsortOp, ops::ArgsortOpMaker);
-REGISTER_OPERATOR_MAKER(argsort, ops::ArgsortOp,
-                        ops::ArgsortGradOpMaker<paddle::framework::OpDesc>,
-                        ops::ArgsortGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    argsort, ops::ArgsortOp, ops::ArgsortGradOpMaker<paddle::framework::OpDesc>,
+    ops::ArgsortGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(argsort_grad, ops::ArgsortGradOp,
                        ops::ArgsortGradNoNeedBufferVarsInferer);
 REGISTER_OP_CPU_KERNEL(argsort,

@@ -179,7 +179,7 @@ class TemporalShiftGradOpMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(temporal_shift, ops::TemporalShiftOp,
                   ops::TemporalShiftOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     temporal_shift, ops::TemporalShiftOp,
     ops::TemporalShiftGradOpMaker<paddle::framework::OpDesc>,
     ops::TemporalShiftGradOpMaker<paddle::imperative::OpBase>);

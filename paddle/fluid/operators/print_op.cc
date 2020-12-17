@@ -171,7 +171,8 @@ namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(print, ops::PrintOp, ops::PrintOpProtoAndCheckMaker,
                   ops::PrintOpInferShape, ops::PrintOpVarTypeInference);
-REGISTER_OPERATOR_MAKER(print, ops::PrintOp, ops::PrintOpProtoAndCheckMaker,
-                        ops::PrintOpGradientMaker<paddle::framework::OpDesc>,
-                        ops::PrintOpGradientMaker<paddle::imperative::OpBase>,
-                        ops::PrintOpInferShape);
+REGISTER_OPERATOR_GRAD_MAKER(
+    print, ops::PrintOp, ops::PrintOpProtoAndCheckMaker,
+    ops::PrintOpGradientMaker<paddle::framework::OpDesc>,
+    ops::PrintOpGradientMaker<paddle::imperative::OpBase>,
+    ops::PrintOpInferShape);

@@ -138,9 +138,9 @@ namespace plat = paddle::platform;
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(unstack, ops::UnStackOp, ops::UnStackOpMaker);
-REGISTER_OPERATOR_MAKER(unstack, ops::UnStackOp,
-                        ops::UnStackGradOpMaker<paddle::framework::OpDesc>,
-                        ops::UnStackGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    unstack, ops::UnStackOp, ops::UnStackGradOpMaker<paddle::framework::OpDesc>,
+    ops::UnStackGradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(unstack_grad, ops::UnStackGradOp);
 

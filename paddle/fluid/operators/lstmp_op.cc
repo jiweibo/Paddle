@@ -374,9 +374,9 @@ class LSTMPGradOp : public framework::OperatorWithKernel {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(lstmp, ops::LSTMPOp, ops::LSTMPOpMaker);
-REGISTER_OPERATOR_MAKER(lstmp, ops::LSTMPOp,
-                        ops::LSTMPGradMaker<paddle::framework::OpDesc>,
-                        ops::LSTMPGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(lstmp, ops::LSTMPOp,
+                             ops::LSTMPGradMaker<paddle::framework::OpDesc>,
+                             ops::LSTMPGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(lstmp_grad, ops::LSTMPGradOp);
 REGISTER_OP_CPU_KERNEL(
     lstmp, ops::LSTMPKernel<paddle::platform::CPUDeviceContext, float>,

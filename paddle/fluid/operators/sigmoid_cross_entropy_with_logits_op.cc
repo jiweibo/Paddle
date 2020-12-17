@@ -206,7 +206,7 @@ REGISTER_OPERATOR(sigmoid_cross_entropy_with_logits,
                   ops::SigmoidCrossEntropyWithLogitsOp,
                   ops::SigmoidCrossEntropyWithLogitsOpMaker,
                   ops::SigmoidCrossEntropyWithLogitsInplaceInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     sigmoid_cross_entropy_with_logits, ops::SigmoidCrossEntropyWithLogitsOp,
     ops::SigmoidCrossEntropyWithLogitsGradOpMaker<paddle::framework::OpDesc>,
     ops::SigmoidCrossEntropyWithLogitsGradOpMaker<paddle::imperative::OpBase>);

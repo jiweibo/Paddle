@@ -333,7 +333,7 @@ namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(max_pool2d_with_index, ops::MaxPoolWithIndexOp,
                   ops::MaxPool2dWithIndexOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     max_pool2d_with_index, ops::MaxPoolWithIndexOp,
     ops::MaxPoolWithIndexGradOpMaker<paddle::framework::OpDesc>,
     ops::MaxPoolWithIndexGradOpMaker<paddle::imperative::OpBase>);
@@ -354,7 +354,7 @@ REGISTER_OP_CPU_GRAD_KERNEL(
 
 REGISTER_OPERATOR(max_pool3d_with_index, ops::MaxPoolWithIndexOp,
                   ops::MaxPool3dWithIndexOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     max_pool3d_with_index, ops::MaxPoolWithIndexOp,
     ops::MaxPoolWithIndexGradOpMaker<paddle::framework::OpDesc>,
     ops::MaxPoolWithIndexGradOpMaker<paddle::imperative::OpBase>);

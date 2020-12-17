@@ -335,7 +335,7 @@ using CPU = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(affine_channel, ops::AffineChannelOp,
                   ops::AffineChannelOpMaker, ops::AffineChannelInplaceInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     affine_channel, ops::AffineChannelOp,
     ops::AffineChannelGradMaker<paddle::framework::OpDesc>,
     ops::AffineChannelGradMaker<paddle::imperative::OpBase>);

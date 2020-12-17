@@ -88,7 +88,7 @@ $$Out = \sum_{i} X_{i}^2$$
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(squared_l2_norm, ops::SquaredL2NormOp,
                   ops::SquaredL2NormOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     squared_l2_norm, ops::SquaredL2NormOp,
     ops::SquaredL2NormGradOpMaker<paddle::framework::OpDesc>,
     ops::SquaredL2NormGradOpMaker<paddle::imperative::OpBase>);

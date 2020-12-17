@@ -124,9 +124,9 @@ namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(scale, ops::ScaleOp, ops::ScaleOpMaker,
                   ops::ScaleOpVarTypeInference, ops::ScaleOpInplaceInferer);
-REGISTER_OPERATOR_MAKER(scale, ops::ScaleOp,
-                        ops::ScaleGradMaker<paddle::framework::OpDesc>,
-                        ops::ScaleGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(scale, ops::ScaleOp,
+                             ops::ScaleGradMaker<paddle::framework::OpDesc>,
+                             ops::ScaleGradMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(
     scale, ops::ScaleKernel<paddle::platform::CPUDeviceContext, float>,
     ops::ScaleKernel<paddle::platform::CPUDeviceContext, double>,

@@ -196,10 +196,10 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(shrink_rnn_memory, ops::ShrinkRNNMemoryOp,
                   ops::ShrinkRNNMemoryInferShape,
                   ops::ShrinkRNNMemoryOpProtoMaker);
-REGISTER_OPERATOR_MAKER(shrink_rnn_memory, ops::ShrinkRNNMemoryOp,
-                        ops::ShrinkRNNMemoryInferShape,
-                        ops::ShrinkRNNMemoryOpProtoMaker,
-                        ops::ShrinkRNNGradOpMaker<paddle::framework::OpDesc>,
-                        ops::ShrinkRNNGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    shrink_rnn_memory, ops::ShrinkRNNMemoryOp, ops::ShrinkRNNMemoryInferShape,
+    ops::ShrinkRNNMemoryOpProtoMaker,
+    ops::ShrinkRNNGradOpMaker<paddle::framework::OpDesc>,
+    ops::ShrinkRNNGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(shrink_rnn_memory_grad, ops::ShrinkRNNMemoryGradOp,
                        ops::ShrinkRNNMemoryGradInferShape);

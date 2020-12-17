@@ -100,9 +100,9 @@ namespace ops = paddle::operators;
 using CPU = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(norm, ops::NormOp, ops::NormOpMaker);
-REGISTER_OPERATOR_MAKER(norm, ops::NormOp,
-                        ops::NormOpGradOpMaker<paddle::framework::OpDesc>,
-                        ops::NormOpGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    norm, ops::NormOp, ops::NormOpGradOpMaker<paddle::framework::OpDesc>,
+    ops::NormOpGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(norm_grad, ops::NormOpGrad);
 REGISTER_OP_CPU_KERNEL(norm, ops::NormKernel<CPU, float>,
                        ops::NormKernel<CPU, double>);

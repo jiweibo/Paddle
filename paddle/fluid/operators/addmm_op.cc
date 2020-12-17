@@ -222,9 +222,9 @@ class AddMMOpGradMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(addmm, ops::AddMMOp, ops::AddMMOpMaker);
-REGISTER_OPERATOR_MAKER(addmm, ops::AddMMOp,
-                        ops::AddMMOpGradMaker<paddle::framework::OpDesc>,
-                        ops::AddMMOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(addmm, ops::AddMMOp,
+                             ops::AddMMOpGradMaker<paddle::framework::OpDesc>,
+                             ops::AddMMOpGradMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(addmm_grad, ops::AddMMGradOp);
 

@@ -189,7 +189,7 @@ class LookupTableV2OpGradVarTypeInference : public framework::VarTypeInference {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(lookup_table_v2, ops::LookupTableV2Op,
                   ops::LookupTableV2OpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     lookup_table_v2, ops::LookupTableV2Op,
     ops::LookupTableV2GradOpMaker<paddle::framework::OpDesc>,
     ops::LookupTableV2GradOpMaker<paddle::imperative::OpBase>);

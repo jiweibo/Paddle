@@ -222,7 +222,7 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(teacher_student_sigmoid_loss,
                   ops::TeacherStudentSigmoidLossOp,
                   ops::TeacherStudentSigmoidLossOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     teacher_student_sigmoid_loss, ops::TeacherStudentSigmoidLossOp,
     ops::TeacherStudentSigmoidLossGradOpMaker<paddle::framework::OpDesc>,
     ops::TeacherStudentSigmoidLossGradOpMaker<paddle::imperative::OpBase>);

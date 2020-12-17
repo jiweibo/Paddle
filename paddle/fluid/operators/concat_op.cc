@@ -220,9 +220,9 @@ class ConcatDoubleGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(concat, ops::ConcatOp, ops::ConcatOpMaker);
-REGISTER_OPERATOR_MAKER(concat, ops::ConcatOp,
-                        ops::ConcatGradOpMaker<paddle::framework::OpDesc>,
-                        ops::ConcatGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    concat, ops::ConcatOp, ops::ConcatGradOpMaker<paddle::framework::OpDesc>,
+    ops::ConcatGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(concat_grad, ops::ConcatOpGrad,
                        ops::ConcatDoubleGradOpMaker<paddle::framework::OpDesc>,
                        ops::ConcatDoubleGradOpMaker<paddle::imperative::OpBase>,

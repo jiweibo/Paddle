@@ -127,7 +127,7 @@ class TDMSamplerOp : public framework::OperatorWithKernel {
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(tdm_sampler, ops::TDMSamplerOp, ops::TDMSamplerOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     tdm_sampler, ops::TDMSamplerOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

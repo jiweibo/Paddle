@@ -129,7 +129,7 @@ class ShuffleBatchGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(shuffle_batch, ops::ShuffleBatchOp, ops::ShuffleBatchOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     shuffle_batch, ops::ShuffleBatchOp,
     ops::ShuffleBatchGradOpMaker<paddle::framework::OpDesc>,
     ops::ShuffleBatchGradOpMaker<paddle::imperative::OpBase>);

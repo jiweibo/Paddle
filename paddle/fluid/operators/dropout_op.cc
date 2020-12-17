@@ -161,9 +161,9 @@ class DropoutGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(dropout, ops::DropoutOp, ops::DropoutOpMaker);
-REGISTER_OPERATOR_MAKER(dropout, ops::DropoutOp,
-                        ops::DropoutGradOpMaker<paddle::framework::OpDesc>,
-                        ops::DropoutGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    dropout, ops::DropoutOp, ops::DropoutGradOpMaker<paddle::framework::OpDesc>,
+    ops::DropoutGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(dropout_grad, ops::DropoutOpGrad);
 REGISTER_OP_CPU_KERNEL(
     dropout, ops::CPUDropoutKernel<paddle::platform::CPUDeviceContext, float>,

@@ -917,9 +917,9 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(Pad3dOpGradNoNeedBufferVarsInferer, "X");
 namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(pad3d, ops::Pad3dOp, ops::Pad3dOpMaker);
-REGISTER_OPERATOR_MAKER(pad3d, ops::Pad3dOp,
-                        ops::Pad3dOpGradMaker<paddle::framework::OpDesc>,
-                        ops::Pad3dOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(pad3d, ops::Pad3dOp,
+                             ops::Pad3dOpGradMaker<paddle::framework::OpDesc>,
+                             ops::Pad3dOpGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(pad3d_grad, ops::Pad3dOpGrad,
                        ops::Pad3dOpDoubleGradMaker<paddle::framework::OpDesc>,
                        ops::Pad3dOpDoubleGradMaker<paddle::imperative::OpBase>,

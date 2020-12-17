@@ -322,7 +322,7 @@ namespace ops = paddle::operators;
 using CPU = paddle::platform::CPUDeviceContext;
 REGISTER_OPERATOR(deformable_psroi_pooling, ops::DeformablePSROIPoolOp,
                   ops::DeformablePSROIPoolOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     deformable_psroi_pooling, ops::DeformablePSROIPoolOp,
     ops::DeformablePSROIPoolGradOpMaker<paddle::framework::OpDesc>,
     ops::DeformablePSROIPoolGradOpMaker<paddle::imperative::OpBase>);

@@ -57,7 +57,7 @@ It will just return product(tensor.ddims()) > 0;
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(is_empty, ops::IsEmptyOp, ops::IsEmptyOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     is_empty, ops::IsEmptyOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

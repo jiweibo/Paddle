@@ -253,7 +253,7 @@ class UniformRandomOpVarTypeInference : public framework::VarTypeInference {
 REGISTER_OPERATOR(uniform_random, paddle::operators::UniformRandomOp,
                   paddle::operators::UniformRandomOpMaker,
                   paddle::operators::UniformRandomOpVarTypeInference);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     uniform_random, paddle::operators::UniformRandomOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

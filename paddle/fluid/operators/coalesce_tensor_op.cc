@@ -260,7 +260,8 @@ setting the Output with a constant value.
 
 REGISTER_OPERATOR(coalesce_tensor, paddle::operators::CoalesceTensorOp,
                   paddle::operators::CoalesceTensorOpMaker);
-REGISTER_OPERATOR_MAKER(coalesce_tensor, paddle::operators::CoalesceTensorOp);
+REGISTER_OPERATOR_GRAD_MAKER(coalesce_tensor,
+                             paddle::operators::CoalesceTensorOp);
 namespace ops = paddle::operators;
 namespace plat = paddle::platform;
 REGISTER_OP_CPU_KERNEL(

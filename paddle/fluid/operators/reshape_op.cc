@@ -600,7 +600,7 @@ REGISTER_OPERATOR(
     paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
     paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>,
     ops::ReshapeOpInplaceInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     reshape, ops::ReshapeOp,
     paddle::framework::DefaultGradOpMaker<paddle::framework::OpDesc, true>,
     paddle::framework::DefaultGradOpMaker<paddle::imperative::OpBase, true>);
@@ -616,9 +616,10 @@ REGISTER_OP_CPU_KERNEL_FUNCTOR(reshape_grad, float, ops::ReshapeGradKernel,
                                ops::ReshapeGradKernel);
 REGISTER_OPERATOR(reshape2, ops::Reshape2Op, ops::Reshape2OpMaker,
                   ops::ReshapeOpInplaceInferer);
-REGISTER_OPERATOR_MAKER(reshape2, ops::Reshape2Op,
-                        ops::Reshape2GradMaker<paddle::framework::OpDesc>,
-                        ops::Reshape2GradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    reshape2, ops::Reshape2Op,
+    ops::Reshape2GradMaker<paddle::framework::OpDesc>,
+    ops::Reshape2GradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(reshape2_grad, ops::Reshape2GradOp,
                        ops::Reshape2DoubleGradMaker<paddle::framework::OpDesc>,
                        ops::Reshape2DoubleGradMaker<paddle::imperative::OpBase>,

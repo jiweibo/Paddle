@@ -301,10 +301,10 @@ namespace ops = paddle::operators;
 REGISTER_OPERATOR(softmax_with_cross_entropy, ops::SoftmaxWithCrossEntropyOp,
                   ops::SoftmaxWithCrossEntropyOpMaker,
                   ops::SoftmaxWithCrossEntropyInplaceInferer);
-REGISTER_OPERATOR_MAKER(softmax_with_cross_entropy,
-                        ops::SoftmaxWithCrossEntropyOp,
-                        ops::SoftmaxGradMaker<paddle::framework::OpDesc>,
-                        ops::SoftmaxGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(softmax_with_cross_entropy,
+                             ops::SoftmaxWithCrossEntropyOp,
+                             ops::SoftmaxGradMaker<paddle::framework::OpDesc>,
+                             ops::SoftmaxGradMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(softmax_with_cross_entropy_grad,
                        ops::SoftmaxWithCrossEntropyOpGrad,
                        ops::SoftmaxWithCrossEntropyGradInplaceInferer);

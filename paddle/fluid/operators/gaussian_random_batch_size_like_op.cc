@@ -72,7 +72,7 @@ REGISTER_OPERATOR(gaussian_random_batch_size_like,
                   paddle::operators::GaussianRandomBatchSizeLikeOp,
                   paddle::operators::GaussianRandomBatchSizeLikeOpMaker,
                   paddle::operators::BatchSizeLikeNoNeedBufferVarsInferer);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     gaussian_random_batch_size_like,
     paddle::operators::GaussianRandomBatchSizeLikeOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,

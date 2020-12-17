@@ -141,9 +141,9 @@ DECLARE_NO_NEED_BUFFER_VARS_INFERER(WhereGradNoNeedBufferVarsInferer, "X", "Y");
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(where, ops::WhereOp, ops::WhereOpMaker);
-REGISTER_OPERATOR_MAKER(where, ops::WhereOp,
-                        ops::WhereOpGradMaker<paddle::framework::OpDesc>,
-                        ops::WhereOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(where, ops::WhereOp,
+                             ops::WhereOpGradMaker<paddle::framework::OpDesc>,
+                             ops::WhereOpGradMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(where_grad, ops::WhereGradOp,
                        ops::WhereGradNoNeedBufferVarsInferer);

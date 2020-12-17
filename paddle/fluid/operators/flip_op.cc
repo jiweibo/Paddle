@@ -146,9 +146,9 @@ class FlipOpGradMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(flip, ops::FlipOp, ops::FlipOpMaker, ops::FlipOpInferVarType);
-REGISTER_OPERATOR_MAKER(flip, ops::FlipOp,
-                        ops::FlipOpGradMaker<paddle::framework::OpDesc>,
-                        ops::FlipOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(flip, ops::FlipOp,
+                             ops::FlipOpGradMaker<paddle::framework::OpDesc>,
+                             ops::FlipOpGradMaker<paddle::imperative::OpBase>);
 REGISTER_OP_CPU_KERNEL(
     flip, ops::FlipKernel<paddle::platform::CPUDeviceContext, float>,
     ops::FlipKernel<paddle::platform::CPUDeviceContext, double>,

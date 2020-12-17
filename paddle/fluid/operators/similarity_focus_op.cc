@@ -87,7 +87,7 @@ class SimilarityFocusOp : public framework::OperatorWithKernel {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(similarity_focus, ops::SimilarityFocusOp,
                   ops::SimilarityFocusOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     similarity_focus, ops::SimilarityFocusOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);

@@ -84,7 +84,7 @@ namespace ops = paddle::operators;
 
 REGISTER_OPERATOR(save, ops::SaveOp, ops::SaveOpProtoMaker,
                   ops::SaveOpVarTypeInference);
-REGISTER_OPERATOR_MAKER(save, ops::SaveOp, ops::SaveOpProtoMaker);
+REGISTER_OPERATOR_GRAD_MAKER(save, ops::SaveOp, ops::SaveOpProtoMaker);
 
 REGISTER_OP_CPU_KERNEL(
     save, ops::SaveOpKernel<paddle::platform::CPUDeviceContext, float>,

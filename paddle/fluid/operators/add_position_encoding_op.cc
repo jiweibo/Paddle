@@ -113,7 +113,7 @@ namespace plt = paddle::platform;
 
 REGISTER_OPERATOR(add_position_encoding, ops::AddPositionEncodingOp,
                   ops::AddPositionEncodingOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     add_position_encoding, ops::AddPositionEncodingOp,
     ops::AddPositionEncodingGradOpMaker<paddle::framework::OpDesc>,
     ops::AddPositionEncodingGradOpMaker<paddle::imperative::OpBase>);

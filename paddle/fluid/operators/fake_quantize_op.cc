@@ -737,7 +737,7 @@ using CPU = paddle::platform::CPUDeviceContext;
 
 REGISTER_OPERATOR(fake_quantize_abs_max, ops::FakeQuantOrWithDequantAbsMaxOp,
                   ops::FakeQuantOrWithDequantAbsMaxOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fake_quantize_abs_max, ops::FakeQuantOrWithDequantAbsMaxOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
@@ -747,7 +747,7 @@ REGISTER_OP_CPU_KERNEL(fake_quantize_abs_max,
 REGISTER_OPERATOR(fake_quantize_dequantize_abs_max,
                   ops::FakeQuantOrWithDequantAbsMaxOp,
                   ops::FakeQuantOrWithDequantAbsMaxOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fake_quantize_dequantize_abs_max, ops::FakeQuantOrWithDequantAbsMaxOp,
     ops::FakeQuantDequantGradMaker<paddle::framework::OpDesc>,
     ops::FakeQuantDequantGradMaker<paddle::imperative::OpBase>);
@@ -756,7 +756,7 @@ REGISTER_OP_CPU_KERNEL(fake_quantize_dequantize_abs_max,
 
 REGISTER_OPERATOR(fake_quantize_range_abs_max, ops::FakeQuantizeRangeAbsMaxOp,
                   ops::FakeQuantizeRangeAbsMaxOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fake_quantize_range_abs_max, ops::FakeQuantizeRangeAbsMaxOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
@@ -766,7 +766,7 @@ REGISTER_OP_CPU_KERNEL(fake_quantize_range_abs_max,
 REGISTER_OPERATOR(fake_quantize_moving_average_abs_max,
                   ops::FakeQuantOrWithDequantMovingAverageAbsMaxOp,
                   ops::FakeQuantOrWithDequantMovingAverageAbsMaxOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fake_quantize_moving_average_abs_max,
     ops::FakeQuantOrWithDequantMovingAverageAbsMaxOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
@@ -777,7 +777,7 @@ REGISTER_OP_CPU_KERNEL(fake_quantize_moving_average_abs_max,
 REGISTER_OPERATOR(fake_quantize_dequantize_moving_average_abs_max,
                   ops::FakeQuantOrWithDequantMovingAverageAbsMaxOp,
                   ops::FakeQuantOrWithDequantMovingAverageAbsMaxOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fake_quantize_dequantize_moving_average_abs_max,
     ops::FakeQuantOrWithDequantMovingAverageAbsMaxOp,
     ops::FakeQuantDequantGradMaker<paddle::framework::OpDesc>,
@@ -789,7 +789,7 @@ REGISTER_OP_CPU_KERNEL(
 REGISTER_OPERATOR(fake_channel_wise_quantize_abs_max,
                   ops::FakeChannelWiseQuantizeAbsMaxOp,
                   ops::FakeChannelWiseQuantizeAbsMaxOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fake_channel_wise_quantize_abs_max, ops::FakeChannelWiseQuantizeAbsMaxOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
@@ -798,7 +798,7 @@ REGISTER_OP_CPU_KERNEL(fake_channel_wise_quantize_abs_max,
 
 REGISTER_OPERATOR(moving_average_abs_max_scale, ops::MovingAverageAbsMaxScaleOp,
                   ops::MovingAverageAbsMaxScaleOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     moving_average_abs_max_scale, ops::MovingAverageAbsMaxScaleOp,
     paddle::framework::EmptyGradOpMaker<paddle::framework::OpDesc>,
     paddle::framework::EmptyGradOpMaker<paddle::imperative::OpBase>);
@@ -813,7 +813,7 @@ REGISTER_OP_CPU_GRAD_KERNEL(fake_quantize_dequantize_grad,
 REGISTER_OPERATOR(fake_channel_wise_quantize_dequantize_abs_max,
                   ops::FakeChannelWiseQuantizeDequantizeAbsMaxOp,
                   ops::FakeChannelWiseQuantizeDequantizeAbsMaxOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     fake_channel_wise_quantize_dequantize_abs_max,
     ops::FakeChannelWiseQuantizeDequantizeAbsMaxOp,
     ops::FakeQuantDequantGradMaker<paddle::framework::OpDesc>,

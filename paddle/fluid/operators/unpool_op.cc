@@ -157,9 +157,9 @@ class UnpoolOpGrad : public framework::OperatorWithKernel {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(unpool, ops::UnpoolOp, ops::Unpool2dOpMaker);
-REGISTER_OPERATOR_MAKER(unpool, ops::UnpoolOp,
-                        ops::UnpoolOpGradMaker<paddle::framework::OpDesc>,
-                        ops::UnpoolOpGradMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    unpool, ops::UnpoolOp, ops::UnpoolOpGradMaker<paddle::framework::OpDesc>,
+    ops::UnpoolOpGradMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(unpool_grad, ops::UnpoolOpGrad);
 REGISTER_OP_CPU_KERNEL(

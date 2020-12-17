@@ -284,7 +284,7 @@ struct OpKernelRegistrarFunctorEx<PlaceType, false, I,
 #ifndef PADDLE_ON_INFERENCE
 #define REGISTER_GRAD_OPERATOR(op_type, op_class, ...) \
   REGISTER_OPERATOR(op_type, op_class, __VA_ARGS__)
-#define REGISTER_OPERATOR_MAKER(op_type, op_class, ...)                  \
+#define REGISTER_OPERATOR_GRAD_MAKER(op_type, op_class, ...)                  \
   STATIC_ASSERT_GLOBAL_NAMESPACE(                                        \
       __reg_op__##op_type,                                               \
       "REGISTER_OPERATOR must be called in global namespace");           \
@@ -296,7 +296,7 @@ struct OpKernelRegistrarFunctorEx<PlaceType, false, I,
   }
 #else
 #define REGISTER_GRAD_OPERATOR(op_type, op_class, ...)
-#define REGISTER_OPERATOR_MAKER(op_type, op_class, ...)
+#define REGISTER_OPERATOR_GRAD_MAKER(op_type, op_class, ...)
 #endif
 
 #define REGISTER_OP_WITHOUT_GRADIENT(op_type, op_class, op_maker_class) \

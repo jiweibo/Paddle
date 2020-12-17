@@ -108,9 +108,10 @@ class CholeskyGradOpMaker : public framework::SingleGradOpMaker<T> {
 
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(cholesky, ops::CholeskyOp, ops::CholeskyOpMaker);
-REGISTER_OPERATOR_MAKER(cholesky, ops::CholeskyOp,
-                        ops::CholeskyGradOpMaker<paddle::framework::OpDesc>,
-                        ops::CholeskyGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    cholesky, ops::CholeskyOp,
+    ops::CholeskyGradOpMaker<paddle::framework::OpDesc>,
+    ops::CholeskyGradOpMaker<paddle::imperative::OpBase>);
 REGISTER_GRAD_OPERATOR(cholesky_grad, ops::CholeskyGradOp);
 
 REGISTER_OP_CPU_KERNEL(cholesky, ops::CholeskyCPUKernel<float>,

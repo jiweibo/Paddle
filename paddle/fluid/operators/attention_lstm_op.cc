@@ -447,7 +447,7 @@ class AttentionLSTMKernel : public framework::OpKernel<T> {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(attention_lstm, ops::AttentionLSTMOp,
                   ops::AttentionLSTMOpMaker);
-REGISTER_OPERATOR_MAKER(attention_lstm, ops::AttentionLSTMOp);
+REGISTER_OPERATOR_GRAD_MAKER(attention_lstm, ops::AttentionLSTMOp);
 
 REGISTER_OP_CPU_KERNEL(attention_lstm, ops::AttentionLSTMKernel<float>,
                        ops::AttentionLSTMKernel<double>);

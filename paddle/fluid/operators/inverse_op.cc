@@ -115,9 +115,9 @@ class InverseGradOpMaker : public framework::SingleGradOpMaker<T> {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(inverse, ops::InverseOp, ops::InverseOpMaker,
                   ops::InverseOpInferVarType);
-REGISTER_OPERATOR_MAKER(inverse, ops::InverseOp,
-                        ops::InverseGradOpMaker<paddle::framework::OpDesc>,
-                        ops::InverseGradOpMaker<paddle::imperative::OpBase>);
+REGISTER_OPERATOR_GRAD_MAKER(
+    inverse, ops::InverseOp, ops::InverseGradOpMaker<paddle::framework::OpDesc>,
+    ops::InverseGradOpMaker<paddle::imperative::OpBase>);
 
 REGISTER_GRAD_OPERATOR(inverse_grad, ops::InverseGradOp);
 

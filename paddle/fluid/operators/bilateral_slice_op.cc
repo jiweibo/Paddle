@@ -192,7 +192,7 @@ class BilateralSliceKernel : public framework::OpKernel<T> {
 namespace ops = paddle::operators;
 REGISTER_OPERATOR(bilateral_slice, ops::BilateralSliceOp,
                   ops::BilateralSliceOpMaker);
-REGISTER_OPERATOR_MAKER(
+REGISTER_OPERATOR_GRAD_MAKER(
     bilateral_slice, ops::BilateralSliceOp,
     ops::BilateralSliceGradMaker<paddle::framework::OpDesc>,
     ops::BilateralSliceGradMaker<paddle::imperative::OpBase>);
