@@ -17,6 +17,7 @@ from __future__ import print_function
 import unittest
 import numpy as np
 import six
+import copy
 
 import paddle
 import paddle.fluid as fluid
@@ -78,7 +79,7 @@ class TestVarBase(unittest.TestCase):
                 # set_default_dtype take effect on complex
                 x = paddle.to_tensor(1 + 2j, place=place, stop_gradient=False)
                 self.assertTrue(np.array_equal(x.numpy(), [1 + 2j]))
-                self.assertEqual(x.dtype, 'complex64')
+                self.assertEqual(x.dtype, core.VarDesc.VarType.COMPLEX64)
 
                 paddle.set_default_dtype('float64')
                 x = paddle.to_tensor(1.2, place=place, stop_gradient=False)
@@ -87,7 +88,7 @@ class TestVarBase(unittest.TestCase):
 
                 x = paddle.to_tensor(1 + 2j, place=place, stop_gradient=False)
                 self.assertTrue(np.array_equal(x.numpy(), [1 + 2j]))
-                self.assertEqual(x.dtype, 'complex128')
+                self.assertEqual(x.dtype, core.VarDesc.VarType.COMPLEX128)
 
                 x = paddle.to_tensor(
                     1, dtype='float32', place=place, stop_gradient=False)
@@ -133,10 +134,8 @@ class TestVarBase(unittest.TestCase):
                     [1 + 2j, 1 - 2j], dtype='complex64', place=place)
                 y = paddle.to_tensor(x)
                 self.assertTrue(np.array_equal(x.numpy(), [1 + 2j, 1 - 2j]))
-                self.assertEqual(y.dtype, 'complex64')
+                self.assertEqual(y.dtype, core.VarDesc.VarType.COMPLEX64)
                 self.assertEqual(y.shape, [2])
-                self.assertEqual(y.real.stop_gradient, True)
-                self.assertEqual(y.real.type, core.VarDesc.VarType.LOD_TENSOR)
 
                 with self.assertRaises(TypeError):
                     paddle.to_tensor('test')
@@ -198,6 +197,32 @@ class TestVarBase(unittest.TestCase):
             var = fluid.dygraph.to_variable(t)
             self.assertTrue(np.array_equal(t, var.numpy()))
 
+    def test_leaf_tensor(self):
+        with fluid.dygraph.guard():
+            x = paddle.to_tensor(np.random.uniform(-1, 1, size=[10, 10]))
+            self.assertTrue(x.is_leaf)
+            y = x + 1
+            self.assertTrue(y.is_leaf)
+
+            x = paddle.to_tensor(
+                np.random.uniform(
+                    -1, 1, size=[10, 10]), stop_gradient=False)
+            self.assertTrue(x.is_leaf)
+            y = x + 1
+            self.assertFalse(y.is_leaf)
+
+            linear = paddle.nn.Linear(10, 10)
+            input = paddle.to_tensor(
+                np.random.uniform(
+                    -1, 1, size=[10, 10]).astype('float32'),
+                stop_gradient=False)
+            self.assertTrue(input.is_leaf)
+
+            out = linear(input)
+            self.assertTrue(linear.weight.is_leaf)
+            self.assertTrue(linear.bias.is_leaf)
+            self.assertFalse(out.is_leaf)
+
     def test_detach(self):
         with fluid.dygraph.guard():
             x = paddle.to_tensor(1.0, dtype="float64", stop_gradient=False)
@@ -217,11 +242,12 @@ class TestVarBase(unittest.TestCase):
             z.backward()
             self.assertTrue(np.array_equal(x.grad, [20.0]))
             self.assertTrue(np.array_equal(detach_x.grad, [60.0]))
+
             # Due to sharing of data with origin Tensor, There are some unsafe operations:
-            # with self.assertRaises(RuntimeError):
-            #     y = 2 * x
-            #     detach_x[:] = 5.0
-            #     y.backward()
+            with self.assertRaises(RuntimeError):
+                y = 2**x
+                detach_x[:] = 5.0
+                y.backward()
 
     def test_write_property(self):
         with fluid.dygraph.guard():
@@ -238,6 +264,68 @@ class TestVarBase(unittest.TestCase):
             self.assertEqual(var.stop_gradient, True)
             var.stop_gradient = False
             self.assertEqual(var.stop_gradient, False)
+
+    def test_deep_copy(self):
+        with fluid.dygraph.guard():
+            empty_var = core.VarBase()
+            empty_var_copy = copy.deepcopy(empty_var)
+            self.assertEqual(empty_var.stop_gradient,
+                             empty_var_copy.stop_gradient)
+            self.assertEqual(empty_var.persistable, empty_var_copy.persistable)
+            self.assertEqual(empty_var.type, empty_var_copy.type)
+            self.assertEqual(empty_var.dtype, empty_var_copy.dtype)
+
+            x = paddle.to_tensor([2.], stop_gradient=False)
+            y = paddle.to_tensor([3.], stop_gradient=False)
+            z = x * y
+            memo = {}
+            x_copy = copy.deepcopy(x, memo)
+            y_copy = copy.deepcopy(y, memo)
+
+            self.assertEqual(x_copy.stop_gradient, y_copy.stop_gradient)
+            self.assertEqual(x_copy.persistable, y_copy.persistable)
+            self.assertEqual(x_copy.type, y_copy.type)
+            self.assertEqual(x_copy.dtype, y_copy.dtype)
+            self.assertTrue(np.array_equal(x.numpy(), x_copy.numpy()))
+            self.assertTrue(np.array_equal(y.numpy(), y_copy.numpy()))
+
+            self.assertNotEqual(id(x), id(x_copy))
+            x_copy[:] = 5.
+            self.assertTrue(np.array_equal(x_copy.numpy(), [5.]))
+            self.assertTrue(np.array_equal(x.numpy(), [2.]))
+
+            with self.assertRaises(RuntimeError):
+                copy.deepcopy(z)
+
+            x_copy2 = copy.deepcopy(x, memo)
+            y_copy2 = copy.deepcopy(y, memo)
+            self.assertEqual(id(x_copy), id(x_copy2))
+            self.assertEqual(id(y_copy), id(y_copy2))
+
+            # test copy selected rows
+            x = core.VarBase(core.VarDesc.VarType.FP32, [3, 100],
+                             "selected_rows",
+                             core.VarDesc.VarType.SELECTED_ROWS, True)
+            selected_rows = x.value().get_selected_rows()
+            selected_rows.get_tensor().set(
+                np.random.rand(3, 100), core.CPUPlace())
+            selected_rows.set_height(10)
+            selected_rows.set_rows([3, 5, 7])
+            x_copy = copy.deepcopy(x)
+
+            self.assertEqual(x_copy.stop_gradient, x.stop_gradient)
+            self.assertEqual(x_copy.persistable, x.persistable)
+            self.assertEqual(x_copy.type, x.type)
+            self.assertEqual(x_copy.dtype, x.dtype)
+
+            copy_selected_rows = x_copy.value().get_selected_rows()
+            self.assertEqual(copy_selected_rows.height(),
+                             selected_rows.height())
+            self.assertEqual(copy_selected_rows.rows(), selected_rows.rows())
+            self.assertTrue(
+                np.array_equal(
+                    np.array(copy_selected_rows.get_tensor()),
+                    np.array(selected_rows.get_tensor())))
 
     # test some patched methods
     def test_set_value(self):
