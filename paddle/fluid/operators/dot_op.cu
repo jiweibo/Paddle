@@ -24,7 +24,7 @@ REGISTER_OP_CUDA_KERNEL(
     ops::DotKernel<plat::CUDADeviceContext, int64_t>,
     ops::DotKernel<plat::CUDADeviceContext, paddle::platform::complex64>,
     ops::DotKernel<plat::CUDADeviceContext, paddle::platform::complex128>);
-REGISTER_OP_CUDA_KERNEL(
+REGISTER_OP_CUDA_GRAD_KERNEL(
     dot_grad, ops::DotGradKernel<plat::CUDADeviceContext, float>,
     ops::DotGradKernel<plat::CUDADeviceContext, double>,
     ops::DotGradKernel<plat::CUDADeviceContext, int>,

@@ -299,5 +299,5 @@ REGISTER_OPERATOR(conditional_block, ops::ConditionalBlockOp,
                   ops::ConditionalBlockInferShape,
                   ops::ConditionalBlockOpProtoMaker,
                   ops::ConditionalBlockGradMaker<paddle::framework::OpDesc>);
-REGISTER_OPERATOR(conditional_block_grad, ops::ConditionalBlockGradOp,
-                  ops::ConditionalBlockGradInferShape);
+REGISTER_GRAD_OPERATOR(conditional_block_grad, ops::ConditionalBlockGradOp,
+                       ops::ConditionalBlockGradInferShape);
