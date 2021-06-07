@@ -30,7 +30,7 @@ limitations under the License. */
 #include "paddle/fluid/string/split.h"
 
 #if defined(PADDLE_WITH_XPU_BKCL)
-#include "xpu/bkcl.h"
+#include "bkcl.h"  // NOLINT
 #endif
 
 namespace paddle {

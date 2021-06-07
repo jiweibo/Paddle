@@ -8,29 +8,45 @@ SET(XPU_API_LIB_NAME            "libxpuapi.so")
 SET(XPU_RT_LIB_NAME             "libxpurt.so")
 
 if(NOT XPU_SDK_ROOT)
-  if (WITH_AARCH64)
-      SET(XPU_URL    "https://baidu-kunlun-public.su.bcebos.com/paddle_depence/aarch64/xpu_2021_01_13.tar.gz" CACHE STRING "" FORCE)
-  elseif(WITH_SUNWAY)
-      SET(XPU_URL    "https://baidu-kunlun-public.su.bcebos.com/paddle_depence/sunway/xpu_2021_01_13.tar.gz" CACHE STRING "" FORCE)
-  else()
-      SET(XPU_URL    "https://baidu-kunlun-public.su.bcebos.com/paddle_depence/xpu_2021_05_19.tar.gz" CACHE STRING "" FORCE)
-  endif()
+  if (NOT XPU_SDK_URL)
+    set (XPU_SDK_URL "https://baidu-kunlun-product.cdn.bcebos.com/KL-SDK/klsdk-dev_paddle")
+  endif ()
+
+  if (NOT XPU_SDK_ENV)
+    if (WITH_ARM)
+      set (XPU_SDK_ENV "kylin_aarch64")
+    elseif (WITH_SUNWAY)
+      set (XPU_SDK_ENV "deepin_sw6_64")
+    else ()
+      file(READ "/etc/issue" ETC_ISSUE)
+      string(REGEX MATCH "Ubuntu|CentOS" DIST ${ETC_ISSUE})
+      if(DIST STREQUAL "Ubuntu")
+        set (XPU_SDK_ENV "ubuntu_x86_64")
+      else()
+        set (XPU_SDK_ENV "centos7_x86_64")
+        # set (XPU_SDK_ENV "bdcentos_x86_64")
+      endif()
+    endif ()
+  endif ()
+
+  set (XPU_KL_SDK_URL "${XPU_SDK_URL}/klsdk-${XPU_SDK_ENV}.tar.gz")
+  message(STATUS "XPU_SDK_URL: ${XPU_KL_SDK_URL}")
 
   SET(XPU_SOURCE_DIR              "${THIRD_PARTY_PATH}/xpu")
   SET(XPU_DOWNLOAD_DIR            "${XPU_SOURCE_DIR}/src/${XPU_PROJECT}")
   SET(XPU_INSTALL_DIR             "${THIRD_PARTY_PATH}/install/xpu")
   SET(XPU_API_INC_DIR             "${THIRD_PARTY_PATH}/install/xpu/include")
-  SET(XPU_LIB_DIR                 "${THIRD_PARTY_PATH}/install/xpu/lib")
+  SET(XPU_LIB_DIR                 "${THIRD_PARTY_PATH}/install/xpu/so")
 
   SET(XPU_API_LIB                 "${XPU_LIB_DIR}/${XPU_API_LIB_NAME}")
   SET(XPU_RT_LIB                  "${XPU_LIB_DIR}/${XPU_RT_LIB_NAME}")
 
-  SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_RPATH}" "${XPU_INSTALL_DIR}/lib")
+  SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_RPATH}" "${XPU_INSTALL_DIR}/so")
 
   FILE(WRITE ${XPU_DOWNLOAD_DIR}/CMakeLists.txt
     "PROJECT(XPU)\n"
     "cmake_minimum_required(VERSION 3.0)\n"
-    "install(DIRECTORY xpu/include xpu/lib \n"
+    "install(DIRECTORY klsdk-${XPU_SDK_ENV}/include klsdk-${XPU_SDK_ENV}/so \n"
     "        DESTINATION ${XPU_INSTALL_DIR})\n")
 
   ExternalProject_Add(
@@ -38,12 +54,13 @@ if(NOT XPU_SDK_ROOT)
       ${EXTERNAL_PROJECT_LOG_ARGS}
       PREFIX                ${XPU_SOURCE_DIR}
       DOWNLOAD_DIR          ${XPU_DOWNLOAD_DIR}
-      DOWNLOAD_COMMAND      wget --no-check-certificate ${XPU_URL} -c -q -O xpu.tar.gz
+      DOWNLOAD_COMMAND      wget --no-check-certificate ${XPU_KL_SDK_URL} -c -q -O xpu.tar.gz
                             && tar xvf xpu.tar.gz
       DOWNLOAD_NO_PROGRESS  1
       UPDATE_COMMAND        ""
       CMAKE_ARGS            -DCMAKE_INSTALL_PREFIX=${XPU_INSTALL_ROOT}
       CMAKE_CACHE_ARGS      -DCMAKE_INSTALL_PREFIX:PATH=${XPU_INSTALL_ROOT}
+      INSTALL_COMMAND       ${CMAKE_COMMAND} -E copy_directory ${XPU_DOWNLOAD_DIR}/klsdk-${XPU_SDK_ENV} ${XPU_INSTALL_DIR}
   )
 else()
   SET(XPU_API_INC_DIR   "${XPU_SDK_ROOT}/XTDK/include/")

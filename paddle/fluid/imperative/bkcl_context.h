@@ -18,8 +18,8 @@
 #include <string>
 #include <vector>
 
+#include "bkcl.h"  // NOLINT
 #include "paddle/fluid/imperative/parallel_context.h"
-#include "xpu/bkcl.h"
 
 namespace paddle {
 namespace imperative {

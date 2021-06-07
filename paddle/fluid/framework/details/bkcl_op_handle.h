@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "xpu/bkcl.h"
+#include "bkcl.h"  // NOLINT
 
 #include <string>
 #include <unordered_map>

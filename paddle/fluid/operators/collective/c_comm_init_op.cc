@@ -18,7 +18,7 @@ limitations under the License. */
 #include <rccl.h>
 #endif
 #if defined(PADDLE_WITH_XPU_BKCL)
-#include "xpu/bkcl.h"
+#include "bkcl.h"  // NOLINT
 #endif
 #include <string>
 

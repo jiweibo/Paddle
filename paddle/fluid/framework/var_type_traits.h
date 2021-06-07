@@ -42,7 +42,7 @@
 #endif
 
 #if defined(PADDLE_WITH_XPU_BKCL)
-#include "xpu/bkcl.h"
+#include "bkcl.h"  // NOLINT
 #endif
 
 // Users should add forward declarations here

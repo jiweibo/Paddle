@@ -41,7 +41,7 @@ limitations under the License. */
 #endif
 
 #if defined(PADDLE_WITH_XPU_BKCL)
-#include "xpu/bkcl.h"
+#include "bkcl.h"  // NOLINT
 #endif
 
 #ifdef PADDLE_WITH_MKLDNN
